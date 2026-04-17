@@ -1,0 +1,194 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/player_test.tscn" id="1_player_scene"]
+[ext_resource type="Script" path="res://scripts/gameplay/test_level.gd" id="2_level"]
+[ext_resource type="Script" path="res://scripts/templates/transition_overlay.gd" id="7_transition"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_floor"]
+size = Vector2(1152, 56)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ledge_a"]
+size = Vector2(240, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ledge_b"]
+size = Vector2(192, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_exit"]
+size = Vector2(48, 164)
+
+[sub_resource type="Animation" id="Animation_fade_in"]
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FadeRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.11, 0.07, 0.06, 0), Color(0.11, 0.07, 0.06, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TransitionLabel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.92), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_fade_out"]
+length = 0.45
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FadeRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.45),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.11, 0.07, 0.06, 1), Color(0.11, 0.07, 0.06, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TransitionLabel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.45),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_transition"]
+_data = {
+"fade_in": SubResource("Animation_fade_in"),
+"fade_out": SubResource("Animation_fade_out")
+}
+
+[node name="TestLevel" type="Node2D"]
+script = ExtResource("2_level")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.17, 0.11, 0.1, 1)
+
+[node name="BackgroundGlow" type="ColorRect" parent="."]
+offset_top = 356.0
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.47, 0.26, 0.16, 0.3)
+
+[node name="PromptTitle" type="Label" parent="."]
+offset_left = 54.0
+offset_top = 36.0
+offset_right = 490.0
+offset_bottom = 80.0
+theme_override_colors/font_color = Color(0.98, 0.89, 0.7, 1)
+theme_override_font_sizes/font_size = 18
+text = "测试场景"
+
+[node name="PromptText" type="Label" parent="."]
+offset_left = 54.0
+offset_top = 86.0
+offset_right = 592.0
+offset_bottom = 190.0
+theme_override_colors/font_color = Color(0.96, 0.88, 0.74, 0.94)
+theme_override_font_sizes/font_size = 12
+text = "左右移动，按住 Shift 跑动，空格跳跃。\n走到右侧发光出口后，会播放过场并回到主菜单。"
+
+[node name="Platforms" type="Node2D" parent="."]
+
+[node name="Floor" type="StaticBody2D" parent="Platforms"]
+position = Vector2(576, 640)
+
+[node name="FloorCollider" type="CollisionShape2D" parent="Platforms/Floor"]
+shape = SubResource("RectangleShape2D_floor")
+
+[node name="FloorVisual" type="Polygon2D" parent="Platforms/Floor"]
+color = Color(0.63, 0.4, 0.24, 1)
+polygon = PackedVector2Array(-576, -28, 576, -28, 576, 28, -576, 28)
+
+[node name="LedgeA" type="StaticBody2D" parent="Platforms"]
+position = Vector2(346, 462)
+
+[node name="LedgeACollider" type="CollisionShape2D" parent="Platforms/LedgeA"]
+shape = SubResource("RectangleShape2D_ledge_a")
+
+[node name="LedgeAVisual" type="Polygon2D" parent="Platforms/LedgeA"]
+color = Color(0.89, 0.63, 0.34, 1)
+polygon = PackedVector2Array(-120, -10, 120, -10, 120, 10, -120, 10)
+
+[node name="LedgeB" type="StaticBody2D" parent="Platforms"]
+position = Vector2(760, 370)
+
+[node name="LedgeBCollider" type="CollisionShape2D" parent="Platforms/LedgeB"]
+shape = SubResource("RectangleShape2D_ledge_b")
+
+[node name="LedgeBVisual" type="Polygon2D" parent="Platforms/LedgeB"]
+color = Color(0.96, 0.72, 0.41, 1)
+polygon = PackedVector2Array(-96, -10, 96, -10, 96, 10, -96, 10)
+
+[node name="ExitArea" type="Area2D" parent="."]
+position = Vector2(1030, 542)
+collision_layer = 0
+collision_mask = 1
+
+[node name="ExitCollider" type="CollisionShape2D" parent="ExitArea"]
+shape = SubResource("RectangleShape2D_exit")
+
+[node name="ExitVisual" type="ColorRect" parent="ExitArea"]
+offset_left = -24.0
+offset_top = -82.0
+offset_right = 24.0
+offset_bottom = 0.0
+color = Color(1, 0.82, 0.46, 0.95)
+
+[node name="ExitFrame" type="Polygon2D" parent="ExitArea"]
+color = Color(0.36, 0.22, 0.08, 1)
+polygon = PackedVector2Array(-28, -86, 28, -86, 28, -80, -28, -80, -28, 4, 28, 4, 28, -2, -28, -2)
+
+[node name="ExitMarker" type="Sprite2D" parent="ExitArea"]
+visible = false
+
+[node name="Player" parent="." instance=ExtResource("1_player_scene")]
+position = Vector2(164, 542)
+
+[node name="TransitionOverlay" type="CanvasLayer" parent="." unique_id=134336000]
+script = ExtResource("7_transition")
+
+[node name="FadeRect" type="ColorRect" parent="TransitionOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.11, 0.07, 0.06, 0)
+
+[node name="TransitionLabel" type="Label" parent="TransitionOverlay"]
+layout_mode = 0
+offset_left = 366.0
+offset_top = 284.0
+offset_right = 786.0
+offset_bottom = 352.0
+theme_override_colors/font_color = Color(0.97, 0.91, 0.76, 0)
+theme_override_font_sizes/font_size = 28
+text = "RETURNING TO MENU"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TransitionOverlay"]
+libraries = {
+"": SubResource("AnimationLibrary_transition")
+}
