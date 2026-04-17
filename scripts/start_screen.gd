@@ -1,20 +1,21 @@
 extends Control
 
-const BG := Color(0.97, 0.97, 0.95, 1.0)
-const FG := Color(0.06, 0.06, 0.06, 1.0)
-const DIM := Color(0.0, 0.0, 0.0, 0.18)
-const SOFT := Color(0.0, 0.0, 0.0, 0.08)
-const PIXEL := 16.0
+const FG := Color(0.22, 0.13, 0.07, 1.0)
 const ENGLISH_PIXEL_FONT: FontFile = preload("res://assets/fonts/press_start_2p/PressStart2P-Regular.ttf")
 const CHINESE_PIXEL_FONT: FontFile = preload("res://assets/fonts/fusion_pixel_font/fusion-pixel-12px-proportional-zh_hans.otf")
 const MENU_MUSIC: AudioStream = preload("res://assets/music/menu.mp3")
 const HOVER_SOUND: AudioStream = preload("res://assets/music/kenney_interface-sounds/Audio/select_006.ogg")
 const CLICK_SOUND: AudioStream = preload("res://assets/music/kenney_interface-sounds/Audio/confirmation_002.ogg")
+const BACKGROUND_SCROLL_SPEED := 18.0
 
 var default_panel_style := StyleBoxFlat.new()
 var default_button_style := StyleBoxFlat.new()
 var hover_button_style := StyleBoxFlat.new()
+var pressed_button_style := StyleBoxFlat.new()
+var background_width := 0.0
 
+@onready var background_a: TextureRect = $BackgroundA
+@onready var background_b: TextureRect = $BackgroundB
 @onready var title: Label = $Title
 @onready var subtitle: Label = $Subtitle
 @onready var panel: PanelContainer = $MenuPanel
@@ -29,6 +30,9 @@ var hover_button_style := StyleBoxFlat.new()
 
 func _ready() -> void:
 	mouse_filter = Control.MOUSE_FILTER_PASS
+	set_process(true)
+	resized.connect(_layout_scrolling_backgrounds)
+	_layout_scrolling_backgrounds()
 	_apply_pixel_font()
 	_configure_styles()
 	_setup_audio()
@@ -37,50 +41,22 @@ func _ready() -> void:
 	_wire_button(quit_button, "_on_quit_pressed")
 	queue_redraw()
 
+
+func _process(delta: float) -> void:
+	if background_width <= 0.0:
+		return
+
+	background_a.position.x -= BACKGROUND_SCROLL_SPEED * delta
+	background_b.position.x -= BACKGROUND_SCROLL_SPEED * delta
+
+	if background_a.position.x + background_width <= 0.0:
+		background_a.position.x = background_b.position.x + background_width
+	if background_b.position.x + background_width <= 0.0:
+		background_b.position.x = background_a.position.x + background_width
+
+
 func _draw() -> void:
-	draw_rect(Rect2(Vector2.ZERO, size), BG, true)
-	_draw_pixel_grid()
-	_draw_corner_frame()
-
-
-func _draw_pixel_grid() -> void:
-	var columns := int(ceil(size.x / PIXEL)) + 1
-	var rows := int(ceil(size.y / PIXEL)) + 1
-
-	for x in range(columns):
-		var xpos: float = x * PIXEL
-		draw_line(Vector2(xpos, 0), Vector2(xpos, size.y), SOFT, 1.0)
-
-	for y in range(rows):
-		var ypos: float = y * PIXEL
-		draw_line(Vector2(0, ypos), Vector2(size.x, ypos), SOFT, 1.0)
-
-	for x in range(columns):
-		for y in range(rows):
-			if (x + y) % 5 == 0:
-				draw_rect(
-					Rect2(Vector2(x * PIXEL + 4.0, y * PIXEL + 4.0), Vector2(2, 2)),
-					Color(0, 0, 0, 0.08),
-					true
-				)
-
-
-func _draw_corner_frame() -> void:
-	var margin: float = 30.0
-	var corner_len: float = 72.0
-	var thickness: float = 3.0
-
-	draw_line(Vector2(margin, margin), Vector2(margin + corner_len, margin), FG, thickness)
-	draw_line(Vector2(margin, margin), Vector2(margin, margin + corner_len), FG, thickness)
-
-	draw_line(Vector2(size.x - margin, margin), Vector2(size.x - margin - corner_len, margin), FG, thickness)
-	draw_line(Vector2(size.x - margin, margin), Vector2(size.x - margin, margin + corner_len), FG, thickness)
-
-	draw_line(Vector2(margin, size.y - margin), Vector2(margin + corner_len, size.y - margin), FG, thickness)
-	draw_line(Vector2(margin, size.y - margin), Vector2(margin, size.y - margin - corner_len), FG, thickness)
-
-	draw_line(Vector2(size.x - margin, size.y - margin), Vector2(size.x - margin - corner_len, size.y - margin), FG, thickness)
-	draw_line(Vector2(size.x - margin, size.y - margin), Vector2(size.x - margin, size.y - margin - corner_len), FG, thickness)
+	pass
 
 
 func _apply_pixel_font() -> void:
@@ -94,44 +70,64 @@ func _apply_pixel_font() -> void:
 
 
 func _configure_styles() -> void:
-	default_panel_style.bg_color = Color(1, 1, 1, 0.9)
-	default_panel_style.border_color = FG
-	default_panel_style.set_border_width_all(3)
+	default_panel_style.bg_color = Color(0.97, 0.89, 0.72, 0.92)
+	default_panel_style.border_color = Color(0.34, 0.18, 0.08, 1.0)
+	default_panel_style.set_border_width_all(4)
+	default_panel_style.shadow_color = Color(0, 0, 0, 0.18)
+	default_panel_style.shadow_size = 8
+	default_panel_style.shadow_offset = Vector2(4, 5)
 	default_panel_style.corner_radius_top_left = 4
 	default_panel_style.corner_radius_top_right = 4
 	default_panel_style.corner_radius_bottom_right = 4
 	default_panel_style.corner_radius_bottom_left = 4
 	panel.add_theme_stylebox_override("panel", default_panel_style)
 
-	default_button_style.bg_color = Color(1, 1, 1, 0)
-	default_button_style.border_color = FG
-	default_button_style.set_border_width_all(2)
+	default_button_style.bg_color = Color(0.9, 0.63, 0.31, 1.0)
+	default_button_style.border_color = Color(0.35, 0.18, 0.07, 1.0)
+	default_button_style.set_border_width_all(3)
 	default_button_style.corner_radius_top_left = 2
 	default_button_style.corner_radius_top_right = 2
 	default_button_style.corner_radius_bottom_right = 2
 	default_button_style.corner_radius_bottom_left = 2
+	default_button_style.shadow_color = Color(0.21, 0.1, 0.04, 0.22)
+	default_button_style.shadow_size = 4
+	default_button_style.shadow_offset = Vector2(2, 3)
 
-	hover_button_style.bg_color = FG
-	hover_button_style.border_color = FG
-	hover_button_style.set_border_width_all(2)
-	hover_button_style.shadow_color = Color(0, 0, 0, 0.22)
-	hover_button_style.shadow_size = 6
-	hover_button_style.shadow_offset = Vector2(4, 4)
+	hover_button_style.bg_color = Color(0.97, 0.74, 0.39, 1.0)
+	hover_button_style.border_color = Color(0.35, 0.18, 0.07, 1.0)
+	hover_button_style.set_border_width_all(3)
 	hover_button_style.corner_radius_top_left = 2
 	hover_button_style.corner_radius_top_right = 2
 	hover_button_style.corner_radius_bottom_right = 2
 	hover_button_style.corner_radius_bottom_left = 2
+	hover_button_style.shadow_color = Color(0.21, 0.1, 0.04, 0.28)
+	hover_button_style.shadow_size = 5
+	hover_button_style.shadow_offset = Vector2(3, 4)
+
+	pressed_button_style.bg_color = Color(0.8, 0.52, 0.24, 1.0)
+	pressed_button_style.border_color = Color(0.35, 0.18, 0.07, 1.0)
+	pressed_button_style.set_border_width_all(3)
+	pressed_button_style.corner_radius_top_left = 2
+	pressed_button_style.corner_radius_top_right = 2
+	pressed_button_style.corner_radius_bottom_right = 2
+	pressed_button_style.corner_radius_bottom_left = 2
+	pressed_button_style.shadow_color = Color(0, 0, 0, 0)
+	pressed_button_style.shadow_size = 0
+	pressed_button_style.shadow_offset = Vector2.ZERO
 
 	for button in [start_button, option_button, quit_button]:
 		button.focus_mode = Control.FOCUS_NONE
 		button.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 		button.add_theme_font_size_override("font_size", 18)
-		button.add_theme_color_override("font_color", FG)
-		button.add_theme_color_override("font_hover_color", BG)
-		button.add_theme_color_override("font_pressed_color", BG)
+		button.add_theme_color_override("font_color", Color(0.2, 0.1, 0.04, 1.0))
+		button.add_theme_color_override("font_hover_color", Color(0.2, 0.1, 0.04, 1.0))
+		button.add_theme_color_override("font_pressed_color", Color(0.16, 0.08, 0.03, 1.0))
+		button.add_theme_constant_override("h_separation", 0)
+		button.add_theme_constant_override("outline_size", 1)
+		button.add_theme_color_override("font_outline_color", Color(1, 0.95, 0.8, 0.35))
 		button.add_theme_stylebox_override("normal", default_button_style)
 		button.add_theme_stylebox_override("hover", hover_button_style)
-		button.add_theme_stylebox_override("pressed", hover_button_style)
+		button.add_theme_stylebox_override("pressed", pressed_button_style)
 		button.add_theme_stylebox_override("focus", hover_button_style)
 
 
@@ -160,6 +156,22 @@ func _setup_audio() -> void:
 
 	click_sfx_player.stream = CLICK_SOUND
 	click_sfx_player.bus = &"Master"
+
+
+func _layout_scrolling_backgrounds() -> void:
+	var texture_size: Vector2 = background_a.texture.get_size()
+	if texture_size.x <= 0.0 or texture_size.y <= 0.0:
+		return
+
+	var scale_factor := size.y / texture_size.y
+	background_width = texture_size.x * scale_factor
+
+	for background in [background_a, background_b]:
+		background.custom_minimum_size = Vector2(background_width, size.y)
+		background.size = Vector2(background_width, size.y)
+
+	background_a.position = Vector2(0, 0)
+	background_b.position = Vector2(background_width, 0)
 
 
 func _apply_font_by_text(control: Control, text: String) -> void:
