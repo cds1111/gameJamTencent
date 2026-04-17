@@ -124,3 +124,100 @@ theme_override_colors/font_color = Color(0.97, 0.96, 0.9, 0.92)
 theme_override_font_sizes/font_size = 16
 text = "tips: There're no tips!"
 horizontal_alignment = 1
+
+[node name="SettingsPanel" type="PanelContainer" parent="." unique_id=208315964]
+visible = false
+layout_mode = 0
+offset_left = 332.0
+offset_top = 284.0
+offset_right = 810.0
+offset_bottom = 592.0
+
+[node name="SettingsMargin" type="MarginContainer" parent="SettingsPanel" unique_id=167732910]
+layout_mode = 2
+theme_override_constants/margin_left = 28
+theme_override_constants/margin_top = 26
+theme_override_constants/margin_right = 28
+theme_override_constants/margin_bottom = 24
+
+[node name="SettingsVBox" type="VBoxContainer" parent="SettingsPanel/SettingsMargin" unique_id=1490596451]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="SettingsTitle" type="Label" parent="SettingsPanel/SettingsMargin/SettingsVBox" unique_id=1908775977]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.31, 0.16, 0.08, 1)
+theme_override_font_sizes/font_size = 18
+text = "SETTINGS"
+horizontal_alignment = 1
+
+[node name="MusicRow" type="HBoxContainer" parent="SettingsPanel/SettingsMargin/SettingsVBox" unique_id=201535515]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="MusicLabel" type="Label" parent="SettingsPanel/SettingsMargin/SettingsVBox/MusicRow" unique_id=985395193]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.28, 0.16, 0.08, 1)
+theme_override_font_sizes/font_size = 12
+text = "MUSIC"
+vertical_alignment = 1
+
+[node name="MusicSlider" type="HSlider" parent="SettingsPanel/SettingsMargin/SettingsVBox/MusicRow" unique_id=1917526768]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -20.0
+max_value = 2.0
+step = 1.0
+value = -7.0
+
+[node name="SfxRow" type="HBoxContainer" parent="SettingsPanel/SettingsMargin/SettingsVBox" unique_id=76604247]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="SfxLabel" type="Label" parent="SettingsPanel/SettingsMargin/SettingsVBox/SfxRow" unique_id=1823431329]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.28, 0.16, 0.08, 1)
+theme_override_font_sizes/font_size = 12
+text = "SFX"
+vertical_alignment = 1
+
+[node name="SfxSlider" type="HSlider" parent="SettingsPanel/SettingsMargin/SettingsVBox/SfxRow" unique_id=464981013]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -20.0
+max_value = 4.0
+step = 1.0
+value = -7.0
+
+[node name="WindowRow" type="HBoxContainer" parent="SettingsPanel/SettingsMargin/SettingsVBox" unique_id=1145036740]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="WindowLabel" type="Label" parent="SettingsPanel/SettingsMargin/SettingsVBox/WindowRow" unique_id=561539820]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.28, 0.16, 0.08, 1)
+theme_override_font_sizes/font_size = 12
+text = "WINDOW"
+vertical_alignment = 1
+
+[node name="WindowModeOption" type="OptionButton" parent="SettingsPanel/SettingsMargin/SettingsVBox/WindowRow" unique_id=1159582742]
+custom_minimum_size = Vector2(220, 44)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SettingsHint" type="Label" parent="SettingsPanel/SettingsMargin/SettingsVBox" unique_id=838228497]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.41, 0.23, 0.11, 0.82)
+theme_override_font_sizes/font_size = 10
+text = "Use settings to tune the start menu feel."
+horizontal_alignment = 1
+
+[node name="BackButton" type="Button" parent="SettingsPanel/SettingsMargin/SettingsVBox" unique_id=1614760038]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+text = "BACK"
