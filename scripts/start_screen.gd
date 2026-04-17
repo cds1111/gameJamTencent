@@ -7,6 +7,9 @@ const SOFT := Color(0.0, 0.0, 0.0, 0.08)
 const PIXEL := 16.0
 const ENGLISH_PIXEL_FONT: FontFile = preload("res://assets/fonts/press_start_2p/PressStart2P-Regular.ttf")
 const CHINESE_PIXEL_FONT: FontFile = preload("res://assets/fonts/fusion_pixel_font/fusion-pixel-12px-proportional-zh_hans.otf")
+const MENU_MUSIC: AudioStream = preload("res://assets/music/menu.mp3")
+const HOVER_SOUND: AudioStream = preload("res://assets/music/kenney_interface-sounds/Audio/select_006.ogg")
+const CLICK_SOUND: AudioStream = preload("res://assets/music/kenney_interface-sounds/Audio/confirmation_002.ogg")
 
 var default_panel_style := StyleBoxFlat.new()
 var default_button_style := StyleBoxFlat.new()
@@ -20,11 +23,15 @@ var hover_button_style := StyleBoxFlat.new()
 @onready var option_button: Button = $MenuPanel/MenuMargin/MenuVBox/OptionButton
 @onready var quit_button: Button = $MenuPanel/MenuMargin/MenuVBox/QuitButton
 @onready var hint: Label = $Hint
+@onready var menu_music_player: AudioStreamPlayer = $MenuMusicPlayer
+@onready var hover_sfx_player: AudioStreamPlayer = $HoverSfxPlayer
+@onready var click_sfx_player: AudioStreamPlayer = $ClickSfxPlayer
 
 func _ready() -> void:
 	mouse_filter = Control.MOUSE_FILTER_PASS
 	_apply_pixel_font()
 	_configure_styles()
+	_setup_audio()
 	_wire_button(start_button, "_on_start_pressed")
 	_wire_button(option_button, "_on_option_pressed")
 	_wire_button(quit_button, "_on_quit_pressed")
@@ -107,6 +114,9 @@ func _configure_styles() -> void:
 	hover_button_style.bg_color = FG
 	hover_button_style.border_color = FG
 	hover_button_style.set_border_width_all(2)
+	hover_button_style.shadow_color = Color(0, 0, 0, 0.22)
+	hover_button_style.shadow_size = 6
+	hover_button_style.shadow_offset = Vector2(4, 4)
 	hover_button_style.corner_radius_top_left = 2
 	hover_button_style.corner_radius_top_right = 2
 	hover_button_style.corner_radius_bottom_right = 2
@@ -126,7 +136,30 @@ func _configure_styles() -> void:
 
 
 func _wire_button(button: Button, pressed_method: String) -> void:
+	button.mouse_entered.connect(func() -> void:
+		_play_hover_sfx()
+	)
+	button.focus_entered.connect(func() -> void:
+		_play_hover_sfx()
+	)
 	button.pressed.connect(Callable(self, pressed_method))
+
+
+func _setup_audio() -> void:
+	menu_music_player.stream = MENU_MUSIC
+	menu_music_player.bus = &"Master"
+	menu_music_player.stream_paused = false
+	menu_music_player.finished.connect(func() -> void:
+		menu_music_player.play()
+	)
+	if not menu_music_player.playing:
+		menu_music_player.play()
+
+	hover_sfx_player.stream = HOVER_SOUND
+	hover_sfx_player.bus = &"Master"
+
+	click_sfx_player.stream = CLICK_SOUND
+	click_sfx_player.bus = &"Master"
 
 
 func _apply_font_by_text(control: Control, text: String) -> void:
@@ -153,13 +186,29 @@ func _set_hint_text(text: String) -> void:
 	_apply_font_by_text(hint, text)
 
 
+func _play_hover_sfx() -> void:
+	if hover_sfx_player.playing:
+		hover_sfx_player.stop()
+	hover_sfx_player.play()
+
+
+func _play_click_sfx() -> void:
+	if click_sfx_player.playing:
+		click_sfx_player.stop()
+	click_sfx_player.play()
+
+
 func _on_start_pressed() -> void:
+	_play_click_sfx()
 	_set_hint_text("Signal locked. Entering the sketch world...")
 
 
 func _on_option_pressed() -> void:
+	_play_click_sfx()
 	_set_hint_text("Notebook open. More menu branches can grow from here.")
 
 
 func _on_quit_pressed() -> void:
+	_play_click_sfx()
+	await get_tree().create_timer(0.12).timeout
 	get_tree().quit()

@@ -11,6 +11,15 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_kd2x8")
 
+[node name="MenuMusicPlayer" type="AudioStreamPlayer" parent="." unique_id=1435293001]
+volume_db = -7.0
+
+[node name="HoverSfxPlayer" type="AudioStreamPlayer" parent="." unique_id=1884111062]
+volume_db = -8.0
+
+[node name="ClickSfxPlayer" type="AudioStreamPlayer" parent="." unique_id=1897386148]
+volume_db = -6.0
+
 [node name="Title" type="Label" parent="." unique_id=1041418845]
 layout_mode = 0
 offset_left = 114.0
