@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://52jpflyc03w8"]
+
+[ext_resource type="Script" uid="uid://jjg3rcai4fun" path="res://scripts/level/LevelController.gd" id="1_jx5dl"]
+[ext_resource type="Script" uid="uid://12hu3lcw86np" path="res://scripts/hazards/Spike.gd" id="2_2h3sp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ifpx"]
+size = Vector2(64, 35)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nu7lx"]
+size = Vector2(1200, 60)
+
+[node name="BaseLevel" type="Node2D" unique_id=1411277766]
+
+[node name="Environment" type="Node2D" parent="." unique_id=1237470430]
+
+[node name="Background" type="TileMapLayer" parent="Environment" unique_id=1270329643]
+
+[node name="Terrain" type="TileMapLayer" parent="Environment" unique_id=145180040]
+
+[node name="Danger" type="TileMapLayer" parent="Environment" unique_id=2134643234]
+
+[node name="DebugSpike" type="Area2D" parent="Environment/Danger" unique_id=63810746]
+position = Vector2(-40, 0)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("2_2h3sp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Danger/DebugSpike" unique_id=1117532983]
+position = Vector2(0, 14.5)
+shape = SubResource("RectangleShape2D_5ifpx")
+
+[node name="SpikeVisual" type="ColorRect" parent="Environment/Danger/DebugSpike" unique_id=324529712]
+offset_left = -32.0
+offset_top = -4.0
+offset_right = 32.0
+offset_bottom = 22.0
+color = Color(0.85, 0.15, 0.15, 1)
+
+[node name="DynamicObstacles" type="Node2D" parent="Environment" unique_id=1107072279]
+
+[node name="DebugFloor" type="StaticBody2D" parent="Environment" unique_id=1549369548]
+position = Vector2(0, 50)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/DebugFloor" unique_id=205726667]
+shape = SubResource("RectangleShape2D_nu7lx")
+
+[node name="DebugFloorVisual" type="ColorRect" parent="Environment/DebugFloor" unique_id=1490358962]
+offset_left = -600.0
+offset_top = -30.0
+offset_right = 600.0
+offset_bottom = 30.0
+color = Color(0.45, 0.45, 0.45, 1)
+
+[node name="Entities" type="Node2D" parent="." unique_id=70306312]
+
+[node name="PlayerSpawn" type="Marker2D" parent="Entities" unique_id=195367309]
+position = Vector2(-240, -48)
+
+[node name="Monsters" type="Node2D" parent="Entities" unique_id=436981488]
+
+[node name="Goal" type="Area2D" parent="Entities" unique_id=460067954]
+position = Vector2(300, -50)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/Goal" unique_id=1992689903]
+shape = SubResource("RectangleShape2D_5ifpx")
+
+[node name="GoalVisual" type="ColorRect" parent="Entities/Goal" unique_id=1034173607]
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+color = Color(0.2, 0.85, 0.2, 0.85)
+
+[node name="LevelController" type="Node" parent="." unique_id=893548158]
+script = ExtResource("1_jx5dl")
