@@ -1,3 +1,85 @@
 [gd_scene format=3 uid="uid://djeb0cuoeaeet"]
 
-[node name="Node2D" type="Node2D" unique_id=2118511242]
+[ext_resource type="Script" uid="uid://bgqrlemxbxgvk" path="res://scripts/start_screen.gd" id="1_kd2x8"]
+
+[node name="StartScreen" type="Control" unique_id=1904884707]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kd2x8")
+
+[node name="Title" type="Label" parent="." unique_id=1041418845]
+layout_mode = 0
+offset_left = 114.0
+offset_top = 102.0
+offset_right = 1032.0
+offset_bottom = 200.0
+theme_override_colors/font_color = Color(0.06, 0.06, 0.06, 1)
+theme_override_font_sizes/font_size = 64
+text = "SHIFT IT"
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="." unique_id=108553414]
+layout_mode = 0
+offset_left = 234.0
+offset_top = 202.0
+offset_right = 912.0
+offset_bottom = 262.0
+theme_override_colors/font_color = Color(0.06, 0.06, 0.06, 0.82)
+theme_override_font_sizes/font_size = 20
+text = "MADE BY PLACEHOLDER"
+horizontal_alignment = 1
+
+[node name="MenuPanel" type="PanelContainer" parent="." unique_id=1902837861]
+layout_mode = 0
+offset_left = 404.0
+offset_top = 338.0
+offset_right = 742.0
+offset_bottom = 542.0
+
+[node name="MenuMargin" type="MarginContainer" parent="MenuPanel" unique_id=1220619843]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="MenuVBox" type="VBoxContainer" parent="MenuPanel/MenuMargin" unique_id=1293616789]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Prompt" type="Label" parent="MenuPanel/MenuMargin/MenuVBox" unique_id=642510831]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.06, 0.06, 0.06, 1)
+theme_override_font_sizes/font_size = 18
+text = "> JUST SHIFT IT"
+horizontal_alignment = 1
+
+[node name="StartButton" type="Button" parent="MenuPanel/MenuMargin/MenuVBox" unique_id=844178296]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+text = "START"
+
+[node name="OptionButton" type="Button" parent="MenuPanel/MenuMargin/MenuVBox" unique_id=1341545341]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+text = "SETTINGS"
+
+[node name="QuitButton" type="Button" parent="MenuPanel/MenuMargin/MenuVBox" unique_id=1130336266]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+text = "QUIT"
+
+[node name="Hint" type="Label" parent="." unique_id=1020450166]
+layout_mode = 0
+offset_left = 250.0
+offset_top = 612.0
+offset_right = 887.0
+offset_bottom = 650.0
+theme_override_colors/font_color = Color(0.06, 0.06, 0.06, 0.72)
+theme_override_font_sizes/font_size = 16
+text = "tips: There're no tips!"
+horizontal_alignment = 1
