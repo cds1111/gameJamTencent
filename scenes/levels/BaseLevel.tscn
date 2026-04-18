@@ -438,59 +438,98 @@ texture = ExtResource("4_q6m41")
 
 [node name="Spikes" type="Node" parent="." unique_id=638400332]
 
-[node name="Spike" parent="Spikes" unique_id=1811669989 instance=ExtResource("2_spike")]
+[node name="Spike" parent="Spikes" unique_id=1959532438 instance=ExtResource("2_spike")]
 position = Vector2(-968, -245)
 
-[node name="Spike2" parent="Spikes" unique_id=1959532438 instance=ExtResource("2_spike")]
+[node name="Spike19" parent="Spikes" unique_id=1406621404 instance=ExtResource("2_spike")]
+position = Vector2(-984, -245)
+
+[node name="Spike20" parent="Spikes" unique_id=1433398091 instance=ExtResource("2_spike")]
+position = Vector2(-1000, -245)
+
+[node name="Spike21" parent="Spikes" unique_id=2036299680 instance=ExtResource("2_spike")]
+position = Vector2(-1384, -245)
+
+[node name="Spike22" parent="Spikes" unique_id=1806272897 instance=ExtResource("2_spike")]
+position = Vector2(-1400, -245)
+
+[node name="Spike2" parent="Spikes" unique_id=1153766466 instance=ExtResource("2_spike")]
 position = Vector2(-952, -245)
 
-[node name="Spike3" parent="Spikes" unique_id=52434805 instance=ExtResource("2_spike")]
-position = Vector2(-1240, -325)
+[node name="Spike3" parent="Spikes" unique_id=63478975 instance=ExtResource("2_spike")]
+position = Vector2(-1368, -325)
 
-[node name="Spike4" parent="Spikes" unique_id=1112766848 instance=ExtResource("2_spike")]
-position = Vector2(-1224, -325)
+[node name="Spike4" parent="Spikes" unique_id=683226913 instance=ExtResource("2_spike")]
+position = Vector2(-1352, -325)
 
-[node name="Spike5" parent="Spikes" unique_id=665033993 instance=ExtResource("2_spike")]
-position = Vector2(-1208, -325)
+[node name="Spike5" parent="Spikes" unique_id=428365435 instance=ExtResource("2_spike")]
+position = Vector2(-1336, -325)
 
-[node name="Spike6" parent="Spikes" unique_id=29727883 instance=ExtResource("2_spike")]
-position = Vector2(-1192, -325)
+[node name="Spike6" parent="Spikes" unique_id=420292424 instance=ExtResource("2_spike")]
+position = Vector2(-1320, -325)
 
-[node name="Spike7" parent="Spikes" unique_id=2113157244 instance=ExtResource("2_spike")]
-position = Vector2(-1160, -416)
+[node name="Spike23" parent="Spikes" unique_id=1933458793 instance=ExtResource("2_spike")]
+position = Vector2(-1272, -384)
 
-[node name="Spike8" parent="Spikes" unique_id=251588560 instance=ExtResource("2_spike")]
-position = Vector2(-1144, -416)
+[node name="Spike24" parent="Spikes" unique_id=91576464 instance=ExtResource("2_spike")]
+position = Vector2(-1256, -384)
 
-[node name="Spike9" parent="Spikes" unique_id=1222413002 instance=ExtResource("2_spike")]
-position = Vector2(-1128, -416)
+[node name="Spike25" parent="Spikes" unique_id=1159335614 instance=ExtResource("2_spike")]
+position = Vector2(-1240, -384)
 
-[node name="Spike10" parent="Spikes" unique_id=1711446492 instance=ExtResource("2_spike")]
-position = Vector2(-1112, -416)
+[node name="Spike26" parent="Spikes" unique_id=1312225350 instance=ExtResource("2_spike")]
+position = Vector2(-1224, -384)
 
-[node name="Spike11" parent="Spikes" unique_id=1702098756 instance=ExtResource("2_spike")]
+[node name="Spike7" parent="Spikes" unique_id=1526914054 instance=ExtResource("2_spike")]
+position = Vector2(-1047, -384)
+
+[node name="Spike27" parent="Spikes" unique_id=988781805 instance=ExtResource("2_spike")]
+position = Vector2(-1048, -481)
+
+[node name="Spike28" parent="Spikes" unique_id=2005153946 instance=ExtResource("2_spike")]
+position = Vector2(-1032, -481)
+
+[node name="Spike29" parent="Spikes" unique_id=2106828005 instance=ExtResource("2_spike")]
+position = Vector2(-1144, -513)
+
+[node name="Spike30" parent="Spikes" unique_id=1755062650 instance=ExtResource("2_spike")]
+position = Vector2(-1128, -513)
+
+[node name="Spike8" parent="Spikes" unique_id=2065324424 instance=ExtResource("2_spike")]
+position = Vector2(-1031, -384)
+
+[node name="Spike9" parent="Spikes" unique_id=808642506 instance=ExtResource("2_spike")]
+position = Vector2(-1015, -384)
+
+[node name="Spike10" parent="Spikes" unique_id=560323221 instance=ExtResource("2_spike")]
+position = Vector2(-999, -384)
+
+[node name="Spike18" parent="Spikes" unique_id=1300560502 instance=ExtResource("2_spike")]
+position = Vector2(-983, -384)
+
+[node name="Spike11" parent="Spikes" unique_id=107640984 instance=ExtResource("2_spike")]
 position = Vector2(-1000, -293)
 
-[node name="Spike12" parent="Spikes" unique_id=1150520830 instance=ExtResource("2_spike")]
+[node name="Spike12" parent="Spikes" unique_id=1511876905 instance=ExtResource("2_spike")]
 position = Vector2(-917, -392)
 rotation = -1.5707964
 
-[node name="Spike13" parent="Spikes" unique_id=328869012 instance=ExtResource("2_spike")]
+[node name="Spike13" parent="Spikes" unique_id=1821889779 instance=ExtResource("2_spike")]
 position = Vector2(-917, -376)
 rotation = -1.5707964
 
-[node name="Spike14" parent="Spikes" unique_id=1340886830 instance=ExtResource("2_spike")]
+[node name="Spike14" parent="Spikes" unique_id=432682549 instance=ExtResource("2_spike")]
 position = Vector2(-917, -360)
 rotation = -1.5707964
 
-[node name="Spike15" parent="Spikes" unique_id=1075778152 instance=ExtResource("2_spike")]
+[node name="Spike15" parent="Spikes" unique_id=381538367 instance=ExtResource("2_spike")]
 position = Vector2(-917, -344)
 rotation = -1.5707964
 
-[node name="Spike16" parent="Spikes" unique_id=849573732 instance=ExtResource("2_spike")]
+[node name="Spike16" parent="Spikes" unique_id=625464306 instance=ExtResource("2_spike")]
 position = Vector2(-1248, -455)
 rotation = -1.5707964
 
-[node name="Spike17" parent="Spikes" unique_id=1612424220 instance=ExtResource("2_spike")]
+[node name="Spike17" parent="Spikes" unique_id=501043204 instance=ExtResource("2_spike")]
 position = Vector2(-1248, -471)
 rotation = -1.5707964
