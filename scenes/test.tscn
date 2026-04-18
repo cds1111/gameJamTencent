@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://b2ntemt15uvu2"]
+[gd_scene format=4 uid="uid://otjn3ltcms1x"]
 
 [ext_resource type="PackedScene" uid="uid://52jpflyc03w8" path="res://scenes/levels/BaseLevel.tscn" id="1_errlg"]
 [ext_resource type="PackedScene" uid="uid://1qtoe4ly4i8t" path="res://scenes/entities/PatrolMonster.tscn" id="2_monster"]
@@ -7,7 +7,7 @@
 [node name="BaseLevel" unique_id=1411277766 instance=ExtResource("1_errlg")]
 
 [node name="Terrain" parent="Environment" parent_id_path=PackedInt32Array(1237470430) index="2" unique_id=1620254632]
-tile_map_data = PackedByteArray("AACw//H/AAAEAAEAAACv//H/AAAEAAEAAACu//H/AAAEAAEAAACt//H/AAAEAAEAAACs//H/AAAEAAEAAACr//H/AAAEAAEAAACq//H/AAAEAAEAAADH/+H/AAAEAAEAAADH/+L/AAAEAAEAAADH/+P/AAAEAAEAAADH/+T/AAAEAAEAAADH/+X/AAAEAAEAAADH/+b/AAAEAAEAAADI/+b/AAAHAAEAAADI/+f/AAAHAAEAAADI/+j/AAAHAAEAAADI/+n/AAAHAAEAAADI/+r/AAAHAAEAAADH/+f/AAAEAAEAAADH/+j/AAAEAAEAAADH/+n/AAAEAAEAAADH/+r/AAAEAAEAAADH/+v/AAAEAAEAAADH/+z/AAAEAAEAAADH/+3/AAAEAAEAAADH/+7/AAAEAAEAAADH/+//AAAEAAEAAADH//D/AAAEAAEAAADH//H/AAAEAAEAAACx//H/AAAEAAEAAACy//H/AAAEAAEAAACz//H/AAAEAAEAAAC0//H/AAAEAAEAAAC1//H/AAAEAAEAAAC2//H/AAAEAAEAAAC3//H/AAAEAAEAAAC9//H/AAAEAAEAAAC+//H/AAAEAAEAAAC///H/AAAEAAEAAADA//H/AAAEAAEAAADB//H/AAAEAAEAAADC//H/AAAEAAEAAADD//H/AAAEAAEAAADE//H/AAAEAAEAAADF//H/AAAEAAEAAADG//H/AAAEAAEAAADI//H/AAAHAAEAAADI/+T/AAAHAAEAAADI/+X/AAAHAAEAAADI/+v/AAAHAAEAAADI/+z/AAAHAAEAAADI/+3/AAAHAAEAAADI/+7/AAAHAAEAAADI/+//AAAHAAEAAADI//D/AAAHAAEAAAC4//H/AAAEAAEAAAC5//H/AAAEAAEAAAC6//H/AAAEAAEAAAC7//H/AAAEAAEAAAC8//H/AAAEAAEAAAC+/97/AAAIAAEAAAC+/9//AAAEAAEAAAC//97/AAAIAAEAAAC//9//AAAEAAEAAADA/97/AAAIAAEAAADA/9//AAAEAAEAAADB/97/AAAIAAEAAADB/9//AAAEAAEAAADC/9//AAAEAAEAAADD/9//AAAEAAEAAADE/97/AAAIAAEAAADE/9//AAAEAAEAAACn/+H/AAAEAAEAAACn/+L/AAAEAAEAAACn/+P/AAAEAAEAAACn/+T/AAAEAAEAAACn/+X/AAAEAAEAAACn/+b/AAAEAAEAAACn/+f/AAAEAAEAAACn/+j/AAAEAAEAAACn/+n/AAAEAAEAAACn/+r/AAAEAAEAAACn/+v/AAAEAAEAAACn/+z/AAAEAAEAAACn/+3/AAAEAAEAAACn/+7/AAAEAAEAAACn/+//AAAEAAEAAACn//D/AAAEAAEAAACn//H/AAAEAAEAAACo//H/AAAEAAEAAACp//H/AAAEAAEAAACn/9//AAAEAAEAAACo/9//AAAEAAEAAACp/9//AAAEAAEAAACq/9//AAAEAAEAAACr/9//AAAEAAEAAACs/9//AAAEAAEAAACt/9//AAAEAAEAAACu/9//AAAEAAEAAACv/9//AAAEAAEAAACw/9//AAAEAAEAAACx/9//AAAEAAEAAACy/9//AAAKAAMAAACz/9//AAAKAAMAAAC0/9//AAAEAAEAAAC1/9//AAAEAAEAAAC2/9//AAAKAAMAAAC3/9//AAAKAAMAAAC4/9//AAAEAAEAAAC5/9//AAAEAAEAAAC6/9//AAAKAAMAAAC7/9//AAAKAAMAAAC8/9//AAAEAAEAAAC9/9//AAAEAAEAAADF/9//AAAEAAEAAADG/9//AAAEAAEAAADH/9//AAAEAAEAAACn/+D/AAAEAAEAAADH/+D/AAAEAAEAAAC3/+//AAAEAAEAAAC4/+//AAAEAAEAAAC4/+7/AAAEAAEAAAC6/+3/AAAEAAEAAAC7/+3/AAAEAAEAAAC8/+3/AAAEAAEAAAC9/+3/AAAEAAEAAAC+/+3/AAAEAAEAAAC//+3/AAAEAAEAAADA/+3/AAAEAAEAAADB/+3/AAAEAAEAAADC/+3/AAAEAAEAAADD/+3/AAAEAAEAAADE/+3/AAAEAAEAAADF/+3/AAAEAAEAAADG/+3/AAAEAAEAAAC2//D/AAAEAAEAAAC3//D/AAAEAAEAAAC4//D/AAAEAAEAAAA=")
+tile_map_data = PackedByteArray("AADA/+3/AAAEAAEAAACw//H/AAAEAAEAAACv//H/AAAEAAEAAACu//H/AAAEAAEAAACt//H/AAAEAAEAAACs//H/AAAEAAEAAACr//H/AAAEAAEAAACq//H/AAAEAAEAAADH/+H/AAAEAAEAAADH/+L/AAAEAAEAAADH/+P/AAAEAAEAAADH/+T/AAAEAAEAAADH/+X/AAAEAAEAAADH/+b/AAAEAAEAAADI/+b/AAAHAAEAAADI/+f/AAAHAAEAAADI/+j/AAAHAAEAAADI/+n/AAAHAAEAAADI/+r/AAAHAAEAAADH/+f/AAAEAAEAAADH/+j/AAAEAAEAAADH/+n/AAAEAAEAAADH/+r/AAAEAAEAAADH/+v/AAAEAAEAAADH/+z/AAAEAAEAAADH/+3/AAAEAAEAAADH/+7/AAAEAAEAAADH/+//AAAEAAEAAADH//D/AAAEAAEAAADH//H/AAAEAAEAAACx//H/AAAEAAEAAACy//H/AAAEAAEAAACz//H/AAAEAAEAAAC0//H/AAAEAAEAAAC1//H/AAAEAAEAAAC2//H/AAAEAAEAAAC3//H/AAAEAAEAAAC9//H/AAAEAAEAAAC+//H/AAAEAAEAAAC///H/AAAEAAEAAADA//H/AAAEAAEAAADB//H/AAAEAAEAAADC//H/AAAEAAEAAADD//H/AAAEAAEAAADE//H/AAAEAAEAAADF//H/AAAEAAEAAADG//H/AAAEAAEAAADI//H/AAAHAAEAAADI/+T/AAAHAAEAAADI/+X/AAAHAAEAAADI/+v/AAAHAAEAAADI/+z/AAAHAAEAAADI/+3/AAAHAAEAAADI/+7/AAAHAAEAAADI/+//AAAHAAEAAADI//D/AAAHAAEAAAC4//H/AAAEAAEAAAC5//H/AAAEAAEAAAC6//H/AAAEAAEAAAC7//H/AAAEAAEAAAC8//H/AAAEAAEAAAC+/97/AAAIAAEAAAC+/9//AAAEAAEAAAC//97/AAAIAAEAAAC//9//AAAEAAEAAADA/97/AAAIAAEAAADA/9//AAAEAAEAAADB/97/AAAIAAEAAADB/9//AAAEAAEAAADC/9//AAAEAAEAAADD/9//AAAEAAEAAADE/97/AAAIAAEAAADE/9//AAAEAAEAAAC2//D/AAAEAAEAAAC3/+//AAAEAAEAAAC3//D/AAAEAAEAAAC4/+7/AAAEAAEAAAC4/+//AAAEAAEAAAC4//D/AAAEAAEAAAC6/+3/AAAEAAEAAACn/+H/AAAEAAEAAACn/+L/AAAEAAEAAACn/+P/AAAEAAEAAACn/+T/AAAEAAEAAACn/+X/AAAEAAEAAACn/+b/AAAEAAEAAACn/+f/AAAEAAEAAACn/+j/AAAEAAEAAACn/+n/AAAEAAEAAACn/+r/AAAEAAEAAACn/+v/AAAEAAEAAACn/+z/AAAEAAEAAACn/+3/AAAEAAEAAACn/+7/AAAEAAEAAACn/+//AAAEAAEAAACn//D/AAAEAAEAAACn//H/AAAEAAEAAACo//H/AAAEAAEAAACp//H/AAAEAAEAAACn/9//AAAEAAEAAACo/9//AAAEAAEAAACp/9//AAAEAAEAAACq/9//AAAEAAEAAACr/9//AAAEAAEAAACs/9//AAAEAAEAAACt/9//AAAEAAEAAACu/9//AAAEAAEAAACv/9//AAAEAAEAAACw/9//AAAEAAEAAACx/9//AAAEAAEAAACy/9//AAAKAAMAAACz/9//AAAKAAMAAAC0/9//AAAEAAEAAAC1/9//AAAEAAEAAAC2/9//AAAKAAMAAAC3/9//AAAKAAMAAAC4/9//AAAEAAEAAAC5/9//AAAEAAEAAAC6/9//AAAKAAMAAAC7/9//AAAKAAMAAAC8/9//AAAEAAEAAAC9/9//AAAEAAEAAADF/9//AAAEAAEAAADG/9//AAAEAAEAAADH/9//AAAEAAEAAACn/+D/AAAEAAEAAADH/+D/AAAEAAEAAADG/+3/AAAEAAEAAAC7/+3/AAAEAAEAAAC8/+3/AAAEAAEAAAC9/+3/AAAEAAEAAAC+/+3/AAAEAAEAAAC//+3/AAAEAAEAAADB/+3/AAAEAAEAAADC/+3/AAAEAAEAAADD/+3/AAAEAAEAAADE/+3/AAAEAAEAAADF/+3/AAAEAAEAAAA=")
 
 [node name="Danger" parent="Environment" parent_id_path=PackedInt32Array(1237470430) index="3" unique_id=2134643234]
 tile_map_data = PackedByteArray()
@@ -18,12 +18,39 @@ position = Vector2(-1383, -256)
 [node name="Monsters" parent="Entities" parent_id_path=PackedInt32Array(70306312) index="1" unique_id=436981488]
 position = Vector2(-1022, -329)
 
-[node name="PatrolMonster" parent="Entities/Monsters" index="0" unique_id=2077431884 instance=ExtResource("2_monster")]
-position = Vector2(-9, -3.8146973e-06)
-scale = Vector2(0.74999887, -0.67965746)
+[node name="PatrolMonster" parent="Entities/Monsters" index="0" unique_id=1925925044 instance=ExtResource("2_monster")]
+position = Vector2(-9, 14)
 
-[node name="Player" parent="Entities" parent_id_path=PackedInt32Array(70306312) index="3" unique_id=1129096103]
+[node name="Player" parent="Entities" parent_id_path=PackedInt32Array(70306312) index="5" unique_id=1129096103]
 position = Vector2(-1371, -245)
+
+[node name="TestScenePanel" type="CanvasLayer" parent="." index="5" unique_id=1008345319]
+script = ExtResource("3_testui")
+
+[node name="PanelContainer" type="PanelContainer" parent="TestScenePanel" index="0" unique_id=1269411598]
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 260.0
+offset_bottom = 116.0
+
+[node name="MarginContainer" type="MarginContainer" parent="TestScenePanel/PanelContainer" index="0" unique_id=1799964072]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TestScenePanel/PanelContainer/MarginContainer" index="0" unique_id=1932580667]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="TestScenePanel/PanelContainer/MarginContainer/VBoxContainer" index="0" unique_id=1801569877]
+layout_mode = 2
+text = "TEST SHIFT ABILITY"
+
+[node name="AbilityOption" type="OptionButton" parent="TestScenePanel/PanelContainer/MarginContainer/VBoxContainer" index="1" unique_id=1948904025]
+custom_minimum_size = Vector2(180, 36)
+layout_mode = 2
 
 [node name="Spike" parent="Spikes" parent_id_path=PackedInt32Array(638400332) index="0" unique_id=1959532438]
 position = Vector2(-1263, 48)
@@ -115,33 +142,5 @@ position = Vector2(-1548, -163)
 [node name="Spike17" parent="Spikes" parent_id_path=PackedInt32Array(638400332) index="29" unique_id=501043204]
 position = Vector2(-1548, -179)
 
-[node name="Spring" parent="." index="4" unique_id=182497584]
+[node name="Spring" parent="." index="8" unique_id=182497584]
 position = Vector2(-1439, -27)
-
-[node name="TestScenePanel" type="CanvasLayer" parent="." index="5" unique_id=1008345319]
-script = ExtResource("3_testui")
-
-[node name="PanelContainer" type="PanelContainer" parent="TestScenePanel" index="0" unique_id=1269411598]
-offset_left = 24.0
-offset_top = 24.0
-offset_right = 260.0
-offset_bottom = 116.0
-
-[node name="MarginContainer" type="MarginContainer" parent="TestScenePanel/PanelContainer" index="0" unique_id=1799964072]
-layout_mode = 2
-theme_override_constants/margin_left = 12
-theme_override_constants/margin_top = 12
-theme_override_constants/margin_right = 12
-theme_override_constants/margin_bottom = 12
-
-[node name="VBoxContainer" type="VBoxContainer" parent="TestScenePanel/PanelContainer/MarginContainer" index="0" unique_id=1932580667]
-layout_mode = 2
-theme_override_constants/separation = 8
-
-[node name="Label" type="Label" parent="TestScenePanel/PanelContainer/MarginContainer/VBoxContainer" index="0" unique_id=1801569877]
-layout_mode = 2
-text = "TEST SHIFT ABILITY"
-
-[node name="AbilityOption" type="OptionButton" parent="TestScenePanel/PanelContainer/MarginContainer/VBoxContainer" index="1" unique_id=1948904025]
-custom_minimum_size = Vector2(180, 36)
-layout_mode = 2

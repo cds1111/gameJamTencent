@@ -16,8 +16,22 @@ func execute(player: CharacterBody2D) -> void:
 		return
 
 	var player_pos := player.global_position
-	player.global_position = nearest.global_position
+	var target_pos := nearest.global_position
+	player.global_position = target_pos
 	nearest.global_position = player_pos
+
+	# 交换后立刻清理速度，避免把上一帧惯性带到新位置。
+	if player is CharacterBody2D:
+		(player as CharacterBody2D).velocity = Vector2.ZERO
+	if nearest is CharacterBody2D:
+		(nearest as CharacterBody2D).velocity = Vector2.ZERO
+
+	# 通知可交换对象做位置重定位后的内部状态刷新（如巡逻原点重置）。
+	if nearest.has_method("on_swapped"):
+		nearest.call("on_swapped")
+	if player.has_method("on_swapped"):
+		player.call("on_swapped")
+
 	if player.has_method("grant_damage_invulnerability"):
 		player.grant_damage_invulnerability()
 	emit_ability_used()

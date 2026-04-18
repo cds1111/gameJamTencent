@@ -1,26 +1,56 @@
 [gd_scene format=3 uid="uid://1qtoe4ly4i8t"]
 
 [ext_resource type="Script" uid="uid://cvojl263eqsea" path="res://scripts/entities/PatrolMonster.gd" id="1_4w4nq"]
+[ext_resource type="Texture2D" uid="uid://dc43umuq1yu7x" path="res://assets/pics/slime_frames_all.png" id="2_bp8j8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
-size = Vector2(20, 24)
+size = Vector2(16, 14)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x2yna"]
-size = Vector2(24, 24)
+size = Vector2(12, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5i5ay"]
+atlas = ExtResource("2_bp8j8")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pd7p3"]
+atlas = ExtResource("2_bp8j8")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_45h5c"]
+atlas = ExtResource("2_bp8j8")
+region = Rect2(64, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1xx7p"]
+atlas = ExtResource("2_bp8j8")
+region = Rect2(96, 96, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_um8u2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5i5ay")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pd7p3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_45h5c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1xx7p")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
 
 [node name="PatrolMonster" type="CharacterBody2D" unique_id=1925925044]
 collision_layer = 4
-collision_mask = 1
 script = ExtResource("1_4w4nq")
 
-[node name="Visual" type="ColorRect" parent="." unique_id=1461195450]
-offset_left = -12.0
-offset_top = -12.0
-offset_right = 12.0
-offset_bottom = 12.0
-color = Color(1, 0.35, 0.35, 1)
-
 [node name="BodyCollisionShape" type="CollisionShape2D" parent="." unique_id=278341901]
+position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_body")
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=1576780191]
@@ -28,4 +58,14 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1923823400]
+position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_x2yna")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1801348531]
+position = Vector2(0, 11)
+rotation = -3.1415927
+sprite_frames = SubResource("SpriteFrames_um8u2")
+autoplay = "default"
+frame_progress = 0.630341
+flip_h = true
+flip_v = true
