@@ -20,6 +20,7 @@ const ANIM_DIE := "die" # 死亡动画。
 @export var base_speed: float = MOVE_SPEED
 @export var jump_velocity: float = JUMP_VELOCITY
 @export var death_y_threshold: float = 3000.0
+@export var coyote_time: float = 0.15
 
 var _jump_multiplier: float = 1.0
 var _wind_force_x: float = 0.0
@@ -57,7 +58,7 @@ func _physics_process(delta: float) -> void:
 		return
 
 	if shift_handler != null:
-		shift_handler.process_input(self)
+		shift_handler.process_input(self )
 
 	var direction: float = Input.get_axis("move_left", "move_right")
 	if _is_sprinting:
@@ -80,14 +81,14 @@ func _physics_process(delta: float) -> void:
 func set_current_ability(ability: ShiftAbility) -> void:
 	if shift_handler == null:
 		return
-	shift_handler.set_current_ability(ability, self)
+	shift_handler.set_current_ability(ability, self )
 
 
 # 设置玩家当前的能力模式。
 func set_shift_mode(mode: PlayerShiftHandler.ShiftMode) -> void:
 	if shift_handler == null:
 		return
-	shift_handler.set_shift_mode(mode, self)
+	shift_handler.set_shift_mode(mode, self )
 
 
 # 设置跳跃倍率，供能力系统动态修改跳跃强度。
@@ -168,7 +169,7 @@ func die() -> void:
 	_is_jump_landing = false
 	velocity = Vector2.ZERO
 	if shift_handler != null:
-		shift_handler.cancel_active(self)
+		shift_handler.cancel_active(self )
 	movement_sfx.stop_movement_loops()
 	_play_animation(ANIM_DIE)
 
@@ -209,11 +210,12 @@ func _handle_sprint_motion(delta: float) -> void:
 func _handle_jump() -> void:
 	if not Input.is_action_just_pressed("jump"):
 		return
-	if not is_on_floor():
+	if _coyote_timer <= 0.0:
 		return
 
 	var jump_sign: float = 1.0 if _gravity_flipped else -1.0
 	velocity.y = absf(jump_velocity) * jump_sign * _jump_multiplier
+	_coyote_timer = 0.0
 	_is_jump_landing = false
 	movement_sfx.stop_movement_loops()
 	movement_sfx.play_jump()
