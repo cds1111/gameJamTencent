@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/levels/BaseLevel.tscn" id="1_skt2b"]
+[ext_resource type="Script" path="res://scripts/abilities/Ability_Swap.gd" id="2_h2x3r"]
+[ext_resource type="PackedScene" path="res://scenes/entities/PatrolMonster.tscn" id="3_c1adw"]
+
+[node name="Level_05_Swap" instance=ExtResource("1_skt2b")]
+
+[node name="LevelController" parent="." index="2"]
+starting_ability = ExtResource("2_h2x3r")
+next_level_id = 6
+
+[node name="DebugSpike" parent="Environment/Danger" index="0"]
+groups = ["hazard"]
+monitoring = true
+monitorable = true
+
+[node name="PatrolMonster" parent="Entities/Monsters" index="0" instance=ExtResource("3_c1adw")]
+position = Vector2(120, -48)

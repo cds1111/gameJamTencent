@@ -1,0 +1,23 @@
+extends Resource
+class_name ShiftAbility
+
+@export var ability_name: String = "ShiftAbility"
+@export var hold_to_maintain: bool = true
+
+
+func execute(player: CharacterBody2D) -> void:
+	push_warning("%s.execute() should be overridden." % ability_name)
+
+
+func cancel(player: CharacterBody2D) -> void:
+	push_warning("%s.cancel() should be overridden." % ability_name)
+
+
+func emit_ability_used() -> void:
+	var tree := Engine.get_main_loop() as SceneTree
+	if tree == null:
+		return
+	if not tree.root.has_node("SignalManager"):
+		return
+	var signal_manager := tree.root.get_node("SignalManager")
+	signal_manager.shift_ability_used.emit(ability_name)
