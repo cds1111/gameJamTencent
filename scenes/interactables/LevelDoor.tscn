@@ -1,23 +1,24 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://lllxwwsa5aee"]
 
-[ext_resource type="Script" path="res://scripts/interactables/LevelDoor.gd" id="1_door_script"]
-[ext_resource type="Texture2D" path="res://assets/pics/Keyboard Letters and Symbols.png" id="2_door_tex"]
+[ext_resource type="Script" uid="uid://ddpb5lplex4br" path="res://scripts/interactables/LevelDoor.gd" id="1_door_script"]
+[ext_resource type="Texture2D" uid="uid://jcmup4nr8a7c" path="res://assets/pics/factory_.png" id="2_1veby"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_door"]
-atlas = ExtResource("2_door_tex")
-region = Rect2(0, 0, 16, 16)
+atlas = ExtResource("2_1veby")
+region = Rect2(111.5876, 95.92095, 48.681763, 10.191994)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_door"]
-size = Vector2(16, 32)
+size = Vector2(7, 35)
 
-[node name="LevelDoor" type="StaticBody2D"]
+[node name="LevelDoor" type="StaticBody2D" unique_id=996422551]
 script = ExtResource("1_door_script")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=907684442]
 position = Vector2(0, -16)
+rotation = 1.5707964
+scale = Vector2(0.7198858, 0.7198858)
 texture = SubResource("AtlasTexture_door")
-scale = Vector2(2, 2)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -16)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2117069672]
+position = Vector2(0.5, -15.5)
 shape = SubResource("RectangleShape2D_door")

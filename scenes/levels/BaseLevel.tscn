@@ -8,8 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://1to885y3a845" path="res://scenes/entities/Player.tscn" id="3_player"]
 [ext_resource type="Texture2D" uid="uid://bwa0maaqfvthm" path="res://assets/pics/start_and_end.png" id="4_q5481"]
 [ext_resource type="PackedScene" uid="uid://drxrh2s0j4ivj" path="res://scenes/interactables/KeyPickup.tscn" id="5_keypickup"]
-[ext_resource type="PackedScene" path="res://scenes/interactables/LevelDoor.tscn" id="6_leveldoor"]
-[ext_resource type="Script" path="res://scripts/level/KeyDoorManager.gd" id="7_keydoor_manager"]
+[ext_resource type="PackedScene" uid="uid://lllxwwsa5aee" path="res://scenes/interactables/LevelDoor.tscn" id="6_leveldoor"]
+[ext_resource type="Script" uid="uid://ublh2it4dnpo" path="res://scripts/level/KeyDoorManager.gd" id="7_keydoor_manager"]
 [ext_resource type="PackedScene" uid="uid://clw3gnlwq36ki" path="res://scenes/interactables/Spring.tscn" id="8_kkhbh"]
 [ext_resource type="Texture2D" uid="uid://ubumhhcalcsd" path="res://assets/pics/Sprite sheet for Basic Pack.png" id="8_q5481"]
 [ext_resource type="FontFile" uid="uid://ccuuk5ni65qag" path="res://assets/fonts/fusion_pixel_font/fusion-pixel-12px-proportional-zh_hant.otf" id="9_xrhif"]
@@ -809,7 +809,7 @@ position = Vector2(-1174, -320)
 [node name="Doors" type="Node2D" parent="Entities" unique_id=931579127]
 
 [node name="LevelDoor" parent="Entities/Doors" unique_id=1984459010 instance=ExtResource("6_leveldoor")]
-position = Vector2(-944, -288)
+position = Vector2(-949, -288)
 
 [node name="Goal" type="Area2D" parent="Entities" unique_id=460067954]
 position = Vector2(-919, -297)
