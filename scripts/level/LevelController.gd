@@ -18,6 +18,9 @@ var _is_restarting: bool = false
 func _ready() -> void:
 	_apply_level_title()
 	_spawn_player()
+	var audio_manager: Node = get_node_or_null("/root/AudioManager")
+	if audio_manager != null:
+		audio_manager.play_game_music()
 	if is_instance_valid(_goal):
 		_goal.body_entered.connect(_on_goal_body_entered)
 	var signal_manager := get_node_or_null("/root/SignalManager")

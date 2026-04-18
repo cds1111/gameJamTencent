@@ -68,13 +68,13 @@ func _physics_process(delta: float) -> void:
 		_handle_jump()
 		_apply_gravity(delta)
 
+	_pre_move_velocity_y = velocity.y
+	move_and_slide()
+
 	if is_on_floor():
 		_coyote_timer = coyote_time
 	else:
 		_coyote_timer = maxf(_coyote_timer - delta, 0.0)
-
-	_pre_move_velocity_y = velocity.y
-	move_and_slide()
 
 	_check_hazard_collisions()
 	_check_death_fall()
