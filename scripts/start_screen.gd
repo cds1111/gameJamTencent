@@ -204,20 +204,17 @@ func _wire_menu_button(button: Button, pressed_method: String) -> void:
 
 
 func _setup_audio() -> void:
-	menu_music_player.stream = MENU_MUSIC
-	menu_music_player.bus = &"Master"
-	menu_music_player.stream_paused = false
-	menu_music_player.finished.connect(func() -> void:
-		menu_music_player.play()
-	)
-	if not menu_music_player.playing:
-		menu_music_player.play()
+	menu_music_player.stop()
 
 	hover_sfx_player.stream = HOVER_SOUND
 	hover_sfx_player.bus = &"Master"
 
 	click_sfx_player.stream = CLICK_SOUND
 	click_sfx_player.bus = &"Master"
+
+	var audio_manager: Node = _get_audio_manager()
+	if audio_manager != null:
+		audio_manager.play_menu_music()
 
 
 func _setup_settings_ui() -> void:
@@ -238,8 +235,15 @@ func _setup_settings_ui() -> void:
 	transition_mode_option.add_item("DEFAULT", 0)
 	transition_mode_option.add_item("FAST", 1)
 
-	music_slider.value = menu_music_player.volume_db
-	sfx_slider.value = (hover_sfx_player.volume_db + click_sfx_player.volume_db) * 0.5
+	var audio_manager: Node = _get_audio_manager()
+	if audio_manager != null:
+		music_slider.value = audio_manager.get_music_volume_db()
+		sfx_slider.value = audio_manager.get_sfx_volume_db()
+	else:
+		music_slider.value = menu_music_player.volume_db
+		sfx_slider.value = (hover_sfx_player.volume_db + click_sfx_player.volume_db) * 0.5
+
+	_apply_sfx_volume(sfx_slider.value)
 
 	var mode = DisplayServer.window_get_mode()
 	if mode == DisplayServer.WINDOW_MODE_FULLSCREEN or mode == DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN:
@@ -348,14 +352,18 @@ func _show_settings() -> void:
 
 
 func _on_music_volume_changed(value: float) -> void:
-	menu_music_player.volume_db = value
+	var audio_manager: Node = _get_audio_manager()
+	if audio_manager != null:
+		audio_manager.set_music_volume_db(value)
 	if not is_initializing_settings:
 		_play_hover_sfx()
 
 
 func _on_sfx_volume_changed(value: float) -> void:
-	hover_sfx_player.volume_db = value - 1.0
-	click_sfx_player.volume_db = value + 1.0
+	_apply_sfx_volume(value)
+	var audio_manager: Node = _get_audio_manager()
+	if audio_manager != null:
+		audio_manager.set_sfx_volume_db(value)
 	if not is_initializing_settings:
 		_play_hover_sfx()
 
@@ -417,3 +425,12 @@ func _on_quit_pressed() -> void:
 
 func _get_transition_manager() -> Node:
 	return get_node_or_null("/root/SceneTransitionManager")
+
+
+func _get_audio_manager() -> Node:
+	return get_node_or_null("/root/AudioManager")
+
+
+func _apply_sfx_volume(value: float) -> void:
+	hover_sfx_player.volume_db = value - 1.0
+	click_sfx_player.volume_db = value + 1.0

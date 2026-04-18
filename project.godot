@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 SignalManager="*res://scripts/autoload/SignalManager.gd"
 SceneTransitionManager="*res://scripts/autoload/SceneTransitionManager.gd"
+AudioManager="*res://scripts/autoload/AudioManager.gd"
 
 [dotnet]
 
