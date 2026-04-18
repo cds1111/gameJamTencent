@@ -19,12 +19,12 @@ const ANIM_DIE := "die" # 死亡动画。
 @export var jump_velocity: float = JUMP_VELOCITY
 @export var death_y_threshold: float = 3000.0
 
-var _speed_multiplier := 1.0
 var _jump_multiplier := 1.0
 var _wind_force_x := 0.0
 var _gravity_flipped := false
 var _is_dead := false
 var _death_finalized := false
+var _air_sprint_used := false
 var _was_on_floor := false
 var _is_jump_landing := false
 var _pre_move_velocity_y := 0.0
@@ -79,11 +79,6 @@ func set_shift_mode(mode: PlayerShiftHandler.ShiftMode) -> void:
 	shift_handler.set_shift_mode(mode, self)
 
 
-# 设置速度倍率，供能力系统动态修改移速。
-func set_speed_multiplier(value: float) -> void:
-	_speed_multiplier = maxf(value, 0.1)
-
-
 # 设置跳跃倍率，供能力系统动态修改跳跃强度。
 func set_jump_multiplier(value: float) -> void:
 	_jump_multiplier = maxf(value, 0.1)
@@ -92,6 +87,26 @@ func set_jump_multiplier(value: float) -> void:
 # 设置额外水平风力。
 func set_wind_force(value: float) -> void:
 	_wind_force_x = value
+
+
+# 在空中触发一次水平冲刺，落地前不能重复使用。
+func try_air_sprint(distance: float) -> bool:
+	if is_on_floor() or _air_sprint_used:
+		return false
+
+	var dash_direction := Input.get_axis("move_left", "move_right")
+	if absf(dash_direction) <= 0.01:
+		dash_direction = -1.0 if animated_sprite.flip_h else 1.0
+	else:
+		animated_sprite.flip_h = dash_direction < 0.0
+
+	var allowed_motion := _get_allowed_air_sprint_motion(signf(dash_direction) * distance)
+	if is_zero_approx(allowed_motion):
+		return false
+
+	global_position.x += allowed_motion
+	_air_sprint_used = true
+	return true
 
 
 # 切换重力方向。
@@ -126,7 +141,7 @@ func die() -> void:
 
 # 根据输入和环境力更新水平速度。
 func _handle_horizontal_movement(direction: float) -> void:
-	var target_speed := direction * base_speed * _speed_multiplier + _wind_force_x
+	var target_speed := direction * base_speed + _wind_force_x
 	if absf(direction) > 0.01 or absf(_wind_force_x) > 0.01:
 		velocity.x = target_speed
 	else:
@@ -192,6 +207,8 @@ func _update_animation_state(direction: float) -> void:
 		_start_jump_end_if_needed()
 
 	if _is_jump_landing:
+		if is_on_floor():
+			_air_sprint_used = false
 		_was_on_floor = is_on_floor()
 		return
 
@@ -202,12 +219,15 @@ func _update_animation_state(direction: float) -> void:
 		else:
 			_play_animation(ANIM_JUMP_DOWN)
 	elif absf(velocity.x) > base_speed * 1.2:
+		_air_sprint_used = false
 		movement_sfx.play_run_loop()
 		_play_animation(ANIM_RUN)
 	elif absf(direction) > 0.01:
+		_air_sprint_used = false
 		movement_sfx.play_walk_loop()
 		_play_animation(ANIM_WALK)
 	else:
+		_air_sprint_used = false
 		movement_sfx.stop_movement_loops()
 		_play_animation(ANIM_DEFAULT)
 
@@ -257,6 +277,22 @@ func _has_animation(name: String) -> bool:
 func _play_animation(name: String) -> void:
 	if _has_animation(name) and animated_sprite.animation != name:
 		animated_sprite.play(name)
+
+
+# 逐像素测试冲刺位移，避免直接穿进墙体。
+func _get_allowed_air_sprint_motion(target_distance: float) -> float:
+	var test_transform := global_transform
+	var step := 1.0 if target_distance > 0.0 else -1.0
+	var allowed_distance := 0.0
+
+	for _i in range(int(absf(target_distance))):
+		var motion := Vector2(step, 0.0)
+		if test_move(test_transform, motion):
+			break
+		test_transform.origin += motion
+		allowed_distance += step
+
+	return allowed_distance
 
 
 # 确保项目运行时具备玩家核心输入映射。

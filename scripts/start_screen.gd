@@ -9,15 +9,15 @@ const CLICK_SOUND: AudioStream = preload("res://assets/music/kenney_interface-so
 const BACKGROUND_SCROLL_SPEED := 18.0
 const BASE_LEVEL_SCENE := "res://scenes/levels/BaseLevel.tscn"
 
-var default_panel_style := StyleBoxFlat.new()
-var default_button_style := StyleBoxFlat.new()
-var hover_button_style := StyleBoxFlat.new()
-var pressed_button_style := StyleBoxFlat.new()
+var default_panel_style: StyleBoxFlat = StyleBoxFlat.new()
+var default_button_style: StyleBoxFlat = StyleBoxFlat.new()
+var hover_button_style: StyleBoxFlat = StyleBoxFlat.new()
+var pressed_button_style: StyleBoxFlat = StyleBoxFlat.new()
 var background_width := 0.0
-var option_button_style := StyleBoxFlat.new()
-var option_button_popup_style := StyleBoxFlat.new()
-var is_initializing_settings := false
-var _is_entering_level := false
+var option_button_style: StyleBoxFlat = StyleBoxFlat.new()
+var option_button_popup_style: StyleBoxFlat = StyleBoxFlat.new()
+var is_initializing_settings: bool = false
+var _is_entering_level: bool = false
 
 @onready var background_a: TextureRect = $BackgroundA
 @onready var background_b: TextureRect = $BackgroundB
@@ -33,12 +33,14 @@ var _is_entering_level := false
 @onready var music_slider: HSlider = $SettingsPanel/SettingsMargin/SettingsVBox/MusicRow/MusicSlider
 @onready var sfx_slider: HSlider = $SettingsPanel/SettingsMargin/SettingsVBox/SfxRow/SfxSlider
 @onready var window_mode_option: OptionButton = $SettingsPanel/SettingsMargin/SettingsVBox/WindowRow/WindowModeOption
+@onready var transition_mode_option: OptionButton = $SettingsPanel/SettingsMargin/SettingsVBox/TransitionRow/TransitionModeOption
 @onready var back_button: Button = $SettingsPanel/SettingsMargin/SettingsVBox/BackButton
 @onready var settings_title: Label = $SettingsPanel/SettingsMargin/SettingsVBox/SettingsTitle
 @onready var settings_hint: Label = $SettingsPanel/SettingsMargin/SettingsVBox/SettingsHint
 @onready var music_label: Label = $SettingsPanel/SettingsMargin/SettingsVBox/MusicRow/MusicLabel
 @onready var sfx_label: Label = $SettingsPanel/SettingsMargin/SettingsVBox/SfxRow/SfxLabel
 @onready var window_label: Label = $SettingsPanel/SettingsMargin/SettingsVBox/WindowRow/WindowLabel
+@onready var transition_label: Label = $SettingsPanel/SettingsMargin/SettingsVBox/TransitionRow/TransitionLabel
 @onready var menu_music_player: AudioStreamPlayer = $MenuMusicPlayer
 @onready var hover_sfx_player: AudioStreamPlayer = $HoverSfxPlayer
 @onready var click_sfx_player: AudioStreamPlayer = $ClickSfxPlayer
@@ -77,7 +79,7 @@ func _draw() -> void:
 
 
 func _apply_pixel_font() -> void:
-	for control in [title, subtitle, prompt, hint, start_button, option_button, quit_button, settings_title, settings_hint, music_label, sfx_label, window_label, back_button]:
+	for control in [title, subtitle, prompt, hint, start_button, option_button, quit_button, settings_title, settings_hint, music_label, sfx_label, window_label, transition_label, back_button]:
 		_apply_font_by_text(control, control.text)
 
 	title.add_theme_font_size_override("font_size", 30)
@@ -89,6 +91,7 @@ func _apply_pixel_font() -> void:
 	music_label.add_theme_font_size_override("font_size", 10)
 	sfx_label.add_theme_font_size_override("font_size", 10)
 	window_label.add_theme_font_size_override("font_size", 10)
+	transition_label.add_theme_font_size_override("font_size", 10)
 
 
 func _configure_styles() -> void:
@@ -169,24 +172,25 @@ func _configure_styles() -> void:
 	option_button_popup_style.corner_radius_bottom_right = 2
 	option_button_popup_style.corner_radius_bottom_left = 2
 
-	window_mode_option.add_theme_stylebox_override("normal", option_button_style)
-	window_mode_option.add_theme_stylebox_override("hover", hover_button_style)
-	window_mode_option.add_theme_stylebox_override("pressed", pressed_button_style)
-	window_mode_option.add_theme_stylebox_override("focus", hover_button_style)
-	window_mode_option.add_theme_color_override("font_color", Color(0.2, 0.1, 0.04, 1.0))
-	window_mode_option.add_theme_color_override("font_hover_color", Color(0.2, 0.1, 0.04, 1.0))
-	window_mode_option.add_theme_color_override("font_pressed_color", Color(0.16, 0.08, 0.03, 1.0))
-	window_mode_option.add_theme_color_override("font_outline_color", Color(1, 0.95, 0.8, 0.35))
-	window_mode_option.add_theme_constant_override("outline_size", 1)
-	window_mode_option.add_theme_font_override("font", ENGLISH_PIXEL_FONT)
-	window_mode_option.add_theme_font_size_override("font_size", 10)
+	for option in [window_mode_option, transition_mode_option]:
+		option.add_theme_stylebox_override("normal", option_button_style)
+		option.add_theme_stylebox_override("hover", hover_button_style)
+		option.add_theme_stylebox_override("pressed", pressed_button_style)
+		option.add_theme_stylebox_override("focus", hover_button_style)
+		option.add_theme_color_override("font_color", Color(0.2, 0.1, 0.04, 1.0))
+		option.add_theme_color_override("font_hover_color", Color(0.2, 0.1, 0.04, 1.0))
+		option.add_theme_color_override("font_pressed_color", Color(0.16, 0.08, 0.03, 1.0))
+		option.add_theme_color_override("font_outline_color", Color(1, 0.95, 0.8, 0.35))
+		option.add_theme_constant_override("outline_size", 1)
+		option.add_theme_font_override("font", ENGLISH_PIXEL_FONT)
+		option.add_theme_font_size_override("font_size", 10)
 
-	var popup := window_mode_option.get_popup()
-	popup.add_theme_stylebox_override("panel", option_button_popup_style)
-	popup.add_theme_color_override("font_color", Color(0.2, 0.1, 0.04, 1.0))
-	popup.add_theme_color_override("font_hover_color", Color(0.2, 0.1, 0.04, 1.0))
-	popup.add_theme_font_override("font", ENGLISH_PIXEL_FONT)
-	popup.add_theme_font_size_override("font_size", 10)
+		var popup: PopupMenu = option.get_popup()
+		popup.add_theme_stylebox_override("panel", option_button_popup_style)
+		popup.add_theme_color_override("font_color", Color(0.2, 0.1, 0.04, 1.0))
+		popup.add_theme_color_override("font_hover_color", Color(0.2, 0.1, 0.04, 1.0))
+		popup.add_theme_font_override("font", ENGLISH_PIXEL_FONT)
+		popup.add_theme_font_size_override("font_size", 10)
 
 
 func _wire_menu_button(button: Button, pressed_method: String) -> void:
@@ -221,22 +225,33 @@ func _setup_settings_ui() -> void:
 	music_slider.value_changed.connect(_on_music_volume_changed)
 	sfx_slider.value_changed.connect(_on_sfx_volume_changed)
 	window_mode_option.item_selected.connect(_on_window_mode_selected)
+	transition_mode_option.item_selected.connect(_on_transition_mode_selected)
 	_wire_slider_control(music_slider)
 	_wire_slider_control(sfx_slider)
 	_wire_option_control(window_mode_option)
+	_wire_option_control(transition_mode_option)
 
 	window_mode_option.clear()
 	window_mode_option.add_item("WINDOWED", 0)
 	window_mode_option.add_item("FULLSCREEN", 1)
+	transition_mode_option.clear()
+	transition_mode_option.add_item("DEFAULT", 0)
+	transition_mode_option.add_item("FAST", 1)
 
 	music_slider.value = menu_music_player.volume_db
 	sfx_slider.value = (hover_sfx_player.volume_db + click_sfx_player.volume_db) * 0.5
 
-	var mode := DisplayServer.window_get_mode()
+	var mode = DisplayServer.window_get_mode()
 	if mode == DisplayServer.WINDOW_MODE_FULLSCREEN or mode == DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN:
 		window_mode_option.select(1)
 	else:
 		window_mode_option.select(0)
+
+	var transition_manager = _get_transition_manager()
+	if transition_manager != null and transition_manager.get_transition_style() == "fast":
+		transition_mode_option.select(1)
+	else:
+		transition_mode_option.select(0)
 	is_initializing_settings = false
 
 
@@ -354,6 +369,18 @@ func _on_window_mode_selected(index: int) -> void:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 
 
+func _on_transition_mode_selected(index: int) -> void:
+	if not is_initializing_settings:
+		_play_click_sfx()
+	var transition_manager = _get_transition_manager()
+	if transition_manager == null:
+		return
+	if index == 1:
+		transition_manager.set_transition_style("fast")
+	else:
+		transition_manager.set_transition_style("default")
+
+
 func _on_start_pressed() -> void:
 	_play_click_sfx()
 	_enter_base_level()
@@ -365,7 +392,11 @@ func _enter_base_level() -> void:
 	_is_entering_level = true
 	_set_hint_text("Signal locked. Entering base level...")
 	await get_tree().create_timer(0.12).timeout
-	get_tree().change_scene_to_file(BASE_LEVEL_SCENE)
+	var transition_manager = _get_transition_manager()
+	if transition_manager != null:
+		transition_manager.change_scene_to_file(BASE_LEVEL_SCENE)
+	else:
+		get_tree().change_scene_to_file(BASE_LEVEL_SCENE)
 
 
 func _on_option_pressed() -> void:
@@ -382,3 +413,7 @@ func _on_quit_pressed() -> void:
 	_play_click_sfx()
 	await get_tree().create_timer(0.12).timeout
 	get_tree().quit()
+
+
+func _get_transition_manager() -> Node:
+	return get_node_or_null("/root/SceneTransitionManager")

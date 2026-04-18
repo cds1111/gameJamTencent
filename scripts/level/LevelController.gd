@@ -77,7 +77,11 @@ func _restart_level() -> void:
 		return
 	_is_restarting = true
 	print("[LevelController] reload_current_scene")
-	get_tree().call_deferred("reload_current_scene")
+	var transition_manager: Node = get_node_or_null("/root/SceneTransitionManager")
+	if transition_manager != null:
+		transition_manager.reload_current_scene()
+	else:
+		get_tree().call_deferred("reload_current_scene")
 
 
 func _restart_level_with_delay() -> void:

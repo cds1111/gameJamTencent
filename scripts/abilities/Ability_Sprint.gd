@@ -1,7 +1,7 @@
 extends "res://scripts/abilities/ShiftAbility.gd"
 class_name AbilitySprint
 
-@export var speed_multiplier: float = 2.0
+@export var dash_distance: float = 64.0
 
 
 func _init() -> void:
@@ -11,13 +11,9 @@ func _init() -> void:
 func execute(player: CharacterBody2D) -> void:
 	if player == null:
 		return
-	if player.has_method("set_speed_multiplier"):
-		player.set_speed_multiplier(speed_multiplier)
-	emit_ability_used()
+	if player.has_method("try_air_sprint") and player.try_air_sprint(dash_distance):
+		emit_ability_used()
 
 
 func cancel(player: CharacterBody2D) -> void:
-	if player == null:
-		return
-	if player.has_method("set_speed_multiplier"):
-		player.set_speed_multiplier(1.0)
+	pass

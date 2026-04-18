@@ -131,7 +131,7 @@ layout_mode = 0
 offset_left = 332.0
 offset_top = 284.0
 offset_right = 810.0
-offset_bottom = 592.0
+offset_bottom = 654.0
 
 [node name="SettingsMargin" type="MarginContainer" parent="SettingsPanel" unique_id=167732910]
 layout_mode = 2
@@ -210,11 +210,28 @@ custom_minimum_size = Vector2(220, 44)
 layout_mode = 2
 size_flags_horizontal = 3
 
+[node name="TransitionRow" type="HBoxContainer" parent="SettingsPanel/SettingsMargin/SettingsVBox" unique_id=1735122400]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="TransitionLabel" type="Label" parent="SettingsPanel/SettingsMargin/SettingsVBox/TransitionRow" unique_id=1335941094]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.28, 0.16, 0.08, 1)
+theme_override_font_sizes/font_size = 12
+text = "TRANSITION"
+vertical_alignment = 1
+
+[node name="TransitionModeOption" type="OptionButton" parent="SettingsPanel/SettingsMargin/SettingsVBox/TransitionRow" unique_id=1497840541]
+custom_minimum_size = Vector2(220, 44)
+layout_mode = 2
+size_flags_horizontal = 3
+
 [node name="SettingsHint" type="Label" parent="SettingsPanel/SettingsMargin/SettingsVBox" unique_id=838228497]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.41, 0.23, 0.11, 0.82)
 theme_override_font_sizes/font_size = 10
-text = "Use settings to tune the start menu feel."
+text = "Pick your scene transition style here."
 horizontal_alignment = 1
 
 [node name="BackButton" type="Button" parent="SettingsPanel/SettingsMargin/SettingsVBox" unique_id=1614760038]
