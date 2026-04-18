@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://52jpflyc03w8" path="res://scenes/levels/BaseLevel.tscn" id="1_skt2b"]
 [ext_resource type="Script" uid="uid://b7xhg740wymlw" path="res://scripts/abilities/Ability_Swap.gd" id="2_h2x3r"]
 [ext_resource type="PackedScene" uid="uid://1qtoe4ly4i8t" path="res://scenes/entities/PatrolMonster.tscn" id="3_c1adw"]
-[ext_resource type="PackedScene" uid="uid://djqby70rv2p8k" path="res://scenes/hazards/Spike.tscn" id="4_aii7n"]
 
 [node name="Level_05_Swap" unique_id=1687462549 instance=ExtResource("1_skt2b")]
 
@@ -16,6 +15,3 @@ position = Vector2(-1347, -462)
 [node name="LevelController" parent="." index="2" unique_id=893548158]
 starting_ability = ExtResource("2_h2x3r")
 next_level_id = 6
-
-[node name="Spike43" parent="Spikes" parent_id_path=PackedInt32Array(638400332) index="10" unique_id=2005590442 instance=ExtResource("4_aii7n")]
-position = Vector2(-983, -384)
