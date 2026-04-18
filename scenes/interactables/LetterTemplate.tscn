@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://c8y14gchc7n8x"]
+
+[ext_resource type="Script" path="res://scripts/interactables/LetterTemplate.gd" id="1_script"]
+[ext_resource type="FontFile" path="res://assets/fonts/press_start_2p/PressStart2P-Regular.ttf" id="2_font"]
+
+[sub_resource type="RectangleShape2D" id="1_shape"]
+size = Vector2(32, 32)
+
+[node name="LetterTemplate" type="StaticBody2D"]
+script = ExtResource("1_script")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("1_shape")
+
+[node name="GlyphSprite" type="Sprite2D" parent="."]
+centered = true
+
+[node name="GlyphLabel" type="Label" parent="."]
+offset_left = -32.0
+offset_top = -16.0
+offset_right = 32.0
+offset_bottom = 16.0
+text = "A"
+horizontal_alignment = 1
+vertical_alignment = 1
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 16
+mouse_filter = 2

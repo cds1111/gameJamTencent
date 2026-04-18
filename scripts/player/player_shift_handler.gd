@@ -9,6 +9,7 @@ enum ShiftMode {
 	WIND,
 	GIANT,
 	CUSTOM,
+	CASE_TOGGLE,
 }
 
 enum ShiftInputMode {
@@ -22,6 +23,7 @@ const ABILITY_GRAVITY_FLIP := preload("res://scripts/abilities/Ability_GravityFl
 const ABILITY_SWAP := preload("res://scripts/abilities/Ability_Swap.gd")
 const ABILITY_WIND := preload("res://scripts/abilities/Ability_Wind.gd")
 const ABILITY_GIANT := preload("res://scripts/abilities/Ability_Giant.gd")
+const ABILITY_CASE_TOGGLE := preload("res://scripts/abilities/Ability_CaseToggle.gd")
 
 @export var shift_mode: ShiftMode = ShiftMode.DISABLED
 @export var input_mode: ShiftInputMode = ShiftInputMode.AUTO
@@ -108,6 +110,8 @@ func _build_ability_for_mode() -> ShiftAbility:
 			return ABILITY_GIANT.new()
 		ShiftMode.CUSTOM:
 			return _clone_custom_ability()
+		ShiftMode.CASE_TOGGLE:
+			return ABILITY_CASE_TOGGLE.new()
 		_:
 			return null
 
