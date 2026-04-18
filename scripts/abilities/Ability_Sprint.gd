@@ -11,7 +11,7 @@ func _init() -> void:
 func execute(player: CharacterBody2D) -> void:
 	if player == null:
 		return
-	if player.has_method("try_air_sprint") and player.try_air_sprint(dash_distance):
+	if player.has_method("try_sprint") and player.try_sprint(dash_distance):
 		emit_ability_used()
 
 
