@@ -21,8 +21,7 @@ func _ready() -> void:
 	var audio_manager: Node = get_node_or_null("/root/AudioManager")
 	if audio_manager != null:
 		audio_manager.play_game_music()
-	if is_instance_valid(_goal):
-		_goal.body_entered.connect(_on_goal_body_entered)
+	_configure_goal_detection()
 	var signal_manager := get_node_or_null("/root/SignalManager")
 	if signal_manager != null and not signal_manager.player_died.is_connected(_on_player_died):
 		signal_manager.player_died.connect(_on_player_died)
@@ -68,11 +67,28 @@ func _build_ability_instance(source: Resource) -> Resource:
 	return source.duplicate(true)
 
 
+func _configure_goal_detection() -> void:
+	if not is_instance_valid(_goal):
+		return
+
+	_goal.monitoring = true
+	_goal.monitorable = true
+
+	if is_instance_valid(_player):
+		_goal.collision_mask |= _player.collision_layer
+
+	if not _goal.body_entered.is_connected(_on_goal_body_entered):
+		_goal.body_entered.connect(_on_goal_body_entered)
+
+
 func _on_goal_body_entered(body: Node) -> void:
+	if body != null:
+		print("[LevelController] Goal body_entered: ", body.name)
 	if body != _player:
 		return
 	var signal_manager := get_node_or_null("/root/SignalManager")
 	if signal_manager != null:
+		print("[LevelController] emit level_completed -> ", next_level_id)
 		signal_manager.level_completed.emit(next_level_id)
 
 
