@@ -7,7 +7,7 @@ const MENU_MUSIC: AudioStream = preload("res://assets/music/menu.mp3")
 const HOVER_SOUND: AudioStream = preload("res://assets/music/kenney_interface-sounds/Audio/select_006.ogg")
 const CLICK_SOUND: AudioStream = preload("res://assets/music/kenney_interface-sounds/Audio/confirmation_002.ogg")
 const BACKGROUND_SCROLL_SPEED := 18.0
-const BASE_LEVEL_SCENE := "res://scenes/levels/BaseLevel.tscn"
+const FIRST_LEVEL_SCENE := "res://scenes/levels/Level_01_Swap.tscn"
 
 var default_panel_style: StyleBoxFlat = StyleBoxFlat.new()
 var default_button_style: StyleBoxFlat = StyleBoxFlat.new()
@@ -200,7 +200,7 @@ func _wire_menu_button(button: Button, pressed_method: String) -> void:
 	button.focus_entered.connect(func() -> void:
 		_play_hover_sfx()
 	)
-	button.pressed.connect(Callable(self, pressed_method))
+	button.pressed.connect(Callable(self , pressed_method))
 
 
 func _setup_audio() -> void:
@@ -292,8 +292,9 @@ func _layout_scrolling_backgrounds() -> void:
 	background_width = texture_size.x * scale_factor
 
 	for background in [background_a, background_b]:
+		background.set_anchors_preset(Control.PRESET_TOP_LEFT)
 		background.custom_minimum_size = Vector2(background_width, size.y)
-		background.size = Vector2(background_width, size.y)
+		background.set_deferred("size", Vector2(background_width, size.y))
 
 	background_a.position = Vector2(0, 0)
 	background_b.position = Vector2(background_width, 0)
@@ -394,9 +395,9 @@ func _enter_base_level() -> void:
 	await get_tree().create_timer(0.12).timeout
 	var transition_manager = _get_transition_manager()
 	if transition_manager != null:
-		transition_manager.change_scene_to_file(BASE_LEVEL_SCENE)
+		transition_manager.change_scene_to_file(FIRST_LEVEL_SCENE)
 	else:
-		get_tree().change_scene_to_file(BASE_LEVEL_SCENE)
+		get_tree().change_scene_to_file(FIRST_LEVEL_SCENE)
 
 
 func _on_option_pressed() -> void:
