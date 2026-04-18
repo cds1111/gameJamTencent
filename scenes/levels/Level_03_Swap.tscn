@@ -7,7 +7,7 @@
 [node name="Level_03_Swap" unique_id=1687462549 instance=ExtResource("1_skt2b")]
 
 [node name="PatrolMonster" parent="Entities/Monsters" parent_id_path=PackedInt32Array(436981488) index="0" unique_id=303758375 instance=ExtResource("3_c1adw")]
-position = Vector2(120, -48)
+position = Vector2(-467, 120)
 
 [node name="Player" parent="Entities" parent_id_path=PackedInt32Array(70306312) index="5" unique_id=1129096103]
 position = Vector2(-1347, -462)

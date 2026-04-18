@@ -11,6 +11,8 @@ const LEVEL_SCENE_MAP := {
 	1: "res://scenes/levels/Level_01_Sprint.tscn",
 	2: "res://scenes/levels/Level_02.tscn",
 	3: "res://scenes/levels/Level_03_Swap.tscn",
+	4: "res://scenes/levels/Level_04_GravityFlip.tscn",
+	5: "res://scenes/levels/Level_05_Swap.tscn",
 }
 const DEFAULT_COVER_TIME := 0.28
 const DEFAULT_REVEAL_TIME := 0.24
