@@ -120,6 +120,19 @@ func set_gravity_flipped(value: bool) -> void:
 	up_direction = Vector2.DOWN if _gravity_flipped else Vector2.UP
 	animated_sprite.flip_v = _gravity_flipped
 
+#和弹簧的交互
+func launch_from_spring(force: float, horizontal_force: float = 0.0) -> void:
+	if _is_dead:
+		return
+
+	var launch_force := absf(force)
+	velocity.y = launch_force if _gravity_flipped else -launch_force
+	velocity.x = horizontal_force
+	_is_jump_landing = false
+	_was_on_floor = false
+	movement_sfx.stop_movement_loops()
+	movement_sfx.play_jump()
+	_play_animation(ANIM_JUMP_UP)
 
 # 触发死亡流程并播放死亡动画。
 func die() -> void:

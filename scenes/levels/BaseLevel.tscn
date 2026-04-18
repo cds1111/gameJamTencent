@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://tsv5duxqxpbf" path="res://assets/pics/Keyboard Letters and Symbols.png" id="3_kkhbh"]
 [ext_resource type="PackedScene" uid="uid://1to885y3a845" path="res://scenes/entities/Player.tscn" id="3_player"]
 [ext_resource type="Texture2D" uid="uid://chnvmp8g3vblh" path="res://assets/pics/700FEDC56C7F76A4A203A3F797DEB97E.jpg" id="4_q6m41"]
+[ext_resource type="PackedScene" uid="uid://clw3gnlwq36ki" path="res://scenes/interactables/Spring.tscn" id="8_kkhbh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uyfon"]
 texture = ExtResource("1_66c0s")
@@ -896,3 +897,7 @@ rotation = -1.5707964
 [node name="Spike17" parent="Spikes" unique_id=501043204 instance=ExtResource("2_spike")]
 position = Vector2(-1253, -472)
 rotation = -1.5707964
+
+[node name="Spring" parent="." unique_id=182497584 instance=ExtResource("8_kkhbh")]
+position = Vector2(-1144, -320)
+scale = Vector2(1, 1.75)
