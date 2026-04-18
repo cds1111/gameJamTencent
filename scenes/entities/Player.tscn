@@ -216,7 +216,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_player"]
 radius = 6.0
-height = 21.0
+height = 24.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1729963612]
 collision_layer = 2
@@ -224,19 +224,18 @@ safe_margin = 0.01
 script = ExtResource("1_player")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=247031266]
-position = Vector2(0, -12)
+position = Vector2(0, -4.7683716e-07)
 scale = Vector2(1.25, 1.25)
 sprite_frames = SubResource("SpriteFrames_tbr7s")
-animation = &"default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=309274966]
-position = Vector2(0, -7.5)
+position = Vector2(0, 3)
 shape = SubResource("CapsuleShape2D_player")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1412384968]
 position = Vector2(0, -48)
-zoom = Vector2(3.05, 3.05)
 enabled = false
+zoom = Vector2(3.05, 3.05)
 position_smoothing_enabled = true
 position_smoothing_speed = 8.0
 

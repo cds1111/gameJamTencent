@@ -22,6 +22,7 @@ const ANIM_DIE := "die"
 @export var death_y_threshold: float = 3000.0
 @export var coyote_time: float = 0.15
 @export var swap_invulnerability_time: float = 0.2
+@export var gravity_flip_sprite_offset_y: float = 8.0
 
 var _jump_multiplier: float = 1.0
 var _wind_force_x: float = 0.0
@@ -39,6 +40,7 @@ var _is_jump_landing: bool = false
 var _pre_move_velocity_y: float = 0.0
 var _coyote_timer: float = 0.0
 var _damage_invulnerability_timer: float = 0.0
+var _base_sprite_position: Vector2 = Vector2.ZERO
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var movement_sfx: Node = $MovementSfx
@@ -48,8 +50,10 @@ var _damage_invulnerability_timer: float = 0.0
 func _ready() -> void:
 	add_to_group("player")
 	_ensure_core_input_actions()
+	_base_sprite_position = animated_sprite.position
 	_was_on_floor = is_on_floor()
 	_coyote_timer = coyote_time
+	_apply_gravity_flip_visuals()
 	_play_animation(ANIM_DEFAULT)
 	if not animated_sprite.animation_finished.is_connected(_on_animation_finished):
 		animated_sprite.animation_finished.connect(_on_animation_finished)
@@ -141,7 +145,7 @@ func toggle_gravity_flip() -> void:
 func set_gravity_flipped(value: bool) -> void:
 	_gravity_flipped = value
 	up_direction = Vector2.DOWN if _gravity_flipped else Vector2.UP
-	animated_sprite.flip_v = _gravity_flipped
+	_apply_gravity_flip_visuals()
 
 
 func launch_from_spring(force: float, horizontal_force: float = 0.0) -> void:
@@ -392,3 +396,13 @@ func grant_damage_invulnerability(duration: float = -1.0) -> void:
 
 func is_damage_invulnerable() -> bool:
 	return _damage_invulnerability_timer > 0.0
+
+
+func _apply_gravity_flip_visuals() -> void:
+	if animated_sprite == null:
+		return
+
+	animated_sprite.flip_v = _gravity_flipped
+	animated_sprite.position = _base_sprite_position
+	if _gravity_flipped:
+		animated_sprite.position.y += gravity_flip_sprite_offset_y
