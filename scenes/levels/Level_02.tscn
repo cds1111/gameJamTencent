@@ -8,4 +8,4 @@
 [node name="LevelController" parent="." index="2" unique_id=893548158]
 starting_ability = ExtResource("2_6f0nl")
 next_level_id = 3
-level_title_text = "LEVEL 02 - GIANT"
+level_title_text = "大大大，小小小！"
