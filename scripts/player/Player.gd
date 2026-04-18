@@ -6,10 +6,12 @@ const JUMP_VELOCITY := -250.0 # 玩家起跳时施加的初始竖直速度。
 const GRAVITY := 980.0 # 玩家在空中时每帧受到的重力加速度。
 const FLOOR_DECELERATION := 24.0 # 松开移动键后在地面上的减速速度。
 const LANDING_VELOCITY_THRESHOLD := 60.0 # 触发落地表现所需的最小下落速度。
+const SPRINT_SPEED := 640.0 # 冲刺平移时的水平移动速度。
 
 const ANIM_DEFAULT := "default" # 待机动画。
 const ANIM_WALK := "walk" # 普通地面移动动画。
 const ANIM_RUN := "run" # 快速移动动画。
+const ANIM_SPRINT := "sprint" # 冲刺动画。
 const ANIM_JUMP_UP := "jump_up" # 跳跃上升阶段动画。
 const ANIM_JUMP_DOWN := "jump_down" # 跳跃下落阶段动画。
 const ANIM_JUMP_END := "jump_end" # 落地过渡动画。
@@ -19,15 +21,20 @@ const ANIM_DIE := "die" # 死亡动画。
 @export var jump_velocity: float = JUMP_VELOCITY
 @export var death_y_threshold: float = 3000.0
 
-var _jump_multiplier := 1.0
-var _wind_force_x := 0.0
-var _gravity_flipped := false
-var _is_dead := false
-var _death_finalized := false
-var _air_sprint_used := false
-var _was_on_floor := false
-var _is_jump_landing := false
-var _pre_move_velocity_y := 0.0
+var _jump_multiplier: float = 1.0
+var _wind_force_x: float = 0.0
+var _gravity_flipped: bool = false
+var _is_dead: bool = false
+var _death_finalized: bool = false
+var _sprint_consumed: bool = false
+var _sprint_reset_timer: float = 0.0
+var _last_sprint_velocity_y: float = 0.0
+var _is_sprinting: bool = false
+var _sprint_direction: float = 0.0
+var _sprint_distance_remaining: float = 0.0
+var _was_on_floor: bool = false
+var _is_jump_landing: bool = false
+var _pre_move_velocity_y: float = 0.0
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var movement_sfx: Node = $MovementSfx
@@ -52,16 +59,20 @@ func _physics_process(delta: float) -> void:
 	if shift_handler != null:
 		shift_handler.process_input(self)
 
-	var direction := Input.get_axis("move_left", "move_right")
-	_handle_horizontal_movement(direction)
-	_handle_jump()
-	_apply_gravity(delta)
-	_pre_move_velocity_y = velocity.y
+	var direction: float = Input.get_axis("move_left", "move_right")
+	if _is_sprinting:
+		_handle_sprint_motion(delta)
+	else:
+		_handle_horizontal_movement(direction)
+		_handle_jump()
+		_apply_gravity(delta)
 
+	_pre_move_velocity_y = velocity.y
 	move_and_slide()
 
 	_check_hazard_collisions()
 	_check_death_fall()
+	_update_sprint_reset(delta)
 	_update_animation_state(direction)
 
 
@@ -89,23 +100,31 @@ func set_wind_force(value: float) -> void:
 	_wind_force_x = value
 
 
-# 在空中触发一次水平冲刺，落地前不能重复使用。
-func try_air_sprint(distance: float) -> bool:
-	if is_on_floor() or _air_sprint_used:
+# 触发一次水平冲刺，地面和空中都可使用，落地后重置次数。
+func try_sprint(distance: float) -> bool:
+	if _is_sprinting or _sprint_consumed:
 		return false
 
-	var dash_direction := Input.get_axis("move_left", "move_right")
+	var dash_direction: float = Input.get_axis("move_left", "move_right")
 	if absf(dash_direction) <= 0.01:
 		dash_direction = -1.0 if animated_sprite.flip_h else 1.0
 	else:
 		animated_sprite.flip_h = dash_direction < 0.0
 
-	var allowed_motion := _get_allowed_air_sprint_motion(signf(dash_direction) * distance)
+	var allowed_motion: float = _get_allowed_sprint_motion(signf(dash_direction) * distance)
 	if is_zero_approx(allowed_motion):
 		return false
 
-	global_position.x += allowed_motion
-	_air_sprint_used = true
+	_is_sprinting = true
+	_sprint_consumed = true
+	_sprint_reset_timer = 0.0
+	_last_sprint_velocity_y = velocity.y
+	_is_jump_landing = false
+	_sprint_direction = signf(allowed_motion)
+	_sprint_distance_remaining = absf(allowed_motion)
+	velocity = Vector2.ZERO
+	movement_sfx.stop_movement_loops()
+	_play_animation(ANIM_SPRINT)
 	return true
 
 
@@ -120,19 +139,23 @@ func set_gravity_flipped(value: bool) -> void:
 	up_direction = Vector2.DOWN if _gravity_flipped else Vector2.UP
 	animated_sprite.flip_v = _gravity_flipped
 
-#和弹簧的交互
+
+# 被弹簧等外力发射时更新速度和表现。
 func launch_from_spring(force: float, horizontal_force: float = 0.0) -> void:
 	if _is_dead:
 		return
 
-	var launch_force := absf(force)
+	var launch_force: float = absf(force)
 	velocity.y = launch_force if _gravity_flipped else -launch_force
 	velocity.x = horizontal_force
+	_is_sprinting = false
+	_sprint_distance_remaining = 0.0
 	_is_jump_landing = false
 	_was_on_floor = false
 	movement_sfx.stop_movement_loops()
 	movement_sfx.play_jump()
 	_play_animation(ANIM_JUMP_UP)
+
 
 # 触发死亡流程并播放死亡动画。
 func die() -> void:
@@ -141,6 +164,7 @@ func die() -> void:
 
 	print("[Player] die start name=%s pos=%s vel=%s anim=%s" % [name, global_position, velocity, animated_sprite.animation])
 	_is_dead = true
+	_is_sprinting = false
 	_is_jump_landing = false
 	velocity = Vector2.ZERO
 	if shift_handler != null:
@@ -154,7 +178,7 @@ func die() -> void:
 
 # 根据输入和环境力更新水平速度。
 func _handle_horizontal_movement(direction: float) -> void:
-	var target_speed := direction * base_speed + _wind_force_x
+	var target_speed: float = direction * base_speed + _wind_force_x
 	if absf(direction) > 0.01 or absf(_wind_force_x) > 0.01:
 		velocity.x = target_speed
 	else:
@@ -164,6 +188,23 @@ func _handle_horizontal_movement(direction: float) -> void:
 		animated_sprite.flip_h = direction < 0.0
 
 
+# 按剩余距离推进冲刺，使用平移动画而不是闪现。
+func _handle_sprint_motion(delta: float) -> void:
+	var step_distance: float = minf(SPRINT_SPEED * delta, _sprint_distance_remaining)
+	var allowed_motion: float = _get_allowed_sprint_motion(_sprint_direction * step_distance)
+
+	if is_zero_approx(allowed_motion):
+		_finish_sprint()
+		return
+
+	velocity.x = allowed_motion / delta
+	velocity.y = 0.0
+	_sprint_distance_remaining -= absf(allowed_motion)
+
+	if _sprint_distance_remaining <= 0.001:
+		_finish_sprint()
+
+
 # 在允许起跳时施加跳跃初速度并切换表现。
 func _handle_jump() -> void:
 	if not Input.is_action_just_pressed("jump"):
@@ -171,7 +212,7 @@ func _handle_jump() -> void:
 	if not is_on_floor():
 		return
 
-	var jump_sign := 1.0 if _gravity_flipped else -1.0
+	var jump_sign: float = 1.0 if _gravity_flipped else -1.0
 	velocity.y = absf(jump_velocity) * jump_sign * _jump_multiplier
 	_is_jump_landing = false
 	movement_sfx.stop_movement_loops()
@@ -184,8 +225,37 @@ func _apply_gravity(delta: float) -> void:
 	if is_on_floor():
 		return
 
-	var gravity_sign := -1.0 if _gravity_flipped else 1.0
+	var gravity_sign: float = -1.0 if _gravity_flipped else 1.0
 	velocity.y += GRAVITY * gravity_sign * delta
+
+
+# 结束冲刺并恢复正常物理更新。
+func _finish_sprint() -> void:
+	_is_sprinting = false
+	_sprint_distance_remaining = 0.0
+	velocity.x = 0.0
+
+
+# 按“落地”或“0.3 秒内竖直速度无变化”规则恢复冲刺次数。
+func _update_sprint_reset(delta: float) -> void:
+	if not _sprint_consumed:
+		return
+
+	if is_on_floor():
+		_sprint_consumed = false
+		_sprint_reset_timer = 0.0
+		return
+
+	var vertical_velocity_changed: bool = not is_equal_approx(velocity.y, _last_sprint_velocity_y)
+	if vertical_velocity_changed:
+		_last_sprint_velocity_y = velocity.y
+		_sprint_reset_timer = 0.0
+		return
+
+	_sprint_reset_timer += delta
+	if _sprint_reset_timer >= 0.3:
+		_sprint_consumed = false
+		_sprint_reset_timer = 0.0
 
 
 # 检查是否超出死亡边界。
@@ -200,10 +270,10 @@ func _check_death_fall() -> void:
 # 检查角色是否撞到带 hazard 分组的危险物。
 func _check_hazard_collisions() -> void:
 	for i in range(get_slide_collision_count()):
-		var collision := get_slide_collision(i)
+		var collision: KinematicCollision2D = get_slide_collision(i)
 		if collision == null:
 			continue
-		var collider := collision.get_collider() as Node
+		var collider: Node = collision.get_collider() as Node
 		if collider != null and collider.is_in_group("hazard"):
 			die()
 			return
@@ -211,7 +281,7 @@ func _check_hazard_collisions() -> void:
 
 # 根据移动和落地状态更新动画与音效。
 func _update_animation_state(direction: float) -> void:
-	var landed_this_frame := is_on_floor() \
+	var landed_this_frame: bool = is_on_floor() \
 		and not _was_on_floor \
 		and absf(_pre_move_velocity_y) >= LANDING_VELOCITY_THRESHOLD
 
@@ -220,27 +290,25 @@ func _update_animation_state(direction: float) -> void:
 		_start_jump_end_if_needed()
 
 	if _is_jump_landing:
-		if is_on_floor():
-			_air_sprint_used = false
 		_was_on_floor = is_on_floor()
 		return
 
-	if not is_on_floor():
+	if _is_sprinting:
+		movement_sfx.play_run_loop()
+		_play_animation(ANIM_SPRINT)
+	elif not is_on_floor():
 		movement_sfx.stop_movement_loops()
 		if (_gravity_flipped and velocity.y > 0.0) or (not _gravity_flipped and velocity.y < 0.0):
 			_play_animation(ANIM_JUMP_UP)
 		else:
 			_play_animation(ANIM_JUMP_DOWN)
 	elif absf(velocity.x) > base_speed * 1.2:
-		_air_sprint_used = false
 		movement_sfx.play_run_loop()
 		_play_animation(ANIM_RUN)
 	elif absf(direction) > 0.01:
-		_air_sprint_used = false
 		movement_sfx.play_walk_loop()
 		_play_animation(ANIM_WALK)
 	else:
-		_air_sprint_used = false
 		movement_sfx.stop_movement_loops()
 		_play_animation(ANIM_DEFAULT)
 
@@ -274,7 +342,7 @@ func _finalize_death() -> void:
 		return
 	_death_finalized = true
 	print("[Player] finalize_death emit player_died name=%s pos=%s" % [name, global_position])
-	var signal_manager := get_node_or_null("/root/SignalManager")
+	var signal_manager: Node = get_node_or_null("/root/SignalManager")
 	if signal_manager != null:
 		signal_manager.player_died.emit()
 
@@ -292,11 +360,11 @@ func _play_animation(name: String) -> void:
 		animated_sprite.play(name)
 
 
-# 逐像素测试冲刺位移，避免直接穿进墙体。
-func _get_allowed_air_sprint_motion(target_distance: float) -> float:
-	var test_transform := global_transform
-	var step := 1.0 if target_distance > 0.0 else -1.0
-	var allowed_distance := 0.0
+# 逐像素测试可执行的冲刺位移，避免冲进墙体。
+func _get_allowed_sprint_motion(target_distance: float) -> float:
+	var test_transform: Transform2D = global_transform
+	var step: float = 1.0 if target_distance > 0.0 else -1.0
+	var allowed_distance: float = 0.0
 
 	for _i in range(int(absf(target_distance))):
 		var motion := Vector2(step, 0.0)
@@ -326,6 +394,6 @@ func _ensure_action_key(action_name: StringName, keycode: Key) -> void:
 		if event is InputEventKey and (event as InputEventKey).keycode == keycode:
 			return
 
-	var key_event := InputEventKey.new()
+	var key_event: InputEventKey = InputEventKey.new()
 	key_event.keycode = keycode
 	InputMap.action_add_event(action_name, key_event)

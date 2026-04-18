@@ -77,6 +77,10 @@ region = Rect2(168, 24, 24, 24)
 atlas = ExtResource("3_playertex")
 region = Rect2(120, 24, 24, 24)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_yjynp"]
+atlas = ExtResource("3_playertex")
+region = Rect2(0, 48, 24, 24)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_fsc66"]
 atlas = ExtResource("3_playertex")
 region = Rect2(0, 24, 24, 24)
@@ -186,6 +190,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_yjynp")
+}],
+"loop": true,
+"name": &"sprint",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_fsc66")
 }, {
 "duration": 1.0,
@@ -202,21 +214,24 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_player"]
-size = Vector2(12, 21)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_player"]
+radius = 6.0
+height = 21.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1729963612]
 collision_layer = 2
+safe_margin = 0.01
 script = ExtResource("1_player")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=247031266]
 position = Vector2(0, -12)
 scale = Vector2(1.25, 1.25)
 sprite_frames = SubResource("SpriteFrames_tbr7s")
+animation = &"default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=309274966]
 position = Vector2(0, -7.5)
-shape = SubResource("RectangleShape2D_player")
+shape = SubResource("CapsuleShape2D_player")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1412384968]
 position = Vector2(0, -48)
