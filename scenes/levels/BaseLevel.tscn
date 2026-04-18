@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://djqby70rv2p8k" path="res://scenes/hazards/Spike.tscn" id="2_spike"]
 [ext_resource type="Texture2D" uid="uid://tsv5duxqxpbf" path="res://assets/pics/Keyboard Letters and Symbols.png" id="3_kkhbh"]
 [ext_resource type="PackedScene" uid="uid://1to885y3a845" path="res://scenes/entities/Player.tscn" id="3_player"]
-[ext_resource type="Texture2D" uid="uid://chnvmp8g3vblh" path="res://assets/pics/700FEDC56C7F76A4A203A3F797DEB97E.jpg" id="4_q6m41"]
 [ext_resource type="Texture2D" uid="uid://bwa0maaqfvthm" path="res://assets/pics/start_and_end.png" id="4_q5481"]
 [ext_resource type="PackedScene" uid="uid://clw3gnlwq36ki" path="res://scenes/interactables/Spring.tscn" id="8_kkhbh"]
 
@@ -781,10 +780,10 @@ color = Color(0.45, 0.45, 0.45, 1)
 position = Vector2(-1350, -464)
 
 [node name="Monsters" type="Node2D" parent="Entities" unique_id=436981488]
-position = Vector2(-961, -389)
+position = Vector2(-607, -373)
 
 [node name="Goal" type="Area2D" parent="Entities" unique_id=460067954]
-position = Vector2(-927, -303)
+position = Vector2(-919, -297)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/Goal" unique_id=1992689903]
 position = Vector2(6.1035156e-05, 0)
@@ -805,13 +804,6 @@ position = Vector2(-1352, -461)
 
 [node name="LevelController" type="Node" parent="." unique_id=893548158]
 script = ExtResource("1_jx5dl")
-
-[node name="700fedc56c7f76a4a203a3f797deb97e" type="Sprite2D" parent="." unique_id=1023383695]
-visible = false
-z_index = -2
-position = Vector2(-1097.9999, -373.00003)
-scale = Vector2(0.22114809, 0.2211481)
-texture = ExtResource("4_q6m41")
 
 [node name="Spikes" type="Node" parent="." unique_id=638400332]
 

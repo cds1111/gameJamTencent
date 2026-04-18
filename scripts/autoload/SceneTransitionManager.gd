@@ -8,8 +8,8 @@ const FAST_STYLE := "fast"
 const MAIN_MENU_SCENE := "res://main.tscn"
 const FALLBACK_LEVEL_SCENE := "res://scenes/levels/BaseLevel.tscn"
 const LEVEL_SCENE_MAP := {
-	2: "res://scenes/levels/Level_01_Sprint.tscn",
-	5: "res://scenes/levels/Level_05_Swap.tscn",
+	1: "res://scenes/levels/Level_01_Swap.tscn",
+	2: "res://scenes/levels/Level_02.tscn",
 }
 const DEFAULT_COVER_TIME := 0.28
 const DEFAULT_REVEAL_TIME := 0.24
