@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://1to885y3a845" path="res://scenes/entities/Player.tscn" id="3_player"]
 [ext_resource type="Texture2D" uid="uid://bwa0maaqfvthm" path="res://assets/pics/start_and_end.png" id="4_q5481"]
 [ext_resource type="PackedScene" uid="uid://clw3gnlwq36ki" path="res://scenes/interactables/Spring.tscn" id="8_kkhbh"]
+[ext_resource type="Texture2D" uid="uid://ubumhhcalcsd" path="res://assets/pics/Sprite sheet for Basic Pack.png" id="8_q5481"]
+[ext_resource type="FontFile" uid="uid://ccuuk5ni65qag" path="res://assets/fonts/fusion_pixel_font/fusion-pixel-12px-proportional-zh_hant.otf" id="9_xrhif"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uyfon"]
 texture = ExtResource("1_66c0s")
@@ -639,7 +641,7 @@ texture = ExtResource("1_66c0s")
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0pu2i"]
 texture = ExtResource("4_q5481")
 margins = Vector2i(6, 6)
-texture_region_size = Vector2i(20, 30)
+texture_region_size = Vector2i(20, 28)
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -734,6 +736,10 @@ size = Vector2(1200, 60)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5ifpx"]
 size = Vector2(8.333374, 8.3333435)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_xrhif"]
+atlas = ExtResource("8_q5481")
+region = Rect2(161.46866, 176.44017, 92.563995, 30.163406)
+
 [node name="BaseLevel" type="Node2D" unique_id=1411277766]
 
 [node name="Environment" type="Node2D" parent="." unique_id=1237470430]
@@ -804,6 +810,50 @@ position = Vector2(-1352, -461)
 
 [node name="LevelController" type="Node" parent="." unique_id=893548158]
 script = ExtResource("1_jx5dl")
+
+[node name="LevelUI" type="CanvasLayer" parent="." unique_id=1475802211]
+layer = 10
+
+[node name="TopRightMargin" type="MarginContainer" parent="LevelUI" unique_id=138563489]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -260.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 96.0
+grow_horizontal = 0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="TitleBackground" type="TextureRect" parent="LevelUI/TopRightMargin" unique_id=212424859]
+custom_minimum_size = Vector2(236, 72)
+layout_mode = 2
+texture = SubResource("AtlasTexture_xrhif")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TitleText" type="Label" parent="LevelUI/TopRightMargin/TitleBackground" unique_id=39841267]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -106.0
+offset_top = -16.0
+offset_right = 106.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.16, 0.1, 0.04, 1)
+theme_override_fonts/font = ExtResource("9_xrhif")
+theme_override_font_sizes/font_size = 20
+text = "LEVEL"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Spikes" type="Node" parent="." unique_id=638400332]
 

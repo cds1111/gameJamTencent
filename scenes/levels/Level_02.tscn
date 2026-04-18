@@ -1,10 +1,11 @@
-[gd_scene format=3 uid="uid://deflp0uhglh03"]
+[gd_scene format=3 uid="uid://c4hhn8b7jgycn"]
 
 [ext_resource type="PackedScene" uid="uid://52jpflyc03w8" path="res://scenes/levels/BaseLevel.tscn" id="1_4v2mx"]
 [ext_resource type="Script" uid="uid://cybfj0ytsarg6" path="res://scripts/abilities/Ability_Giant.gd" id="2_6f0nl"]
 
-[node name="Level_02" instance=ExtResource("1_4v2mx")]
+[node name="Level_02" unique_id=901151654 instance=ExtResource("1_4v2mx")]
 
-[node name="LevelController" parent="."]
+[node name="LevelController" parent="." index="2" unique_id=893548158]
 starting_ability = ExtResource("2_6f0nl")
 next_level_id = 3
+level_title_text = "LEVEL 02 - GIANT"

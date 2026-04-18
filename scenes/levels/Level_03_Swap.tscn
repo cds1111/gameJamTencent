@@ -1,10 +1,10 @@
-[gd_scene format=3 uid="uid://dieyrxsh35u0v"]
+[gd_scene format=3 uid="uid://ruv0agm6qw5q"]
 
 [ext_resource type="PackedScene" uid="uid://52jpflyc03w8" path="res://scenes/levels/BaseLevel.tscn" id="1_skt2b"]
 [ext_resource type="Script" uid="uid://b7xhg740wymlw" path="res://scripts/abilities/Ability_Swap.gd" id="2_h2x3r"]
 [ext_resource type="PackedScene" uid="uid://1qtoe4ly4i8t" path="res://scenes/entities/PatrolMonster.tscn" id="3_c1adw"]
 
-[node name="Level_01_Swap" unique_id=1687462549 instance=ExtResource("1_skt2b")]
+[node name="Level_03_Swap" unique_id=1687462549 instance=ExtResource("1_skt2b")]
 
 [node name="PatrolMonster" parent="Entities/Monsters" parent_id_path=PackedInt32Array(436981488) index="0" unique_id=303758375 instance=ExtResource("3_c1adw")]
 position = Vector2(120, -48)
@@ -14,4 +14,5 @@ position = Vector2(-1347, -462)
 
 [node name="LevelController" parent="." index="2" unique_id=893548158]
 starting_ability = ExtResource("2_h2x3r")
-level_title_text = "LEVEL 01 - SWAP"
+next_level_id = 4
+level_title_text = "LEVEL 03 - SWAP"
