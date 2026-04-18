@@ -2,10 +2,15 @@
 
 [ext_resource type="Script" uid="uid://cvojl263eqsea" path="res://scripts/entities/PatrolMonster.gd" id="1_4w4nq"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
+size = Vector2(20, 24)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x2yna"]
 size = Vector2(24, 24)
 
-[node name="PatrolMonster" type="Node2D" unique_id=1925925044]
+[node name="PatrolMonster" type="CharacterBody2D" unique_id=1925925044]
+collision_layer = 4
+collision_mask = 1
 script = ExtResource("1_4w4nq")
 
 [node name="Visual" type="ColorRect" parent="." unique_id=1461195450]
@@ -15,7 +20,12 @@ offset_right = 12.0
 offset_bottom = 12.0
 color = Color(1, 0.35, 0.35, 1)
 
-[node name="Hurtbox" type="StaticBody2D" parent="." unique_id=1576780191]
+[node name="BodyCollisionShape" type="CollisionShape2D" parent="." unique_id=278341901]
+shape = SubResource("RectangleShape2D_body")
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1576780191]
+collision_layer = 0
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1923823400]
 shape = SubResource("RectangleShape2D_x2yna")

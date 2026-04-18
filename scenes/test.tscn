@@ -1,0 +1,147 @@
+[gd_scene format=4 uid="uid://b2ntemt15uvu2"]
+
+[ext_resource type="PackedScene" uid="uid://52jpflyc03w8" path="res://scenes/levels/BaseLevel.tscn" id="1_errlg"]
+[ext_resource type="PackedScene" uid="uid://1qtoe4ly4i8t" path="res://scenes/entities/PatrolMonster.tscn" id="2_monster"]
+[ext_resource type="Script" uid="uid://jpp45hhjv0eu" path="res://scripts/ui/TestScenePanel.gd" id="3_testui"]
+
+[node name="BaseLevel" unique_id=1411277766 instance=ExtResource("1_errlg")]
+
+[node name="Terrain" parent="Environment" parent_id_path=PackedInt32Array(1237470430) index="2" unique_id=1620254632]
+tile_map_data = PackedByteArray("AACw//H/AAAEAAEAAACv//H/AAAEAAEAAACu//H/AAAEAAEAAACt//H/AAAEAAEAAACs//H/AAAEAAEAAACr//H/AAAEAAEAAACq//H/AAAEAAEAAADH/+H/AAAEAAEAAADH/+L/AAAEAAEAAADH/+P/AAAEAAEAAADH/+T/AAAEAAEAAADH/+X/AAAEAAEAAADH/+b/AAAEAAEAAADI/+b/AAAHAAEAAADI/+f/AAAHAAEAAADI/+j/AAAHAAEAAADI/+n/AAAHAAEAAADI/+r/AAAHAAEAAADH/+f/AAAEAAEAAADH/+j/AAAEAAEAAADH/+n/AAAEAAEAAADH/+r/AAAEAAEAAADH/+v/AAAEAAEAAADH/+z/AAAEAAEAAADH/+3/AAAEAAEAAADH/+7/AAAEAAEAAADH/+//AAAEAAEAAADH//D/AAAEAAEAAADH//H/AAAEAAEAAACx//H/AAAEAAEAAACy//H/AAAEAAEAAACz//H/AAAEAAEAAAC0//H/AAAEAAEAAAC1//H/AAAEAAEAAAC2//H/AAAEAAEAAAC3//H/AAAEAAEAAAC9//H/AAAEAAEAAAC+//H/AAAEAAEAAAC///H/AAAEAAEAAADA//H/AAAEAAEAAADB//H/AAAEAAEAAADC//H/AAAEAAEAAADD//H/AAAEAAEAAADE//H/AAAEAAEAAADF//H/AAAEAAEAAADG//H/AAAEAAEAAADI//H/AAAHAAEAAADI/+T/AAAHAAEAAADI/+X/AAAHAAEAAADI/+v/AAAHAAEAAADI/+z/AAAHAAEAAADI/+3/AAAHAAEAAADI/+7/AAAHAAEAAADI/+//AAAHAAEAAADI//D/AAAHAAEAAAC4//H/AAAEAAEAAAC5//H/AAAEAAEAAAC6//H/AAAEAAEAAAC7//H/AAAEAAEAAAC8//H/AAAEAAEAAAC+/97/AAAIAAEAAAC+/9//AAAEAAEAAAC//97/AAAIAAEAAAC//9//AAAEAAEAAADA/97/AAAIAAEAAADA/9//AAAEAAEAAADB/97/AAAIAAEAAADB/9//AAAEAAEAAADC/9//AAAEAAEAAADD/9//AAAEAAEAAADE/97/AAAIAAEAAADE/9//AAAEAAEAAACn/+H/AAAEAAEAAACn/+L/AAAEAAEAAACn/+P/AAAEAAEAAACn/+T/AAAEAAEAAACn/+X/AAAEAAEAAACn/+b/AAAEAAEAAACn/+f/AAAEAAEAAACn/+j/AAAEAAEAAACn/+n/AAAEAAEAAACn/+r/AAAEAAEAAACn/+v/AAAEAAEAAACn/+z/AAAEAAEAAACn/+3/AAAEAAEAAACn/+7/AAAEAAEAAACn/+//AAAEAAEAAACn//D/AAAEAAEAAACn//H/AAAEAAEAAACo//H/AAAEAAEAAACp//H/AAAEAAEAAACn/9//AAAEAAEAAACo/9//AAAEAAEAAACp/9//AAAEAAEAAACq/9//AAAEAAEAAACr/9//AAAEAAEAAACs/9//AAAEAAEAAACt/9//AAAEAAEAAACu/9//AAAEAAEAAACv/9//AAAEAAEAAACw/9//AAAEAAEAAACx/9//AAAEAAEAAACy/9//AAAKAAMAAACz/9//AAAKAAMAAAC0/9//AAAEAAEAAAC1/9//AAAEAAEAAAC2/9//AAAKAAMAAAC3/9//AAAKAAMAAAC4/9//AAAEAAEAAAC5/9//AAAEAAEAAAC6/9//AAAKAAMAAAC7/9//AAAKAAMAAAC8/9//AAAEAAEAAAC9/9//AAAEAAEAAADF/9//AAAEAAEAAADG/9//AAAEAAEAAADH/9//AAAEAAEAAACn/+D/AAAEAAEAAADH/+D/AAAEAAEAAAC3/+//AAAEAAEAAAC4/+//AAAEAAEAAAC4/+7/AAAEAAEAAAC6/+3/AAAEAAEAAAC7/+3/AAAEAAEAAAC8/+3/AAAEAAEAAAC9/+3/AAAEAAEAAAC+/+3/AAAEAAEAAAC//+3/AAAEAAEAAADA/+3/AAAEAAEAAADB/+3/AAAEAAEAAADC/+3/AAAEAAEAAADD/+3/AAAEAAEAAADE/+3/AAAEAAEAAADF/+3/AAAEAAEAAADG/+3/AAAEAAEAAAC2//D/AAAEAAEAAAC3//D/AAAEAAEAAAC4//D/AAAEAAEAAAA=")
+
+[node name="Danger" parent="Environment" parent_id_path=PackedInt32Array(1237470430) index="3" unique_id=2134643234]
+tile_map_data = PackedByteArray()
+
+[node name="PlayerSpawn" parent="Entities" parent_id_path=PackedInt32Array(70306312) index="0" unique_id=195367309]
+position = Vector2(-1383, -256)
+
+[node name="Monsters" parent="Entities" parent_id_path=PackedInt32Array(70306312) index="1" unique_id=436981488]
+position = Vector2(-1022, -329)
+
+[node name="PatrolMonster" parent="Entities/Monsters" index="0" unique_id=2077431884 instance=ExtResource("2_monster")]
+position = Vector2(-9, -3.8146973e-06)
+scale = Vector2(0.74999887, -0.67965746)
+
+[node name="Player" parent="Entities" parent_id_path=PackedInt32Array(70306312) index="3" unique_id=1129096103]
+position = Vector2(-1371, -245)
+
+[node name="Spike" parent="Spikes" parent_id_path=PackedInt32Array(638400332) index="0" unique_id=1959532438]
+position = Vector2(-1263, 48)
+
+[node name="Spike19" parent="Spikes" parent_id_path=PackedInt32Array(638400332) index="1" unique_id=1406621404]
+position = Vector2(-1279, 48)
+
+[node name="Spike20" parent="Spikes" parent_id_path=PackedInt32Array(638400332) index="2" unique_id=1433398091]
+position = Vector2(-1295, 48)
+
+[node name="Spike21" parent="Spikes" parent_id_path=PackedInt32Array(638400332) index="3" unique_id=2036299680]
+position = Vector2(-1679, 48)
+
+[node name="Spike22" parent="Spikes" parent_id_path=PackedInt32Array(638400332) index="4" unique_id=1806272897]
+position = Vector2(-1695, 48)
+
+[node name="Spike2" parent="Spikes" parent_id_path=PackedInt32Array(638400332) index="5" unique_id=1153766466]
+position = Vector2(-1247, 48)
+
+[node name="Spike3" parent="Spikes" parent_id_path=PackedInt32Array(638400332) index="6" unique_id=63478975]
+position = Vector2(-1663, -32)
+
+[node name="Spike4" parent="Spikes" parent_id_path=PackedInt32Array(638400332) index="7" unique_id=683226913]
+position = Vector2(-1647, -32)
+
+[node name="Spike5" parent="Spikes" parent_id_path=PackedInt32Array(638400332) index="8" unique_id=428365435]
+position = Vector2(-1631, -32)
+
+[node name="Spike6" parent="Spikes" parent_id_path=PackedInt32Array(638400332) index="9" unique_id=420292424]
+position = Vector2(-1615, -32)
+
+[node name="Spike23" parent="Spikes" parent_id_path=PackedInt32Array(638400332) index="10" unique_id=1933458793]
+position = Vector2(-1567, -91)
+
+[node name="Spike24" parent="Spikes" parent_id_path=PackedInt32Array(638400332) index="11" unique_id=91576464]
+position = Vector2(-1551, -91)
+
+[node name="Spike25" parent="Spikes" parent_id_path=PackedInt32Array(638400332) index="12" unique_id=1159335614]
+position = Vector2(-1535, -91)
+
+[node name="Spike26" parent="Spikes" parent_id_path=PackedInt32Array(638400332) index="13" unique_id=1312225350]
+position = Vector2(-1519, -91)
+
+[node name="Spike7" parent="Spikes" parent_id_path=PackedInt32Array(638400332) index="14" unique_id=1526914054]
+position = Vector2(-1342, -91)
+
+[node name="Spike27" parent="Spikes" parent_id_path=PackedInt32Array(638400332) index="15" unique_id=988781805]
+position = Vector2(-1343, -188)
+
+[node name="Spike28" parent="Spikes" parent_id_path=PackedInt32Array(638400332) index="16" unique_id=2005153946]
+position = Vector2(-1327, -188)
+
+[node name="Spike29" parent="Spikes" parent_id_path=PackedInt32Array(638400332) index="17" unique_id=2106828005]
+position = Vector2(-1439, -220)
+
+[node name="Spike30" parent="Spikes" parent_id_path=PackedInt32Array(638400332) index="18" unique_id=1755062650]
+position = Vector2(-1423, -220)
+
+[node name="Spike8" parent="Spikes" parent_id_path=PackedInt32Array(638400332) index="19" unique_id=2065324424]
+position = Vector2(-1326, -91)
+
+[node name="Spike9" parent="Spikes" parent_id_path=PackedInt32Array(638400332) index="20" unique_id=808642506]
+position = Vector2(-1310, -91)
+
+[node name="Spike10" parent="Spikes" parent_id_path=PackedInt32Array(638400332) index="21" unique_id=560323221]
+position = Vector2(-1294, -91)
+
+[node name="Spike18" parent="Spikes" parent_id_path=PackedInt32Array(638400332) index="22" unique_id=1300560502]
+position = Vector2(-1278, -91)
+
+[node name="Spike11" parent="Spikes" parent_id_path=PackedInt32Array(638400332) index="23" unique_id=107640984]
+position = Vector2(-1295, 0)
+
+[node name="Spike12" parent="Spikes" parent_id_path=PackedInt32Array(638400332) index="24" unique_id=1511876905]
+position = Vector2(-1212, -99)
+
+[node name="Spike13" parent="Spikes" parent_id_path=PackedInt32Array(638400332) index="25" unique_id=1821889779]
+position = Vector2(-1212, -83)
+
+[node name="Spike14" parent="Spikes" parent_id_path=PackedInt32Array(638400332) index="26" unique_id=432682549]
+position = Vector2(-1212, -67)
+
+[node name="Spike15" parent="Spikes" parent_id_path=PackedInt32Array(638400332) index="27" unique_id=381538367]
+position = Vector2(-1212, -51)
+
+[node name="Spike16" parent="Spikes" parent_id_path=PackedInt32Array(638400332) index="28" unique_id=625464306]
+position = Vector2(-1548, -163)
+
+[node name="Spike17" parent="Spikes" parent_id_path=PackedInt32Array(638400332) index="29" unique_id=501043204]
+position = Vector2(-1548, -179)
+
+[node name="Spring" parent="." index="4" unique_id=182497584]
+position = Vector2(-1439, -27)
+
+[node name="TestScenePanel" type="CanvasLayer" parent="." index="5" unique_id=1008345319]
+script = ExtResource("3_testui")
+
+[node name="PanelContainer" type="PanelContainer" parent="TestScenePanel" index="0" unique_id=1269411598]
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 260.0
+offset_bottom = 116.0
+
+[node name="MarginContainer" type="MarginContainer" parent="TestScenePanel/PanelContainer" index="0" unique_id=1799964072]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TestScenePanel/PanelContainer/MarginContainer" index="0" unique_id=1932580667]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="TestScenePanel/PanelContainer/MarginContainer/VBoxContainer" index="0" unique_id=1801569877]
+layout_mode = 2
+text = "TEST SHIFT ABILITY"
+
+[node name="AbilityOption" type="OptionButton" parent="TestScenePanel/PanelContainer/MarginContainer/VBoxContainer" index="1" unique_id=1948904025]
+custom_minimum_size = Vector2(180, 36)
+layout_mode = 2

@@ -18,6 +18,8 @@ func execute(player: CharacterBody2D) -> void:
 	var player_pos := player.global_position
 	player.global_position = nearest.global_position
 	nearest.global_position = player_pos
+	if player.has_method("grant_damage_invulnerability"):
+		player.grant_damage_invulnerability()
 	emit_ability_used()
 
 

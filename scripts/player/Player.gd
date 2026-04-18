@@ -21,6 +21,7 @@ const ANIM_DIE := "die"
 @export var jump_velocity: float = JUMP_VELOCITY
 @export var death_y_threshold: float = 3000.0
 @export var coyote_time: float = 0.15
+@export var swap_invulnerability_time: float = 0.2
 
 var _jump_multiplier: float = 1.0
 var _wind_force_x: float = 0.0
@@ -37,6 +38,7 @@ var _was_on_floor: bool = false
 var _is_jump_landing: bool = false
 var _pre_move_velocity_y: float = 0.0
 var _coyote_timer: float = 0.0
+var _damage_invulnerability_timer: float = 0.0
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var movement_sfx: Node = $MovementSfx
@@ -70,6 +72,9 @@ func _physics_process(delta: float) -> void:
 
 	_pre_move_velocity_y = velocity.y
 	move_and_slide()
+
+	if _damage_invulnerability_timer > 0.0:
+		_damage_invulnerability_timer = maxf(_damage_invulnerability_timer - delta, 0.0)
 
 	if is_on_floor():
 		_coyote_timer = coyote_time
@@ -156,11 +161,12 @@ func launch_from_spring(force: float, horizontal_force: float = 0.0) -> void:
 	_play_animation(ANIM_JUMP_UP)
 
 
-func die() -> void:
+func die(ignore_invulnerability: bool = false) -> void:
+	if not ignore_invulnerability and _damage_invulnerability_timer > 0.0:
+		return
 	if _is_dead:
 		return
 
-	print("[Player] die start name=%s pos=%s vel=%s anim=%s" % [name, global_position, velocity, animated_sprite.animation])
 	_is_dead = true
 	_is_sprinting = false
 	_is_jump_landing = false
@@ -256,7 +262,7 @@ func _check_death_fall() -> void:
 		return
 	if _gravity_flipped and global_position.y >= -death_y_threshold:
 		return
-	die()
+	die(true)
 
 
 func _check_hazard_collisions() -> void:
@@ -320,7 +326,6 @@ func _on_animation_finished() -> void:
 			_is_jump_landing = false
 			_play_animation(ANIM_DEFAULT)
 		ANIM_DIE:
-			print("[Player] die animation finished -> finalize_death")
 			_finalize_death()
 
 
@@ -328,7 +333,6 @@ func _finalize_death() -> void:
 	if _death_finalized:
 		return
 	_death_finalized = true
-	print("[Player] finalize_death emit player_died name=%s pos=%s" % [name, global_position])
 	var signal_manager: Node = get_node_or_null("/root/SignalManager")
 	if signal_manager != null:
 		signal_manager.player_died.emit()
@@ -379,3 +383,12 @@ func _ensure_action_key(action_name: StringName, keycode: Key) -> void:
 	var key_event: InputEventKey = InputEventKey.new()
 	key_event.keycode = keycode
 	InputMap.action_add_event(action_name, key_event)
+
+
+func grant_damage_invulnerability(duration: float = -1.0) -> void:
+	var applied_duration: float = duration if duration >= 0.0 else swap_invulnerability_time
+	_damage_invulnerability_timer = maxf(applied_duration, 0.0)
+
+
+func is_damage_invulnerable() -> bool:
+	return _damage_invulnerability_timer > 0.0
