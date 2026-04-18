@@ -1,8 +1,9 @@
-[gd_scene format=3 uid="uid://bx0o5tis2gb1k"]
+[gd_scene format=3 uid="uid://1to885y3a845"]
 
-[ext_resource type="Script" path="res://scripts/gameplay/player_controller.gd" id="1_player"]
+[ext_resource type="Script" uid="uid://c5gofuvxrscv5" path="res://scripts/player/Player.gd" id="1_player"]
 [ext_resource type="Script" uid="uid://diyudc6qcd6hn" path="res://scripts/templates/movement_sfx_template.gd" id="2_sfx"]
 [ext_resource type="Texture2D" uid="uid://ctj7akg2op8tu" path="res://assets/pics/Player.png" id="3_playertex"]
+[ext_resource type="Script" path="res://scripts/player/player_shift_handler.gd" id="4_shift"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6p80c"]
 atlas = ExtResource("3_playertex")
@@ -202,29 +203,34 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_player"]
-size = Vector2(22, 44)
+size = Vector2(12, 24)
 
-[node name="PlayerTest" type="CharacterBody2D" unique_id=1729963612]
+[node name="Player" type="CharacterBody2D" unique_id=1729963612]
+collision_layer = 2
 script = ExtResource("1_player")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=247031266]
-position = Vector2(0, -22)
-scale = Vector2(2, 2)
+position = Vector2(0, -12)
+scale = Vector2(1.25, 1.25)
 sprite_frames = SubResource("SpriteFrames_tbr7s")
 animation = &"jump_end"
 
-[node name="FallbackSprite" type="Sprite2D" parent="." unique_id=472093350]
-position = Vector2(0, -22)
-scale = Vector2(2, 2)
-hframes = 6
-vframes = 4
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=309274966]
-position = Vector2(0, -20)
+position = Vector2(0, -12)
 shape = SubResource("RectangleShape2D_player")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1412384968]
+position = Vector2(0, -48)
+zoom = Vector2(3.05, 3.05)
+position_smoothing_enabled = true
+position_smoothing_speed = 8.0
 
 [node name="MovementSfx" type="Node" parent="." unique_id=2122416477]
 script = ExtResource("2_sfx")
+
+[node name="ShiftHandler" type="Node" parent="." unique_id=819220114]
+script = ExtResource("4_shift")
+shift_mode = 1
 
 [node name="WalkPlayer" type="AudioStreamPlayer2D" parent="MovementSfx" unique_id=811722175]
 volume_db = -8.0

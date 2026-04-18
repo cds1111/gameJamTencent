@@ -19,12 +19,16 @@ func _enable_kill_after_grace() -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	print("Spike detected body: ", body.name)
 	if not _can_kill:
 		return
 	if not body.is_in_group("player"):
 		return
 	if not overlaps_body(body):
+		return
+
+	print("[Spike] kill player body=%s" % body.name)
+	if body.has_method("die"):
+		body.die()
 		return
 
 	var signal_manager := get_node_or_null("/root/SignalManager")

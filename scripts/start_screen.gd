@@ -7,7 +7,7 @@ const MENU_MUSIC: AudioStream = preload("res://assets/music/menu.mp3")
 const HOVER_SOUND: AudioStream = preload("res://assets/music/kenney_interface-sounds/Audio/select_006.ogg")
 const CLICK_SOUND: AudioStream = preload("res://assets/music/kenney_interface-sounds/Audio/confirmation_002.ogg")
 const BACKGROUND_SCROLL_SPEED := 18.0
-const TEST_LEVEL_SCENE := "res://scenes/test_level.tscn"
+const BASE_LEVEL_SCENE := "res://scenes/levels/BaseLevel.tscn"
 
 var default_panel_style := StyleBoxFlat.new()
 var default_button_style := StyleBoxFlat.new()
@@ -17,6 +17,7 @@ var background_width := 0.0
 var option_button_style := StyleBoxFlat.new()
 var option_button_popup_style := StyleBoxFlat.new()
 var is_initializing_settings := false
+var _is_entering_level := false
 
 @onready var background_a: TextureRect = $BackgroundA
 @onready var background_b: TextureRect = $BackgroundB
@@ -355,9 +356,16 @@ func _on_window_mode_selected(index: int) -> void:
 
 func _on_start_pressed() -> void:
 	_play_click_sfx()
-	_set_hint_text("Signal locked. Entering the test room...")
+	_enter_base_level()
+
+
+func _enter_base_level() -> void:
+	if _is_entering_level:
+		return
+	_is_entering_level = true
+	_set_hint_text("Signal locked. Entering base level...")
 	await get_tree().create_timer(0.12).timeout
-	get_tree().change_scene_to_file(TEST_LEVEL_SCENE)
+	get_tree().change_scene_to_file(BASE_LEVEL_SCENE)
 
 
 func _on_option_pressed() -> void:

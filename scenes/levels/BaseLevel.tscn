@@ -1,9 +1,10 @@
 [gd_scene format=4 uid="uid://52jpflyc03w8"]
 
-[ext_resource type="Texture2D" uid="uid://jcmup4nr8a7c" path="res://assert/factory_.png" id="1_66c0s"]
+[ext_resource type="Texture2D" uid="uid://jcmup4nr8a7c" path="res://assets/pics/factory_.png" id="1_66c0s"]
 [ext_resource type="Script" uid="uid://jjg3rcai4fun" path="res://scripts/level/LevelController.gd" id="1_jx5dl"]
 [ext_resource type="PackedScene" uid="uid://djqby70rv2p8k" path="res://scenes/hazards/Spike.tscn" id="2_spike"]
-[ext_resource type="Texture2D" uid="uid://chnvmp8g3vblh" path="res://assert/700FEDC56C7F76A4A203A3F797DEB97E.jpg" id="4_q6m41"]
+[ext_resource type="PackedScene" uid="uid://1to885y3a845" path="res://scenes/entities/Player.tscn" id="3_player"]
+[ext_resource type="Texture2D" uid="uid://chnvmp8g3vblh" path="res://assets/pics/700FEDC56C7F76A4A203A3F797DEB97E.jpg" id="4_q6m41"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q6m41"]
 texture = ExtResource("1_66c0s")
@@ -344,6 +345,9 @@ offset_bottom = 61.0
 scale = Vector2(0.095, 0.095)
 color = Color(0.2, 0.85, 0.2, 0.85)
 metadata/_edit_use_anchors_ = true
+
+[node name="Player" parent="Entities" unique_id=1129096103 instance=ExtResource("3_player")]
+position = Vector2(-1229, -455)
 
 [node name="LevelController" type="Node" parent="." unique_id=893548158]
 script = ExtResource("1_jx5dl")
