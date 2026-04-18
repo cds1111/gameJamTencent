@@ -7,7 +7,7 @@ const MENU_MUSIC: AudioStream = preload("res://assets/music/menu.mp3")
 const HOVER_SOUND: AudioStream = preload("res://assets/music/kenney_interface-sounds/Audio/select_006.ogg")
 const CLICK_SOUND: AudioStream = preload("res://assets/music/kenney_interface-sounds/Audio/confirmation_002.ogg")
 const BACKGROUND_SCROLL_SPEED := 18.0
-const FIRST_LEVEL_SCENE := "res://scenes/levels/Level_01_Swap.tscn"
+const FIRST_LEVEL_SCENE := "res://scenes/levels/Level_01_Sprint.tscn"
 const TEST_SCENE := "res://scenes/test.tscn"
 
 var default_panel_style: StyleBoxFlat = StyleBoxFlat.new()

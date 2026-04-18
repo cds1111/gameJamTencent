@@ -1,5 +1,10 @@
 [gd_scene format=3 uid="uid://cnqumhisie1kg"]
 
 [ext_resource type="PackedScene" uid="uid://52jpflyc03w8" path="res://scenes/levels/BaseLevel.tscn" id="1_tmn4y"]
+[ext_resource type="Script" uid="uid://dig826b4ygo3s" path="res://scripts/abilities/Ability_Sprint.gd" id="2_sprint"]
 
-[node name="BaseLevel" unique_id=1411277766 instance=ExtResource("1_tmn4y")]
+[node name="Level_01_Sprint" unique_id=1411277766 instance=ExtResource("1_tmn4y")]
+
+[node name="LevelController" parent="." index="2" unique_id=893548158]
+starting_ability = ExtResource("2_sprint")
+level_title_text = "冲刺冲刺冲！"

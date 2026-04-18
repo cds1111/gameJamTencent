@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://cj3mi4yu68oes"]
+[gd_scene format=3 uid="uid://dieyrxsh35u0v"]
 
 [ext_resource type="PackedScene" uid="uid://52jpflyc03w8" path="res://scenes/levels/BaseLevel.tscn" id="1_skt2b"]
 [ext_resource type="Script" uid="uid://b7xhg740wymlw" path="res://scripts/abilities/Ability_Swap.gd" id="2_h2x3r"]
@@ -17,3 +17,4 @@ position = Vector2(-1347, -462)
 
 [node name="LevelController" parent="." index="2" unique_id=893548158]
 starting_ability = ExtResource("2_h2x3r")
+level_title_text = "LEVEL 01 - SWAP"
