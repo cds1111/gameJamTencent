@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 SignalManager="*res://scripts/autoload/SignalManager.gd"
 
+[dotnet]
+
+project/assembly_name="新建游戏项目"
+
 [input]
 
 move_left={
