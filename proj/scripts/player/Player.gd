@@ -14,7 +14,7 @@ var _gravity_flipped: bool = false
 var _ability_active: bool = false
 var _is_dead: bool = false
 
-@onready var _sprite: Sprite2D = $Sprite2D
+@onready var _presentation: Node = $PlayerPresentation
 
 
 func _ready() -> void:
@@ -49,9 +49,11 @@ func _process_shift_input() -> void:
 			if not _ability_active:
 				current_ability.execute(self)
 				_ability_active = true
+				_refresh_presentation()
 		elif _ability_active:
 			current_ability.cancel(self)
 			_ability_active = false
+			_refresh_presentation()
 		return
 
 	# 模式2：按下切换/一次性触发 (例如：换位、重力反转)
@@ -59,10 +61,12 @@ func _process_shift_input() -> void:
 		if not _ability_active:
 			current_ability.execute(self)
 			# 如果你的技能需要再按一次取消，它应该设置 _ability_active
-			_ability_active = true 
+			_ability_active = true
+			_refresh_presentation()
 		else:
 			current_ability.cancel(self)
 			_ability_active = false
+			_refresh_presentation()
 
 func set_current_ability(ability: ShiftAbility) -> void:
 	if current_ability != null:
@@ -90,8 +94,6 @@ func toggle_gravity_flip() -> void:
 func set_gravity_flipped(value: bool) -> void:
 	_gravity_flipped = value
 	up_direction = Vector2.DOWN if _gravity_flipped else Vector2.UP
-	if is_instance_valid(_sprite):
-		_sprite.flip_v = _gravity_flipped
 
 
 func _apply_gravity(delta: float) -> void:
@@ -108,6 +110,8 @@ func _handle_jump() -> void:
 
 	var jump_sign := 1.0 if _gravity_flipped else -1.0
 	velocity.y = absf(jump_velocity) * jump_sign * _jump_multiplier
+	if _presentation != null and _presentation.has_method("play_jump_feedback"):
+		_presentation.play_jump_feedback()
 
 
 func _handle_movement() -> void:
@@ -151,6 +155,23 @@ func die() -> void:
 	var signal_manager := get_node_or_null("/root/SignalManager")
 	if signal_manager != null:
 		signal_manager.player_died.emit()
+
+
+func is_dead() -> bool:
+	return _is_dead
+
+
+func is_gravity_flipped() -> bool:
+	return _gravity_flipped
+
+
+func get_base_speed() -> float:
+	return base_speed
+
+
+func _refresh_presentation() -> void:
+	if _presentation != null and _presentation.has_method("refresh_state"):
+		_presentation.refresh_state()
 
 
 func _ensure_core_input_actions() -> void:

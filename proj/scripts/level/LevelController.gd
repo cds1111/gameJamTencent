@@ -63,11 +63,12 @@ func _on_goal_body_entered(body: Node) -> void:
 func _on_player_died() -> void:
 	if _is_restarting:
 		return
-	call_deferred("_restart_level")
+	_restart_level()
 
 
 func _restart_level() -> void:
 	if _is_restarting:
 		return
 	_is_restarting = true
+	await get_tree().create_timer(0.35).timeout
 	get_tree().call_deferred("reload_current_scene")

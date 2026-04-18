@@ -19,7 +19,6 @@ func _enable_kill_after_grace() -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	print("Spike detected body: ", body.name)
 	if not _can_kill:
 		return
 	if not body.is_in_group("player"):
