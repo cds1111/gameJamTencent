@@ -9,6 +9,9 @@
 [node name="PatrolMonster" parent="Entities/Monsters" parent_id_path=PackedInt32Array(436981488) index="0" unique_id=1925925044 instance=ExtResource("2_j0duy")]
 position = Vector2(-432, -82)
 
+[node name="KeyPickup3" parent="Entities/Keys" parent_id_path=PackedInt32Array(1508425173) index="2" unique_id=1980324517]
+position = Vector2(-936, -331)
+
 [node name="LevelController" parent="." index="3" unique_id=893548158]
 starting_ability = ExtResource("2_sprint")
 level_title_text = "冲刺冲刺冲！"

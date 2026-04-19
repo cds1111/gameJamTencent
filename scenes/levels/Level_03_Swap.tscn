@@ -7,7 +7,16 @@
 [node name="Level_03_Swap" unique_id=1687462549 instance=ExtResource("1_skt2b")]
 
 [node name="PatrolMonster" parent="Entities/Monsters" parent_id_path=PackedInt32Array(436981488) index="0" unique_id=303758375 instance=ExtResource("3_c1adw")]
-position = Vector2(-467, 120)
+position = Vector2(-440, -38)
+
+[node name="KeyPickup" parent="Entities/Keys" parent_id_path=PackedInt32Array(1508425173) index="0" unique_id=1942036019]
+position = Vector2(-1174, -319)
+
+[node name="KeyPickup2" parent="Entities/Keys" parent_id_path=PackedInt32Array(1508425173) index="1" unique_id=2054893317]
+position = Vector2(-1301, -239)
+
+[node name="KeyPickup3" parent="Entities/Keys" parent_id_path=PackedInt32Array(1508425173) index="2" unique_id=1980324517]
+position = Vector2(-984, -398)
 
 [node name="Player" parent="Entities" parent_id_path=PackedInt32Array(70306312) index="5" unique_id=1129096103]
 position = Vector2(-1347, -462)

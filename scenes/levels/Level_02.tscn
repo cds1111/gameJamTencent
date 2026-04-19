@@ -5,7 +5,16 @@
 
 [node name="Level_02" unique_id=901151654 instance=ExtResource("1_4v2mx")]
 
-[node name="LevelController" parent="." index="2" unique_id=893548158]
+[node name="KeyPickup" parent="Entities/Keys" parent_id_path=PackedInt32Array(1508425173) index="0" unique_id=1942036019]
+position = Vector2(-1297, -240)
+
+[node name="KeyPickup2" parent="Entities/Keys" parent_id_path=PackedInt32Array(1508425173) index="1" unique_id=2054893317]
+position = Vector2(-1138, -491)
+
+[node name="KeyPickup3" parent="Entities/Keys" parent_id_path=PackedInt32Array(1508425173) index="2" unique_id=1980324517]
+position = Vector2(-1111, -319)
+
+[node name="LevelController" parent="." index="3" unique_id=893548158]
 starting_ability = ExtResource("2_6f0nl")
 next_level_id = 3
 level_title_text = "大大大，小小小！"

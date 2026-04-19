@@ -1,17 +1,20 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://dejyje788t5hq"]
 
-[ext_resource type="PackedScene" path="res://scenes/levels/BaseLevel.tscn" id="1_base"]
-[ext_resource type="Script" path="res://scripts/abilities/Ability_GravityFlip.gd" id="2_gravity"]
+[ext_resource type="PackedScene" uid="uid://52jpflyc03w8" path="res://scenes/levels/BaseLevel.tscn" id="1_base"]
+[ext_resource type="Script" uid="uid://dc2xu783mukjt" path="res://scripts/abilities/Ability_GravityFlip.gd" id="2_gravity"]
 
-[node name="Level_04_GravityFlip" instance=ExtResource("1_base")]
+[node name="Level_04_GravityFlip" unique_id=118170835 instance=ExtResource("1_base")]
 
-[node name="PlayerSpawn" parent="Entities" parent_id_path=PackedInt32Array(70306312) index="0" unique_id=195367309]
-position = Vector2(-1350, -464)
+[node name="KeyPickup" parent="Entities/Keys" parent_id_path=PackedInt32Array(1508425173) index="0" unique_id=1942036019]
+position = Vector2(-1201, -487)
 
-[node name="Player" parent="Entities" parent_id_path=PackedInt32Array(70306312) index="3" unique_id=1129096103]
-position = Vector2(-1352, -461)
+[node name="KeyPickup2" parent="Entities/Keys" parent_id_path=PackedInt32Array(1508425173) index="1" unique_id=2054893317]
+position = Vector2(-1138, -425)
 
-[node name="LevelController" parent="." index="2" unique_id=893548158]
+[node name="KeyPickup3" parent="Entities/Keys" parent_id_path=PackedInt32Array(1508425173) index="2" unique_id=1980324517]
+position = Vector2(-984, -398)
+
+[node name="LevelController" parent="." index="3" unique_id=893548158]
 starting_ability = ExtResource("2_gravity")
 next_level_id = 5
 level_title_text = "天翻地覆"
