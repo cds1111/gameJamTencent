@@ -24,4 +24,4 @@ position = Vector2(-1347, -462)
 [node name="LevelController" parent="." index="3" unique_id=893548158]
 starting_ability = ExtResource("2_h2x3r")
 next_level_id = 4
-level_title_text = "移形换影"
+level_title_text = "莱我身边"

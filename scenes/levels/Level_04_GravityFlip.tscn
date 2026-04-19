@@ -20,4 +20,4 @@ jump_enabled = false
 [node name="LevelController" parent="." index="3" unique_id=893548158]
 starting_ability = ExtResource("2_gravity")
 next_level_id = 5
-level_title_text = "天翻地覆"
+level_title_text = "天旋地转"

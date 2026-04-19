@@ -17,4 +17,4 @@ position = Vector2(-1111, -319)
 [node name="LevelController" parent="." index="3" unique_id=893548158]
 starting_ability = ExtResource("2_6f0nl")
 next_level_id = 3
-level_title_text = "大大大，小小小！"
+level_title_text = "大大大，小小小~"

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://12hu3lcw86np" path="res://scripts/hazards/Spike.gd" id="1_8g5xq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_spike"]
-size = Vector2(16, 5)
+size = Vector2(14, 5)
 
 [node name="Spike" type="Area2D" unique_id=1959532438]
 collision_layer = 0

@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://b6vssjscvggat"]
+[gd_scene format=4 uid="uid://b6vssjscvggat"]
 
 [ext_resource type="PackedScene" uid="uid://52jpflyc03w8" path="res://scenes/levels/BaseLevel.tscn" id="1_base"]
 [ext_resource type="Texture2D" uid="uid://ctj7akg2op8tu" path="res://assets/pics/Player.png" id="2_fd3l7"]
@@ -12,6 +12,12 @@ region = Rect2(6.9391212, 5.4193172, 10.178341, 18.943026)
 
 [node name="space" parent="Environment" parent_id_path=PackedInt32Array(1237470430) index="2" unique_id=1204432495]
 modulate = Color(1, 1, 1, 0.3529412)
+
+[node name="Danger" parent="Environment" parent_id_path=PackedInt32Array(1237470430) index="4" unique_id=2134643234]
+tile_map_data = PackedByteArray("AAC+/+L/AAAIAAMAAAC//+L/AAAIAAMAAADG/+f/AAAHAAMAAGDG/+j/AAAHAAMAAGDG/+n/AAAHAAMAAGDG/+r/AAAHAAMAAGDD//D/AAAHAAMAAADE//D/AAAHAAMAAACx/+L/AAAIAAMAAFCx/+P/AAAIAAMAAFDF//D/AAAHAAMAAAA=")
+
+[node name="KeyPickup2" parent="Entities/Keys" parent_id_path=PackedInt32Array(1508425173) index="1" unique_id=2054893317]
+position = Vector2(-1256, -288)
 
 [node name="PhantomGhost" type="Node2D" parent="Entities" parent_id_path=PackedInt32Array(70306312) index="3" unique_id=1347800521]
 z_index = 200
@@ -28,4 +34,7 @@ jump_enabled = false
 [node name="LevelController" parent="." index="3" unique_id=893548158]
 starting_ability = ExtResource("2_phantom")
 next_level_id = 9
-level_title_text = "幻影跃迁"
+level_title_text = "闪烁其驰"
+
+[node name="Spike11" parent="Spikes" parent_id_path=PackedInt32Array(638400332) index="23" unique_id=107640984]
+position = Vector2(-856, -312)

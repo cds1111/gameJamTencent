@@ -137,7 +137,7 @@ position = Vector2(-1347, -462)
 [node name="LevelController" parent="." index="3" unique_id=893548158]
 starting_ability = ExtResource("2_wind")
 next_level_id = 8
-level_title_text = "风起"
+level_title_text = "呼呼呼~"
 
 [node name="Spike11" parent="Spikes" parent_id_path=PackedInt32Array(638400332) index="23" unique_id=107640984]
 position = Vector2(-854, -295)

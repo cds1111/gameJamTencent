@@ -1,8 +1,8 @@
 [gd_scene format=4 uid="uid://cpwy3i1utmak7"]
 
 [ext_resource type="PackedScene" uid="uid://52jpflyc03w8" path="res://scenes/levels/BaseLevel.tscn" id="1_0t0x3"]
-[ext_resource type="PackedScene" uid="uid://2yjno0flxtl5" path="res://scenes/hazards/Spiketrue.tscn" id="2_ayr50"]
-[ext_resource type="Script" path="res://scripts/abilities/Ability_SpikeToggle.gd" id="3_spike_toggle"]
+[ext_resource type="PackedScene" path="res://scenes/hazards/Spiketrue.tscn" id="2_ayr50"]
+[ext_resource type="Script" uid="uid://crtc1vymqflkw" path="res://scripts/abilities/Ability_SpikeToggle.gd" id="3_spike_toggle"]
 
 [node name="BaseLevel" unique_id=1411277766 instance=ExtResource("1_0t0x3")]
 
@@ -21,7 +21,7 @@ position = Vector2(-1032, -321)
 [node name="LevelController" parent="." index="3" unique_id=893548158]
 starting_ability = ExtResource("3_spike_toggle")
 next_level_id = 10
-level_title_text = "尖刺切换"
+level_title_text = "无刺有刺"
 
 [node name="Spike" parent="Spikes" parent_id_path=PackedInt32Array(638400332) index="0" unique_id=1959532438]
 position = Vector2(-949, 274)

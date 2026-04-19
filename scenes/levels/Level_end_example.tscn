@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dpvmcxjkk715i"]
+[gd_scene format=3 uid="uid://b71vlp6f57sj7"]
 
 [ext_resource type="PackedScene" uid="uid://52jpflyc03w8" path="res://scenes/levels/BaseLevel.tscn" id="1_b6xbh"]
 [ext_resource type="PackedScene" uid="uid://1qtoe4ly4i8t" path="res://scenes/entities/PatrolMonster.tscn" id="2_8x7pf"]
@@ -15,4 +15,4 @@ position = Vector2(-1347, -462)
 [node name="LevelController" parent="." index="3" unique_id=893548158]
 starting_ability = ExtResource("3_00b3k")
 next_level_id = 6
-level_title_text = "end"
+level_title_text = "恭喜通关"
