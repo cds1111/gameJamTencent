@@ -11,8 +11,8 @@ position = Vector2(-1201, -487)
 [node name="KeyPickup2" parent="Entities/Keys" parent_id_path=PackedInt32Array(1508425173) index="1" unique_id=2054893317]
 position = Vector2(-1138, -425)
 
-[node name="KeyPickup3" parent="Entities/Keys" parent_id_path=PackedInt32Array(1508425173) index="2" unique_id=1980324517]
-position = Vector2(-984, -398)
+[node name="Player" parent="Entities" parent_id_path=PackedInt32Array(70306312) index="3" unique_id=1129096103]
+position = Vector2(-1352, -461)
 
 [node name="LevelController" parent="." index="3" unique_id=893548158]
 starting_ability = ExtResource("2_gravity")

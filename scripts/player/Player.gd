@@ -20,6 +20,7 @@ const ANIM_DIE := "die"
 
 @export var base_speed: float = MOVE_SPEED
 @export var jump_velocity: float = JUMP_VELOCITY
+@export var jump_enabled: bool = true
 @export var death_y_threshold: float = 3000.0
 @export var coyote_time: float = 0.15
 @export var swap_invulnerability_time: float = 0.2
@@ -249,6 +250,8 @@ func _handle_sprint_end_deceleration(delta: float) -> void:
 
 
 func _handle_jump() -> void:
+	if not jump_enabled:
+		return
 	if not Input.is_action_just_pressed("jump"):
 		return
 	if _coyote_timer <= 0.0:
