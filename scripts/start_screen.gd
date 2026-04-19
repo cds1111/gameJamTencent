@@ -1,11 +1,11 @@
 extends Control
 
 const FG := Color(0.22, 0.13, 0.07, 1.0)
-const ENGLISH_PIXEL_FONT: FontFile = preload("res://assets/fonts/press_start_2p/PressStart2P-Regular.ttf")
-const CHINESE_PIXEL_FONT: FontFile = preload("res://assets/fonts/fusion_pixel_font/fusion-pixel-12px-proportional-zh_hans.otf")
+const ENGLISH_PIXEL_FONT: FontFile = preload("res://assets/fonts/PressStart2P-Regular.ttf")
+const CHINESE_PIXEL_FONT: FontFile = preload("res://assets/fonts/fusion-pixel-12px-proportional-zh_hans.otf")
 const MENU_MUSIC: AudioStream = preload("res://assets/music/menu.mp3")
-const HOVER_SOUND: AudioStream = preload("res://assets/music/kenney_interface-sounds/Audio/select_006.ogg")
-const CLICK_SOUND: AudioStream = preload("res://assets/music/kenney_interface-sounds/Audio/confirmation_002.ogg")
+const HOVER_SOUND: AudioStream = preload("res://assets/music/select_006.ogg")
+const CLICK_SOUND: AudioStream = preload("res://assets/music/confirmation_002.ogg")
 const BACKGROUND_SCROLL_SPEED := 18.0
 const FIRST_LEVEL_SCENE := "res://scenes/levels/Level_01_Sprint.tscn"
 const TEST_SCENE := "res://scenes/test.tscn"

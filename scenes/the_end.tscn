@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://cxangek06p7cx"]
 
 [ext_resource type="PackedScene" uid="uid://52jpflyc03w8" path="res://scenes/levels/BaseLevel.tscn" id="1_base"]
-[ext_resource type="Texture2D" uid="uid://dfl8i6ia4egj8" path="res://assets/pics/free-city-backgrounds-pixel-art/city 2/1.png" id="2_city_bg"]
+[ext_resource type="Texture2D" uid="uid://dfl8i6ia4egj8" path="res://assets/pics/city_2_1.png" id="2_city_bg"]
 [ext_resource type="Texture2D" uid="uid://cx01twmq854h1" path="res://assets/pics/Keyboard Extras.png" id="3_wtwb0"]
 [ext_resource type="Script" uid="uid://cax5svuqiyrvc" path="res://scripts/abilities/Ability_EndCelebration.gd" id="4_end_ability"]
 [ext_resource type="Script" uid="uid://bbo5oqnx7yn4c" path="res://scripts/level/TheEndCelebrationController.gd" id="5_celebration_controller"]

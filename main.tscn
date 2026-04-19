@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://djeb0cuoeaeet"]
 
 [ext_resource type="Script" uid="uid://bgqrlemxbxgvk" path="res://scripts/start_screen.gd" id="1_kd2x8"]
-[ext_resource type="Texture2D" path="res://assets/pics/free-city-backgrounds-pixel-art/city 4/9.png" id="2_citybg"]
+[ext_resource type="Texture2D" path="res://assets/pics/city_4_9.png" id="2_citybg"]
 
 [node name="StartScreen" type="Control" unique_id=1904884707]
 layout_mode = 3

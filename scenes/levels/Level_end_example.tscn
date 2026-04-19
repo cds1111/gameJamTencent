@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cfowbpjrbmouy"]
+[gd_scene format=3 uid="uid://dpvmcxjkk715i"]
 
 [ext_resource type="PackedScene" uid="uid://52jpflyc03w8" path="res://scenes/levels/BaseLevel.tscn" id="1_b6xbh"]
 [ext_resource type="PackedScene" uid="uid://1qtoe4ly4i8t" path="res://scenes/entities/PatrolMonster.tscn" id="2_8x7pf"]

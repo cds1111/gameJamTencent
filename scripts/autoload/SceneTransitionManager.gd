@@ -16,7 +16,7 @@ const LEVEL_SCENE_MAP := {
 	6: "res://scenes/levels/Level_06_GoalControl.tscn",
 	7: "res://scenes/levels/Level_07_Wind.tscn",
 	8: "res://scenes/levels/Level_08_PhantomBlink.tscn",
-	9: "res://scenes/levels/Level_end_example.tscn",
+	9: "res://scenes/levels/Level_09_TOGETOGE.tscn",
 	10: "res://scenes/the_end.tscn",
 }
 const DEFAULT_COVER_TIME := 0.28
@@ -24,8 +24,8 @@ const DEFAULT_REVEAL_TIME := 0.24
 const FAST_COVER_TIME := 0.09
 const FAST_REVEAL_TIME := 0.08
 const CELEBRATION_TEXT := "congratulations!"
-const CELEBRATION_FONT := preload("res://assets/fonts/press_start_2p/PressStart2P-Regular.ttf")
-const CELEBRATION_SFX: AudioStream = preload("res://assets/music/celebration/mixkit_arcade_video_game_win_212.wav")
+const CELEBRATION_FONT := preload("res://assets/fonts/PressStart2P-Regular.ttf")
+const CELEBRATION_SFX: AudioStream = preload("res://assets/music/mixkit_arcade_video_game_win_212.wav")
 const CELEBRATION_EXTRA_TIME := 0.4
 const CONFETTI_COLORS := [
 	Color(1.0, 0.96, 0.45, 1.0),

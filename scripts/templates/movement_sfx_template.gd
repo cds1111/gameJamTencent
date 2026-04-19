@@ -1,9 +1,9 @@
 extends Node
 
-const WALK_SOUND: AudioStream = preload("res://assets/music/kenney_interface-sounds/Audio/scroll_002.ogg")
-const RUN_SOUND: AudioStream = preload("res://assets/music/kenney_interface-sounds/Audio/scroll_005.ogg")
-const JUMP_SOUND: AudioStream = preload("res://assets/music/kenney_interface-sounds/Audio/maximize_002.ogg")
-const LAND_SOUND: AudioStream = preload("res://assets/music/kenney_interface-sounds/Audio/drop_002.ogg")
+const WALK_SOUND: AudioStream = preload("res://assets/music/scroll_002.ogg")
+const RUN_SOUND: AudioStream = preload("res://assets/music/scroll_005.ogg")
+const JUMP_SOUND: AudioStream = preload("res://assets/music/maximize_002.ogg")
+const LAND_SOUND: AudioStream = preload("res://assets/music/drop_002.ogg")
 
 @onready var walk_player: AudioStreamPlayer2D = $WalkPlayer
 @onready var run_player: AudioStreamPlayer2D = $RunPlayer

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c8y14gchc7n8x"]
 
 [ext_resource type="Script" path="res://scripts/interactables/LetterTemplate.gd" id="1_script"]
-[ext_resource type="FontFile" path="res://assets/fonts/press_start_2p/PressStart2P-Regular.ttf" id="2_font"]
+[ext_resource type="FontFile" path="res://assets/fonts/PressStart2P-Regular.ttf" id="2_font"]
 
 [node name="LetterTemplate" type="StaticBody2D"]
 script = ExtResource("1_script")
