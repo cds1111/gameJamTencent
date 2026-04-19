@@ -215,8 +215,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_player"]
-radius = 4.0
-height = 28.209644
+radius = 3.46316
+height = 26.239271
 
 [node name="Player" type="CharacterBody2D" unique_id=1729963612]
 collision_layer = 2
@@ -230,7 +230,7 @@ sprite_frames = SubResource("SpriteFrames_tbr7s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=309274966]
 position = Vector2(0, 4.9999995)
-scale = Vector2(1.0294095, 0.7089774)
+scale = Vector2(1.443768, 0.76221627)
 shape = SubResource("CapsuleShape2D_player")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1412384968]
