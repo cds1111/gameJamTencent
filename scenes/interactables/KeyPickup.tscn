@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://drxrh2s0j4ivj"]
 
 [ext_resource type="Script" uid="uid://c3kxrlh4j82j4" path="res://scripts/interactables/KeyPickup.gd" id="1_key_script"]
-[ext_resource type="Texture2D" uid="uid://cxypvciaym4tp" path="res://assets/pics/keys/item57.png" id="2_0quxt"]
-[ext_resource type="Texture2D" uid="uid://cr6xupgvxxq2j" path="res://assets/pics/keys/item58.png" id="3_t0non"]
-[ext_resource type="Texture2D" uid="uid://c0fny4wnbof5j" path="res://assets/pics/keys/item59.png" id="4_eqb4g"]
-[ext_resource type="Texture2D" uid="uid://oixnit8isy27" path="res://assets/pics/keys/item60.png" id="5_maxeu"]
-[ext_resource type="Texture2D" uid="uid://bas6s70xbsn5p" path="res://assets/pics/keys/item61.png" id="6_vebma"]
-[ext_resource type="Texture2D" uid="uid://3jvis6yg3hf7" path="res://assets/pics/keys/item62.png" id="7_qdoe7"]
-[ext_resource type="Texture2D" uid="uid://dptajccnjoytk" path="res://assets/pics/keys/item63.png" id="8_hjfei"]
-[ext_resource type="Texture2D" uid="uid://bv72q6q00s4rj" path="res://assets/pics/keys/item64.png" id="9_64iww"]
+[ext_resource type="Texture2D" uid="uid://cxypvciaym4tp" path="res://assets/pics/item57.png" id="2_0quxt"]
+[ext_resource type="Texture2D" uid="uid://cr6xupgvxxq2j" path="res://assets/pics/item58.png" id="3_t0non"]
+[ext_resource type="Texture2D" uid="uid://c0fny4wnbof5j" path="res://assets/pics/item59.png" id="4_eqb4g"]
+[ext_resource type="Texture2D" uid="uid://oixnit8isy27" path="res://assets/pics/item60.png" id="5_maxeu"]
+[ext_resource type="Texture2D" uid="uid://bas6s70xbsn5p" path="res://assets/pics/item61.png" id="6_vebma"]
+[ext_resource type="Texture2D" uid="uid://3jvis6yg3hf7" path="res://assets/pics/item62.png" id="7_qdoe7"]
+[ext_resource type="Texture2D" uid="uid://dptajccnjoytk" path="res://assets/pics/item63.png" id="8_hjfei"]
+[ext_resource type="Texture2D" uid="uid://bv72q6q00s4rj" path="res://assets/pics/item64.png" id="9_64iww"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_key"]
 animations = [{

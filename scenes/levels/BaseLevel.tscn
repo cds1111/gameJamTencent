@@ -12,7 +12,7 @@
 [ext_resource type="Script" uid="uid://ublh2it4dnpo" path="res://scripts/level/KeyDoorManager.gd" id="7_keydoor_manager"]
 [ext_resource type="PackedScene" uid="uid://clw3gnlwq36ki" path="res://scenes/interactables/Spring.tscn" id="8_kkhbh"]
 [ext_resource type="Texture2D" uid="uid://ubumhhcalcsd" path="res://assets/pics/Sprite sheet for Basic Pack.png" id="8_q5481"]
-[ext_resource type="FontFile" uid="uid://ccuuk5ni65qag" path="res://assets/fonts/fusion_pixel_font/fusion-pixel-12px-proportional-zh_hant.otf" id="9_xrhif"]
+[ext_resource type="FontFile" uid="uid://ccuuk5ni65qag" path="res://assets/fonts/fusion-pixel-12px-proportional-zh_hant.otf" id="9_xrhif"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uyfon"]
 texture = ExtResource("1_66c0s")

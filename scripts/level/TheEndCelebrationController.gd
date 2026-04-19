@@ -1,16 +1,16 @@
 extends Node
 
-const ENGLISH_FONT: FontFile = preload("res://assets/fonts/press_start_2p/PressStart2P-Regular.ttf")
-const LATIN_FONT: FontFile = preload("res://assets/fonts/fusion_pixel_font/fusion-pixel-12px-proportional-latin.otf")
-const CHINESE_FONT: FontFile = preload("res://assets/fonts/fusion_pixel_font/fusion-pixel-12px-proportional-zh_hans.otf")
+const ENGLISH_FONT: FontFile = preload("res://assets/fonts/PressStart2P-Regular.ttf")
+const LATIN_FONT: FontFile = preload("res://assets/fonts/fusion-pixel-12px-proportional-latin.otf")
+const CHINESE_FONT: FontFile = preload("res://assets/fonts/fusion-pixel-12px-proportional-zh_hans.otf")
 
-const SFX_RETRO_NOTIFICATION: AudioStream = preload("res://assets/music/celebration/mixkit_retro_game_notification_212.mp3")
-const SFX_UNLOCK_NOTIFICATION: AudioStream = preload("res://assets/music/celebration/mixkit_unlock_game_notification_253.mp3")
-const SFX_QUICK_WIN: AudioStream = preload("res://assets/music/celebration/mixkit_quick_win_video_game_notification_269.mp3")
-const SFX_ARCADE_COIN: AudioStream = preload("res://assets/music/celebration/mixkit_arcade_game_jump_coin_216.mp3")
-const SFX_ARCADE_BONUS: AudioStream = preload("res://assets/music/celebration/mixkit_arcade_bonus_alert_767.mp3")
-const SFX_QUICK_POSITIVE: AudioStream = preload("res://assets/music/celebration/mixkit_quick_positive_video_game_notification_interface_265.mp3")
-const SFX_ARCADE_WIN: AudioStream = preload("res://assets/music/celebration/mixkit_arcade_video_game_win_212.wav")
+const SFX_RETRO_NOTIFICATION: AudioStream = preload("res://assets/music/mixkit_retro_game_notification_212.mp3")
+const SFX_UNLOCK_NOTIFICATION: AudioStream = preload("res://assets/music/mixkit_unlock_game_notification_253.mp3")
+const SFX_QUICK_WIN: AudioStream = preload("res://assets/music/mixkit_quick_win_video_game_notification_269.mp3")
+const SFX_ARCADE_COIN: AudioStream = preload("res://assets/music/mixkit_arcade_game_jump_coin_216.mp3")
+const SFX_ARCADE_BONUS: AudioStream = preload("res://assets/music/mixkit_arcade_bonus_alert_767.mp3")
+const SFX_QUICK_POSITIVE: AudioStream = preload("res://assets/music/mixkit_quick_positive_video_game_notification_interface_265.mp3")
+const SFX_ARCADE_WIN: AudioStream = preload("res://assets/music/mixkit_arcade_video_game_win_212.wav")
 
 const CELEBRATION_SOUNDS: Array[AudioStream] = [
 	SFX_RETRO_NOTIFICATION,
