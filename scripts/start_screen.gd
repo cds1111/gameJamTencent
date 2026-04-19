@@ -19,6 +19,7 @@ var option_button_style: StyleBoxFlat = StyleBoxFlat.new()
 var option_button_popup_style: StyleBoxFlat = StyleBoxFlat.new()
 var is_initializing_settings: bool = false
 var _is_entering_level: bool = false
+var _dynamic_level_buttons: Array[Button] = []
 
 @onready var background_a: TextureRect = $BackgroundA
 @onready var background_b: TextureRect = $BackgroundB
@@ -30,6 +31,11 @@ var _is_entering_level: bool = false
 @onready var option_button: Button = $MenuPanel/MenuMargin/MenuVBox/OptionButton
 @onready var quit_button: Button = $MenuPanel/MenuMargin/MenuVBox/QuitButton
 @onready var hint: Label = $Hint
+@onready var level_select_button: Button = $LevelSelectButton
+@onready var level_select_panel: PanelContainer = $LevelSelectPanel
+@onready var level_select_vbox: VBoxContainer = $LevelSelectPanel/LevelSelectMargin/LevelSelectVBox
+@onready var level_select_title: Label = $LevelSelectPanel/LevelSelectMargin/LevelSelectVBox/LevelSelectTitle
+@onready var level_select_close_button: Button = $LevelSelectPanel/LevelSelectMargin/LevelSelectVBox/LevelSelectCloseButton
 @onready var settings_panel: PanelContainer = $SettingsPanel
 @onready var music_slider: HSlider = $SettingsPanel/SettingsMargin/SettingsScroll/SettingsVBox/MusicRow/MusicSlider
 @onready var sfx_slider: HSlider = $SettingsPanel/SettingsMargin/SettingsScroll/SettingsVBox/SfxRow/SfxSlider
@@ -56,9 +62,12 @@ func _ready() -> void:
 	_configure_styles()
 	_setup_audio()
 	_setup_settings_ui()
+	_rebuild_level_select_buttons()
 	_wire_menu_button(start_button, "_on_start_pressed")
 	_wire_menu_button(option_button, "_on_option_pressed")
 	_wire_menu_button(quit_button, "_on_quit_pressed")
+	_wire_menu_button(level_select_button, "_on_level_select_pressed")
+	_wire_menu_button(level_select_close_button, "_on_level_select_close_pressed")
 	_wire_menu_button(test_scene_button, "_on_test_scene_pressed")
 	_wire_menu_button(back_button, "_on_back_pressed")
 	queue_redraw()
@@ -82,8 +91,10 @@ func _draw() -> void:
 
 
 func _apply_pixel_font() -> void:
-	for control in [title, subtitle, prompt, hint, start_button, option_button, quit_button, settings_title, settings_hint, music_label, sfx_label, window_label, transition_label, test_scene_button, back_button]:
+	for control in [title, subtitle, prompt, hint, level_select_button, level_select_title, level_select_close_button, start_button, option_button, quit_button, settings_title, settings_hint, music_label, sfx_label, window_label, transition_label, test_scene_button, back_button]:
 		_apply_font_by_text(control, control.text)
+	for level_button in _dynamic_level_buttons:
+		_apply_font_by_text(level_button, level_button.text)
 
 	title.add_theme_font_size_override("font_size", 30)
 	subtitle.add_theme_font_size_override("font_size", 12)
@@ -144,7 +155,9 @@ func _configure_styles() -> void:
 	pressed_button_style.shadow_size = 0
 	pressed_button_style.shadow_offset = Vector2.ZERO
 
-	for button in [start_button, option_button, quit_button, test_scene_button, back_button]:
+	level_select_panel.add_theme_stylebox_override("panel", default_panel_style)
+
+	for button in [level_select_button, level_select_close_button, start_button, option_button, quit_button, test_scene_button, back_button]:
 		button.focus_mode = Control.FOCUS_NONE
 		button.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 		button.add_theme_font_size_override("font_size", 18)
@@ -158,6 +171,9 @@ func _configure_styles() -> void:
 		button.add_theme_stylebox_override("hover", hover_button_style)
 		button.add_theme_stylebox_override("pressed", pressed_button_style)
 		button.add_theme_stylebox_override("focus", hover_button_style)
+
+	for level_button in _dynamic_level_buttons:
+		_style_menu_button(level_button)
 
 	option_button_style.bg_color = Color(0.94, 0.79, 0.53, 1.0)
 	option_button_style.border_color = Color(0.35, 0.18, 0.07, 1.0)
@@ -204,6 +220,109 @@ func _wire_menu_button(button: Button, pressed_method: String) -> void:
 		_play_hover_sfx()
 	)
 	button.pressed.connect(Callable(self , pressed_method))
+
+
+func _style_menu_button(button: Button) -> void:
+	button.focus_mode = Control.FOCUS_NONE
+	button.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
+	button.add_theme_font_size_override("font_size", 18)
+	button.add_theme_color_override("font_color", Color(0.2, 0.1, 0.04, 1.0))
+	button.add_theme_color_override("font_hover_color", Color(0.2, 0.1, 0.04, 1.0))
+	button.add_theme_color_override("font_pressed_color", Color(0.16, 0.08, 0.03, 1.0))
+	button.add_theme_constant_override("h_separation", 0)
+	button.add_theme_constant_override("outline_size", 1)
+	button.add_theme_color_override("font_outline_color", Color(1, 0.95, 0.8, 0.35))
+	button.add_theme_stylebox_override("normal", default_button_style)
+	button.add_theme_stylebox_override("hover", hover_button_style)
+	button.add_theme_stylebox_override("pressed", pressed_button_style)
+	button.add_theme_stylebox_override("focus", hover_button_style)
+
+
+func _wire_dynamic_level_button(button: Button, level_id: int) -> void:
+	button.mouse_entered.connect(func() -> void:
+		_play_hover_sfx()
+	)
+	button.focus_entered.connect(func() -> void:
+		_play_hover_sfx()
+	)
+	button.pressed.connect(func() -> void:
+		_play_click_sfx()
+		_enter_level_by_id(level_id)
+	)
+
+
+func _rebuild_level_select_buttons() -> void:
+	for button in _dynamic_level_buttons:
+		if is_instance_valid(button):
+			button.queue_free()
+	_dynamic_level_buttons.clear()
+
+	var level_ids := _fetch_sorted_level_ids()
+	for level_id in level_ids:
+		var level_button := Button.new()
+		level_button.name = "Level%02dButton" % level_id
+		level_button.custom_minimum_size = Vector2(0, 44)
+		level_button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		level_button.text = "LEVEL %02d" % level_id
+		level_select_vbox.add_child(level_button)
+		level_select_vbox.move_child(level_button, level_select_close_button.get_index())
+		_dynamic_level_buttons.append(level_button)
+		_style_menu_button(level_button)
+		_apply_font_by_text(level_button, level_button.text)
+		_wire_dynamic_level_button(level_button, level_id)
+
+
+func _fetch_sorted_level_ids() -> Array[int]:
+	var transition_manager := _get_transition_manager()
+	if transition_manager != null:
+		var map_variant: Variant = transition_manager.get("LEVEL_SCENE_MAP")
+		if typeof(map_variant) == TYPE_DICTIONARY:
+			var map: Dictionary = map_variant
+			if map.is_empty():
+				return _fallback_scan_level_ids()
+			var ids: Array[int] = []
+			for key in map.keys():
+				ids.append(int(key))
+			ids.sort()
+			return ids
+
+	return _fallback_scan_level_ids()
+
+
+func _fallback_scan_level_ids() -> Array[int]:
+	var ids: Array[int] = []
+	var dir := DirAccess.open("res://scenes/levels")
+	if dir == null:
+		return [1]
+
+	dir.list_dir_begin()
+	while true:
+		var file_name := dir.get_next()
+		if file_name.is_empty():
+			break
+		if dir.current_is_dir():
+			continue
+		if not file_name.begins_with("Level_") or not file_name.ends_with(".tscn"):
+			continue
+		var level_id := _extract_level_id(file_name)
+		if level_id > 0 and not ids.has(level_id):
+			ids.append(level_id)
+	dir.list_dir_end()
+
+	if ids.is_empty():
+		ids.append(1)
+	ids.sort()
+	return ids
+
+
+func _extract_level_id(file_name: String) -> int:
+	var regex := RegEx.new()
+	if regex.compile("^Level_(\\d+)") != OK:
+		return -1
+	var result := regex.search(file_name)
+	if result == null:
+		return -1
+	return int(result.get_string(1))
 
 
 func _setup_audio() -> void:
@@ -345,14 +464,23 @@ func _play_click_sfx() -> void:
 
 func _show_main_menu() -> void:
 	panel.visible = true
+	level_select_panel.visible = false
 	settings_panel.visible = false
 	_set_hint_text("tips: There're no tips!")
 
 
 func _show_settings() -> void:
 	panel.visible = false
+	level_select_panel.visible = false
 	settings_panel.visible = true
 	_set_hint_text("Tune the menu vibe here.")
+
+
+func _show_level_select() -> void:
+	panel.visible = false
+	settings_panel.visible = false
+	level_select_panel.visible = true
+	_set_hint_text("Choose a level to jump in.")
 
 
 func _on_music_volume_changed(value: float) -> void:
@@ -416,6 +544,16 @@ func _on_option_pressed() -> void:
 	_show_settings()
 
 
+func _on_level_select_pressed() -> void:
+	_play_click_sfx()
+	_show_level_select()
+
+
+func _on_level_select_close_pressed() -> void:
+	_play_click_sfx()
+	_show_main_menu()
+
+
 func _on_back_pressed() -> void:
 	_play_click_sfx()
 	_show_main_menu()
@@ -456,3 +594,17 @@ func _enter_scene(scene_path: String, hint_text: String) -> void:
 		transition_manager.change_scene_to_file(scene_path)
 	else:
 		get_tree().change_scene_to_file(scene_path)
+
+
+func _enter_level_by_id(level_id: int) -> void:
+	if _is_entering_level:
+		return
+	_is_entering_level = true
+	_set_hint_text("Entering level %02d..." % level_id)
+	await get_tree().create_timer(0.12).timeout
+	var transition_manager = _get_transition_manager()
+	if transition_manager != null and transition_manager.has_method("change_to_level"):
+		transition_manager.change_to_level(level_id)
+	else:
+		# 回退策略：至少保证 LEVEL 01 可进入
+		get_tree().change_scene_to_file(FIRST_LEVEL_SCENE)
