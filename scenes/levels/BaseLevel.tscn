@@ -883,7 +883,7 @@ position = Vector2(-1174, -320)
 [node name="Doors" type="Node2D" parent="Entities" unique_id=931579127]
 
 [node name="LevelDoor" parent="Entities/Doors" unique_id=1984459010 instance=ExtResource("6_leveldoor")]
-position = Vector2(-949, -288)
+position = Vector2(-941, -288)
 
 [node name="Goal" type="Area2D" parent="Entities" unique_id=460067954]
 position = Vector2(-919, -297)

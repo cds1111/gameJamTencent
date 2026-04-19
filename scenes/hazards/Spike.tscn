@@ -13,4 +13,3 @@ script = ExtResource("1_8g5xq")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=948810092]
 position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_spike")
-disabled = true
