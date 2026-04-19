@@ -10,6 +10,9 @@ region = Rect2(6.9391212, 5.4193172, 10.178341, 18.943026)
 
 [node name="Level_08_PhantomBlink" unique_id=1993017732 instance=ExtResource("1_base")]
 
+[node name="space" parent="Environment" parent_id_path=PackedInt32Array(1237470430) index="2" unique_id=1204432495]
+modulate = Color(1, 1, 1, 0.3529412)
+
 [node name="PhantomGhost" type="Node2D" parent="Entities" parent_id_path=PackedInt32Array(70306312) index="3" unique_id=1347800521]
 z_index = 200
 z_as_relative = false
