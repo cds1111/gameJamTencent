@@ -148,304 +148,312 @@ rotation = 1.5707964
 position = Vector2(-1403, -329)
 rotation = 1.5707964
 
-[node name="Spike61" parent="SpikesTrue" index="13" unique_id=38683994 instance=ExtResource("2_ayr50")]
+[node name="Spike95" parent="SpikesTrue" index="13" unique_id=755787005 instance=ExtResource("2_ayr50")]
+position = Vector2(-1403, -359)
+rotation = 1.5707964
+
+[node name="Spike61" parent="SpikesTrue" index="14" unique_id=38683994 instance=ExtResource("2_ayr50")]
 position = Vector2(-1307, -295)
 rotation = 1.5707964
 
-[node name="Spike55" parent="SpikesTrue" index="14" unique_id=1853110629 instance=ExtResource("2_ayr50")]
+[node name="Spike55" parent="SpikesTrue" index="15" unique_id=1853110629 instance=ExtResource("2_ayr50")]
 position = Vector2(-1227, -263)
 rotation = 1.5707964
 
-[node name="Spike25" parent="SpikesTrue" index="15" unique_id=804038692 instance=ExtResource("2_ayr50")]
+[node name="Spike25" parent="SpikesTrue" index="16" unique_id=804038692 instance=ExtResource("2_ayr50")]
 position = Vector2(-1189, -296)
 rotation = 4.712389
 
-[node name="Spike53" parent="SpikesTrue" index="16" unique_id=219737690 instance=ExtResource("2_ayr50")]
+[node name="Spike53" parent="SpikesTrue" index="17" unique_id=219737690 instance=ExtResource("2_ayr50")]
 position = Vector2(-1205, -247)
 rotation = 4.712389
 
-[node name="Spike58" parent="SpikesTrue" index="17" unique_id=1914681886 instance=ExtResource("2_ayr50")]
+[node name="Spike58" parent="SpikesTrue" index="18" unique_id=1914681886 instance=ExtResource("2_ayr50")]
 position = Vector2(-1284, -264)
 rotation = 4.712389
 
-[node name="Spike62" parent="SpikesTrue" index="18" unique_id=1665965980 instance=ExtResource("2_ayr50")]
+[node name="Spike62" parent="SpikesTrue" index="19" unique_id=1665965980 instance=ExtResource("2_ayr50")]
 position = Vector2(-1381, -295)
 rotation = 4.712389
 
-[node name="Spike63" parent="SpikesTrue" index="19" unique_id=1508540648 instance=ExtResource("2_ayr50")]
+[node name="Spike94" parent="SpikesTrue" index="20" unique_id=1847066680 instance=ExtResource("2_ayr50")]
+position = Vector2(-1382, -280)
+rotation = 4.712389
+
+[node name="Spike63" parent="SpikesTrue" index="21" unique_id=1508540648 instance=ExtResource("2_ayr50")]
 position = Vector2(-1381, -264)
 rotation = 4.712389
 
-[node name="Spike52" parent="SpikesTrue" index="20" unique_id=1322624118 instance=ExtResource("2_ayr50")]
+[node name="Spike52" parent="SpikesTrue" index="22" unique_id=1322624118 instance=ExtResource("2_ayr50")]
 position = Vector2(-916, -264)
 rotation = 4.712389
 
-[node name="Spike26" parent="SpikesTrue" index="21" unique_id=851104679 instance=ExtResource("2_ayr50")]
+[node name="Spike26" parent="SpikesTrue" index="23" unique_id=851104679 instance=ExtResource("2_ayr50")]
 position = Vector2(-1192, -276)
 
-[node name="Spike54" parent="SpikesTrue" index="22" unique_id=1841064722 instance=ExtResource("2_ayr50")]
+[node name="Spike54" parent="SpikesTrue" index="24" unique_id=1841064722 instance=ExtResource("2_ayr50")]
 position = Vector2(-1224, -245)
 
-[node name="Spike59" parent="SpikesTrue" index="23" unique_id=1341609312 instance=ExtResource("2_ayr50")]
+[node name="Spike59" parent="SpikesTrue" index="25" unique_id=1341609312 instance=ExtResource("2_ayr50")]
 position = Vector2(-1303, -245)
 
-[node name="Spike64" parent="SpikesTrue" index="24" unique_id=1980329965 instance=ExtResource("2_ayr50")]
+[node name="Spike64" parent="SpikesTrue" index="26" unique_id=1980329965 instance=ExtResource("2_ayr50")]
 position = Vector2(-1399, -245)
 
-[node name="Spike27" parent="SpikesTrue" index="25" unique_id=111621296 instance=ExtResource("2_ayr50")]
+[node name="Spike27" parent="SpikesTrue" index="27" unique_id=111621296 instance=ExtResource("2_ayr50")]
 position = Vector2(-1368, -325)
 
-[node name="Spike28" parent="SpikesTrue" index="26" unique_id=1529801759 instance=ExtResource("2_ayr50")]
+[node name="Spike28" parent="SpikesTrue" index="28" unique_id=1529801759 instance=ExtResource("2_ayr50")]
 position = Vector2(-1336, -324)
 
-[node name="Spike5" parent="SpikesTrue" index="27" unique_id=334778377 instance=ExtResource("2_ayr50")]
+[node name="Spike5" parent="SpikesTrue" index="29" unique_id=334778377 instance=ExtResource("2_ayr50")]
 position = Vector2(-920, -333)
 
-[node name="Spike6" parent="SpikesTrue" index="28" unique_id=893611269 instance=ExtResource("2_ayr50")]
+[node name="Spike6" parent="SpikesTrue" index="30" unique_id=893611269 instance=ExtResource("2_ayr50")]
 position = Vector2(-1064, -280)
 
-[node name="Spike46" parent="SpikesTrue" index="29" unique_id=1185644592 instance=ExtResource("2_ayr50")]
+[node name="Spike46" parent="SpikesTrue" index="31" unique_id=1185644592 instance=ExtResource("2_ayr50")]
 position = Vector2(-1080, -245)
 
-[node name="Spike47" parent="SpikesTrue" index="30" unique_id=1992511162 instance=ExtResource("2_ayr50")]
+[node name="Spike47" parent="SpikesTrue" index="32" unique_id=1992511162 instance=ExtResource("2_ayr50")]
 position = Vector2(-1048, -245)
 
-[node name="Spike48" parent="SpikesTrue" index="31" unique_id=1271839766 instance=ExtResource("2_ayr50")]
+[node name="Spike48" parent="SpikesTrue" index="33" unique_id=1271839766 instance=ExtResource("2_ayr50")]
 position = Vector2(-1016, -245)
 
-[node name="Spike49" parent="SpikesTrue" index="32" unique_id=64155423 instance=ExtResource("2_ayr50")]
+[node name="Spike49" parent="SpikesTrue" index="34" unique_id=64155423 instance=ExtResource("2_ayr50")]
 position = Vector2(-984, -245)
 
-[node name="Spike50" parent="SpikesTrue" index="33" unique_id=1648043718 instance=ExtResource("2_ayr50")]
+[node name="Spike50" parent="SpikesTrue" index="35" unique_id=1648043718 instance=ExtResource("2_ayr50")]
 position = Vector2(-953, -245)
 
-[node name="Spike51" parent="SpikesTrue" index="34" unique_id=670991381 instance=ExtResource("2_ayr50")]
+[node name="Spike51" parent="SpikesTrue" index="36" unique_id=670991381 instance=ExtResource("2_ayr50")]
 position = Vector2(-920, -244)
 
-[node name="Spike7" parent="SpikesTrue" index="35" unique_id=715252253 instance=ExtResource("2_ayr50")]
+[node name="Spike7" parent="SpikesTrue" index="37" unique_id=715252253 instance=ExtResource("2_ayr50")]
 position = Vector2(-1032, -324)
 
-[node name="Spike8" parent="SpikesTrue" index="36" unique_id=1150204699 instance=ExtResource("2_ayr50")]
+[node name="Spike8" parent="SpikesTrue" index="38" unique_id=1150204699 instance=ExtResource("2_ayr50")]
 position = Vector2(-1000, -281)
 
-[node name="Spike9" parent="SpikesTrue" index="37" unique_id=258486243 instance=ExtResource("2_ayr50")]
+[node name="Spike9" parent="SpikesTrue" index="39" unique_id=258486243 instance=ExtResource("2_ayr50")]
 position = Vector2(-1289, -404)
 
-[node name="Spike10" parent="SpikesTrue" index="38" unique_id=88666796 instance=ExtResource("2_ayr50")]
+[node name="Spike10" parent="SpikesTrue" index="40" unique_id=88666796 instance=ExtResource("2_ayr50")]
 position = Vector2(-1257, -404)
 
-[node name="Spike11" parent="SpikesTrue" index="39" unique_id=1054474589 instance=ExtResource("2_ayr50")]
+[node name="Spike11" parent="SpikesTrue" index="41" unique_id=1054474589 instance=ExtResource("2_ayr50")]
 position = Vector2(-1228, -392)
 rotation = 1.5707964
 
-[node name="Spike12" parent="SpikesTrue" index="40" unique_id=535089544 instance=ExtResource("2_ayr50")]
+[node name="Spike12" parent="SpikesTrue" index="42" unique_id=535089544 instance=ExtResource("2_ayr50")]
 position = Vector2(-1256, -379)
 rotation = 3.1415927
 
-[node name="Spike13" parent="SpikesTrue" index="41" unique_id=1871534448 instance=ExtResource("2_ayr50")]
+[node name="Spike13" parent="SpikesTrue" index="43" unique_id=1871534448 instance=ExtResource("2_ayr50")]
 position = Vector2(-1289, -379)
 rotation = 3.1415927
 
-[node name="Spike14" parent="SpikesTrue" index="42" unique_id=696055692 instance=ExtResource("2_ayr50")]
+[node name="Spike14" parent="SpikesTrue" index="44" unique_id=696055692 instance=ExtResource("2_ayr50")]
 position = Vector2(-1385, -363)
 rotation = 3.1415927
 
-[node name="Spike69" parent="SpikesTrue" index="43" unique_id=612109136 instance=ExtResource("2_ayr50")]
+[node name="Spike69" parent="SpikesTrue" index="45" unique_id=612109136 instance=ExtResource("2_ayr50")]
 position = Vector2(-1384, -427)
 rotation = 3.1415927
 
-[node name="Spike70" parent="SpikesTrue" index="44" unique_id=2074995069 instance=ExtResource("2_ayr50")]
+[node name="Spike70" parent="SpikesTrue" index="46" unique_id=2074995069 instance=ExtResource("2_ayr50")]
 position = Vector2(-1353, -427)
 rotation = 3.1415927
 
-[node name="Spike71" parent="SpikesTrue" index="45" unique_id=1599975441 instance=ExtResource("2_ayr50")]
+[node name="Spike71" parent="SpikesTrue" index="47" unique_id=1599975441 instance=ExtResource("2_ayr50")]
 position = Vector2(-1272, -507)
 rotation = 3.1415927
 
-[node name="Spike72" parent="SpikesTrue" index="46" unique_id=1360151787 instance=ExtResource("2_ayr50")]
+[node name="Spike72" parent="SpikesTrue" index="48" unique_id=1360151787 instance=ExtResource("2_ayr50")]
 position = Vector2(-1303, -507)
 rotation = 3.1415927
 
-[node name="Spike73" parent="SpikesTrue" index="47" unique_id=1372930716 instance=ExtResource("2_ayr50")]
+[node name="Spike73" parent="SpikesTrue" index="49" unique_id=1372930716 instance=ExtResource("2_ayr50")]
 position = Vector2(-1336, -507)
 rotation = 3.1415927
 
-[node name="Spike74" parent="SpikesTrue" index="48" unique_id=190995937 instance=ExtResource("2_ayr50")]
+[node name="Spike74" parent="SpikesTrue" index="50" unique_id=190995937 instance=ExtResource("2_ayr50")]
 position = Vector2(-1368, -507)
 rotation = 3.1415927
 
-[node name="Spike75" parent="SpikesTrue" index="49" unique_id=953757470 instance=ExtResource("2_ayr50")]
+[node name="Spike75" parent="SpikesTrue" index="51" unique_id=953757470 instance=ExtResource("2_ayr50")]
 position = Vector2(-1400, -507)
 rotation = 3.1415927
 
-[node name="Spike15" parent="SpikesTrue" index="50" unique_id=1416140243 instance=ExtResource("2_ayr50")]
+[node name="Spike15" parent="SpikesTrue" index="52" unique_id=1416140243 instance=ExtResource("2_ayr50")]
 position = Vector2(-1403, -392)
 rotation = 1.5707964
 
-[node name="Spike68" parent="SpikesTrue" index="51" unique_id=465944659 instance=ExtResource("2_ayr50")]
+[node name="Spike68" parent="SpikesTrue" index="53" unique_id=465944659 instance=ExtResource("2_ayr50")]
 position = Vector2(-1404, -424)
 rotation = 1.5707964
 
-[node name="Spike16" parent="SpikesTrue" index="52" unique_id=1480263592 instance=ExtResource("2_ayr50")]
+[node name="Spike16" parent="SpikesTrue" index="54" unique_id=1480263592 instance=ExtResource("2_ayr50")]
 position = Vector2(-1385, -389)
 
-[node name="Spike17" parent="SpikesTrue" index="53" unique_id=924541123 instance=ExtResource("2_ayr50")]
+[node name="Spike17" parent="SpikesTrue" index="55" unique_id=924541123 instance=ExtResource("2_ayr50")]
 position = Vector2(-1253, -504)
 rotation = 4.712389
 
-[node name="Spike29" parent="SpikesTrue" index="54" unique_id=1536241424 instance=ExtResource("2_ayr50")]
+[node name="Spike29" parent="SpikesTrue" index="56" unique_id=1536241424 instance=ExtResource("2_ayr50")]
 position = Vector2(-1189, -503)
 rotation = 4.712389
 
-[node name="Spike36" parent="SpikesTrue" index="55" unique_id=199727217 instance=ExtResource("2_ayr50")]
+[node name="Spike36" parent="SpikesTrue" index="57" unique_id=199727217 instance=ExtResource("2_ayr50")]
 position = Vector2(-1125, -504)
 rotation = 4.712389
 
-[node name="Spike81" parent="SpikesTrue" index="56" unique_id=1659674264 instance=ExtResource("2_ayr50")]
+[node name="Spike81" parent="SpikesTrue" index="58" unique_id=1659674264 instance=ExtResource("2_ayr50")]
 position = Vector2(-1061, -504)
 rotation = 4.712389
 
-[node name="Spike37" parent="SpikesTrue" index="57" unique_id=179670321 instance=ExtResource("2_ayr50")]
+[node name="Spike37" parent="SpikesTrue" index="59" unique_id=179670321 instance=ExtResource("2_ayr50")]
 position = Vector2(-1125, -473)
 rotation = 4.712389
 
-[node name="Spike38" parent="SpikesTrue" index="58" unique_id=1665116510 instance=ExtResource("2_ayr50")]
+[node name="Spike38" parent="SpikesTrue" index="60" unique_id=1665116510 instance=ExtResource("2_ayr50")]
 position = Vector2(-1125, -441)
 rotation = 4.712389
 
-[node name="Spike83" parent="SpikesTrue" index="59" unique_id=897944544 instance=ExtResource("2_ayr50")]
+[node name="Spike83" parent="SpikesTrue" index="61" unique_id=897944544 instance=ExtResource("2_ayr50")]
 position = Vector2(-1029, -472)
 rotation = 4.712389
 
-[node name="Spike39" parent="SpikesTrue" index="60" unique_id=943502066 instance=ExtResource("2_ayr50")]
+[node name="Spike39" parent="SpikesTrue" index="62" unique_id=943502066 instance=ExtResource("2_ayr50")]
 position = Vector2(-1125, -408)
 rotation = 4.712389
 
-[node name="Spike89" parent="SpikesTrue" index="61" unique_id=573034811 instance=ExtResource("2_ayr50")]
+[node name="Spike89" parent="SpikesTrue" index="63" unique_id=573034811 instance=ExtResource("2_ayr50")]
 position = Vector2(-917, -392)
 rotation = 4.712389
 
-[node name="Spike90" parent="SpikesTrue" index="62" unique_id=1933121618 instance=ExtResource("2_ayr50")]
+[node name="Spike90" parent="SpikesTrue" index="64" unique_id=1933121618 instance=ExtResource("2_ayr50")]
 position = Vector2(-917, -361)
 rotation = 4.712389
 
-[node name="Spike84" parent="SpikesTrue" index="63" unique_id=1468338184 instance=ExtResource("2_ayr50")]
+[node name="Spike84" parent="SpikesTrue" index="65" unique_id=1468338184 instance=ExtResource("2_ayr50")]
 position = Vector2(-1014, -456)
 rotation = 4.712389
 
-[node name="Spike30" parent="SpikesTrue" index="64" unique_id=1087948487 instance=ExtResource("2_ayr50")]
+[node name="Spike30" parent="SpikesTrue" index="66" unique_id=1087948487 instance=ExtResource("2_ayr50")]
 position = Vector2(-1188, -473)
 rotation = 4.712389
 
-[node name="Spike31" parent="SpikesTrue" index="65" unique_id=242814826 instance=ExtResource("2_ayr50")]
+[node name="Spike31" parent="SpikesTrue" index="67" unique_id=242814826 instance=ExtResource("2_ayr50")]
 position = Vector2(-1189, -439)
 rotation = 4.712389
 
-[node name="Spike18" parent="SpikesTrue" index="66" unique_id=714317092 instance=ExtResource("2_ayr50")]
+[node name="Spike18" parent="SpikesTrue" index="68" unique_id=714317092 instance=ExtResource("2_ayr50")]
 position = Vector2(-1253, -474)
 rotation = 4.712389
 
-[node name="Spike19" parent="SpikesTrue" index="67" unique_id=740772252 instance=ExtResource("2_ayr50")]
+[node name="Spike19" parent="SpikesTrue" index="69" unique_id=740772252 instance=ExtResource("2_ayr50")]
 position = Vector2(-1240, -443)
 rotation = 3.1415927
 
-[node name="Spike78" parent="SpikesTrue" index="68" unique_id=1686874986 instance=ExtResource("2_ayr50")]
+[node name="Spike78" parent="SpikesTrue" index="70" unique_id=1686874986 instance=ExtResource("2_ayr50")]
 position = Vector2(-1208, -506)
 rotation = 3.1415927
 
-[node name="Spike79" parent="SpikesTrue" index="69" unique_id=785894844 instance=ExtResource("2_ayr50")]
+[node name="Spike79" parent="SpikesTrue" index="71" unique_id=785894844 instance=ExtResource("2_ayr50")]
 position = Vector2(-1144, -506)
 rotation = 3.1415927
 
-[node name="Spike80" parent="SpikesTrue" index="70" unique_id=1868791689 instance=ExtResource("2_ayr50")]
+[node name="Spike80" parent="SpikesTrue" index="72" unique_id=1868791689 instance=ExtResource("2_ayr50")]
 position = Vector2(-1080, -506)
 rotation = 3.1415927
 
-[node name="Spike32" parent="SpikesTrue" index="71" unique_id=1910909786 instance=ExtResource("2_ayr50")]
+[node name="Spike32" parent="SpikesTrue" index="73" unique_id=1910909786 instance=ExtResource("2_ayr50")]
 position = Vector2(-1176, -411)
 rotation = 3.1415927
 
-[node name="Spike40" parent="SpikesTrue" index="72" unique_id=242667575 instance=ExtResource("2_ayr50")]
+[node name="Spike40" parent="SpikesTrue" index="74" unique_id=242667575 instance=ExtResource("2_ayr50")]
 position = Vector2(-1112, -379)
 rotation = 3.1415927
 
-[node name="Spike85" parent="SpikesTrue" index="73" unique_id=87823561 instance=ExtResource("2_ayr50")]
+[node name="Spike85" parent="SpikesTrue" index="75" unique_id=87823561 instance=ExtResource("2_ayr50")]
 position = Vector2(-983, -442)
 rotation = 3.1415927
 
-[node name="Spike86" parent="SpikesTrue" index="74" unique_id=494454475 instance=ExtResource("2_ayr50")]
+[node name="Spike86" parent="SpikesTrue" index="76" unique_id=494454475 instance=ExtResource("2_ayr50")]
 position = Vector2(-968, -427)
 rotation = 3.1415927
 
-[node name="Spike87" parent="SpikesTrue" index="75" unique_id=1649024225 instance=ExtResource("2_ayr50")]
+[node name="Spike87" parent="SpikesTrue" index="77" unique_id=1649024225 instance=ExtResource("2_ayr50")]
 position = Vector2(-952, -411)
 rotation = 3.1415927
 
-[node name="Spike91" parent="SpikesTrue" index="76" unique_id=1362432943 instance=ExtResource("2_ayr50")]
+[node name="Spike91" parent="SpikesTrue" index="78" unique_id=1362432943 instance=ExtResource("2_ayr50")]
 position = Vector2(-984, -379)
 rotation = 3.1415927
 
-[node name="Spike92" parent="SpikesTrue" index="77" unique_id=1850016147 instance=ExtResource("2_ayr50")]
+[node name="Spike92" parent="SpikesTrue" index="79" unique_id=1850016147 instance=ExtResource("2_ayr50")]
 position = Vector2(-1016, -378)
 rotation = 3.1415927
 
-[node name="Spike93" parent="SpikesTrue" index="78" unique_id=947616425 instance=ExtResource("2_ayr50")]
+[node name="Spike93" parent="SpikesTrue" index="80" unique_id=947616425 instance=ExtResource("2_ayr50")]
 position = Vector2(-1048, -379)
 rotation = 3.1415927
 
-[node name="Spike88" parent="SpikesTrue" index="79" unique_id=733039222 instance=ExtResource("2_ayr50")]
+[node name="Spike88" parent="SpikesTrue" index="81" unique_id=733039222 instance=ExtResource("2_ayr50")]
 position = Vector2(-919, -411)
 rotation = 3.1415927
 
-[node name="Spike82" parent="SpikesTrue" index="80" unique_id=286819904 instance=ExtResource("2_ayr50")]
+[node name="Spike82" parent="SpikesTrue" index="82" unique_id=286819904 instance=ExtResource("2_ayr50")]
 position = Vector2(-1048, -474)
 rotation = 3.1415927
 
-[node name="Spike45" parent="SpikesTrue" index="81" unique_id=2079249259 instance=ExtResource("2_ayr50")]
+[node name="Spike45" parent="SpikesTrue" index="83" unique_id=2079249259 instance=ExtResource("2_ayr50")]
 position = Vector2(-936, -275)
 rotation = 3.1415927
 
-[node name="Spike20" parent="SpikesTrue" index="82" unique_id=2078156593 instance=ExtResource("2_ayr50")]
+[node name="Spike20" parent="SpikesTrue" index="84" unique_id=2078156593 instance=ExtResource("2_ayr50")]
 position = Vector2(-1212, -456)
 rotation = 1.5707964
 
-[node name="Spike33" parent="SpikesTrue" index="83" unique_id=1343266993 instance=ExtResource("2_ayr50")]
+[node name="Spike33" parent="SpikesTrue" index="85" unique_id=1343266993 instance=ExtResource("2_ayr50")]
 position = Vector2(-1147, -425)
 rotation = 1.5707964
 
-[node name="Spike42" parent="SpikesTrue" index="84" unique_id=1795535148 instance=ExtResource("2_ayr50")]
+[node name="Spike42" parent="SpikesTrue" index="86" unique_id=1795535148 instance=ExtResource("2_ayr50")]
 position = Vector2(-1083, -423)
 rotation = 1.5707964
 
-[node name="Spike43" parent="SpikesTrue" index="85" unique_id=793907709 instance=ExtResource("2_ayr50")]
+[node name="Spike43" parent="SpikesTrue" index="87" unique_id=793907709 instance=ExtResource("2_ayr50")]
 position = Vector2(-1083, -454)
 rotation = 1.5707964
 
-[node name="Spike44" parent="SpikesTrue" index="86" unique_id=1197423179 instance=ExtResource("2_ayr50")]
+[node name="Spike44" parent="SpikesTrue" index="88" unique_id=1197423179 instance=ExtResource("2_ayr50")]
 position = Vector2(-1083, -488)
 rotation = 1.5707964
 
-[node name="Spike41" parent="SpikesTrue" index="87" unique_id=1759034500 instance=ExtResource("2_ayr50")]
+[node name="Spike41" parent="SpikesTrue" index="89" unique_id=1759034500 instance=ExtResource("2_ayr50")]
 position = Vector2(-1083, -393)
 rotation = 1.5707964
 
-[node name="Spike34" parent="SpikesTrue" index="88" unique_id=371801461 instance=ExtResource("2_ayr50")]
+[node name="Spike34" parent="SpikesTrue" index="90" unique_id=371801461 instance=ExtResource("2_ayr50")]
 position = Vector2(-1147, -456)
 rotation = 1.5707964
 
-[node name="Spike35" parent="SpikesTrue" index="89" unique_id=7789292 instance=ExtResource("2_ayr50")]
+[node name="Spike35" parent="SpikesTrue" index="91" unique_id=7789292 instance=ExtResource("2_ayr50")]
 position = Vector2(-1146, -488)
 rotation = 1.5707964
 
-[node name="Spike21" parent="SpikesTrue" index="90" unique_id=651952151 instance=ExtResource("2_ayr50")]
+[node name="Spike21" parent="SpikesTrue" index="92" unique_id=651952151 instance=ExtResource("2_ayr50")]
 position = Vector2(-1211, -489)
 rotation = 1.5707964
 
-[node name="Spike76" parent="SpikesTrue" index="91" unique_id=458565080 instance=ExtResource("2_ayr50")]
+[node name="Spike76" parent="SpikesTrue" index="93" unique_id=458565080 instance=ExtResource("2_ayr50")]
 position = Vector2(-1403, -488)
 rotation = 1.5707964
 
-[node name="Spike77" parent="SpikesTrue" index="92" unique_id=1107856346 instance=ExtResource("2_ayr50")]
+[node name="Spike77" parent="SpikesTrue" index="94" unique_id=1107856346 instance=ExtResource("2_ayr50")]
 position = Vector2(-1403, -456)
 rotation = 1.5707964
 
@@ -460,122 +468,365 @@ position = Vector2(-1208, -245)
 [node name="Spike119" parent="SpikesTrue2" index="2" unique_id=1369134567 instance=ExtResource("2_ayr50")]
 position = Vector2(-1256, -293)
 
-[node name="Spike126" parent="SpikesTrue2" index="3" unique_id=1619881053 instance=ExtResource("2_ayr50")]
+[node name="Spike138" parent="SpikesTrue2" index="3" unique_id=1725934686 instance=ExtResource("2_ayr50")]
+position = Vector2(-1399, -389)
+
+[node name="Spike162" parent="SpikesTrue2" index="4" unique_id=225587437 instance=ExtResource("2_ayr50")]
+position = Vector2(-1272, -404)
+
+[node name="Spike163" parent="SpikesTrue2" index="5" unique_id=1959226510 instance=ExtResource("2_ayr50")]
+position = Vector2(-1241, -405)
+
+[node name="Spike126" parent="SpikesTrue2" index="6" unique_id=1619881053 instance=ExtResource("2_ayr50")]
 position = Vector2(-1319, -324)
 
-[node name="Spike122" parent="SpikesTrue2" index="4" unique_id=554973833 instance=ExtResource("2_ayr50")]
+[node name="Spike127" parent="SpikesTrue2" index="7" unique_id=117010585 instance=ExtResource("2_ayr50")]
+position = Vector2(-1352, -325)
+
+[node name="Spike122" parent="SpikesTrue2" index="8" unique_id=554973833 instance=ExtResource("2_ayr50")]
 position = Vector2(-1288, -245)
 
-[node name="Spike92" parent="SpikesTrue2" index="5" unique_id=111813537 instance=ExtResource("2_ayr50")]
+[node name="Spike130" parent="SpikesTrue2" index="9" unique_id=1495433080 instance=ExtResource("2_ayr50")]
+position = Vector2(-1384, -245)
+
+[node name="Spike92" parent="SpikesTrue2" index="10" unique_id=111813537 instance=ExtResource("2_ayr50")]
 position = Vector2(-1000, -405)
 
-[node name="Spike101" parent="SpikesTrue2" index="6" unique_id=289412436 instance=ExtResource("2_ayr50")]
+[node name="Spike101" parent="SpikesTrue2" index="11" unique_id=289412436 instance=ExtResource("2_ayr50")]
 position = Vector2(-936, -333)
 
-[node name="Spike104" parent="SpikesTrue2" index="7" unique_id=1643810737 instance=ExtResource("2_ayr50")]
+[node name="Spike104" parent="SpikesTrue2" index="12" unique_id=1643810737 instance=ExtResource("2_ayr50")]
 position = Vector2(-936, -245)
 
-[node name="Spike105" parent="SpikesTrue2" index="8" unique_id=1669587336 instance=ExtResource("2_ayr50")]
+[node name="Spike105" parent="SpikesTrue2" index="13" unique_id=1669587336 instance=ExtResource("2_ayr50")]
 position = Vector2(-968, -245)
 
-[node name="Spike106" parent="SpikesTrue2" index="9" unique_id=1855564869 instance=ExtResource("2_ayr50")]
+[node name="Spike106" parent="SpikesTrue2" index="14" unique_id=1855564869 instance=ExtResource("2_ayr50")]
 position = Vector2(-999, -245)
 
-[node name="Spike107" parent="SpikesTrue2" index="10" unique_id=1648951827 instance=ExtResource("2_ayr50")]
+[node name="Spike107" parent="SpikesTrue2" index="15" unique_id=1648951827 instance=ExtResource("2_ayr50")]
 position = Vector2(-1032, -245)
 
-[node name="Spike108" parent="SpikesTrue2" index="11" unique_id=1681496740 instance=ExtResource("2_ayr50")]
+[node name="Spike108" parent="SpikesTrue2" index="16" unique_id=1681496740 instance=ExtResource("2_ayr50")]
 position = Vector2(-1064, -245)
 
-[node name="Spike109" parent="SpikesTrue2" index="12" unique_id=1146619985 instance=ExtResource("2_ayr50")]
+[node name="Spike109" parent="SpikesTrue2" index="17" unique_id=1146619985 instance=ExtResource("2_ayr50")]
 position = Vector2(-1095, -245)
 
-[node name="Spike112" parent="SpikesTrue2" index="13" unique_id=684602709 instance=ExtResource("2_ayr50")]
+[node name="Spike112" parent="SpikesTrue2" index="18" unique_id=684602709 instance=ExtResource("2_ayr50")]
 position = Vector2(-1128, -325)
 
-[node name="Spike113" parent="SpikesTrue2" index="14" unique_id=931648870 instance=ExtResource("2_ayr50")]
+[node name="Spike113" parent="SpikesTrue2" index="19" unique_id=931648870 instance=ExtResource("2_ayr50")]
 position = Vector2(-1159, -324)
 
-[node name="Spike93" parent="SpikesTrue2" index="15" unique_id=1032997326 instance=ExtResource("2_ayr50")]
+[node name="Spike93" parent="SpikesTrue2" index="20" unique_id=1032997326 instance=ExtResource("2_ayr50")]
 position = Vector2(-971, -392)
 rotation = 1.5707964
 
-[node name="Spike123" parent="SpikesTrue2" index="16" unique_id=244222686 instance=ExtResource("2_ayr50")]
+[node name="Spike136" parent="SpikesTrue2" index="21" unique_id=1542895696 instance=ExtResource("2_ayr50")]
+position = Vector2(-971, -392)
+rotation = 1.5707964
+
+[node name="Spike176" parent="SpikesTrue2" index="22" unique_id=1968958867 instance=ExtResource("2_ayr50")]
+position = Vector2(-1083, -408)
+rotation = 1.5707964
+
+[node name="Spike177" parent="SpikesTrue2" index="23" unique_id=1754580092 instance=ExtResource("2_ayr50")]
+position = Vector2(-1083, -439)
+rotation = 1.5707964
+
+[node name="Spike178" parent="SpikesTrue2" index="24" unique_id=2030495017 instance=ExtResource("2_ayr50")]
+position = Vector2(-1083, -471)
+rotation = 1.5707964
+
+[node name="Spike179" parent="SpikesTrue2" index="25" unique_id=1088511702 instance=ExtResource("2_ayr50")]
+position = Vector2(-1083, -504)
+rotation = 1.5707964
+
+[node name="Spike166" parent="SpikesTrue2" index="26" unique_id=1199389968 instance=ExtResource("2_ayr50")]
+position = Vector2(-1146, -440)
+rotation = 1.5707964
+
+[node name="Spike167" parent="SpikesTrue2" index="27" unique_id=1344275843 instance=ExtResource("2_ayr50")]
+position = Vector2(-1146, -472)
+rotation = 1.5707964
+
+[node name="Spike168" parent="SpikesTrue2" index="28" unique_id=2095875326 instance=ExtResource("2_ayr50")]
+position = Vector2(-1146, -502)
+rotation = 1.5707964
+
+[node name="Spike154" parent="SpikesTrue2" index="29" unique_id=603717028 instance=ExtResource("2_ayr50")]
+position = Vector2(-1210, -473)
+rotation = 1.5707964
+
+[node name="Spike155" parent="SpikesTrue2" index="30" unique_id=1660439790 instance=ExtResource("2_ayr50")]
+position = Vector2(-1211, -504)
+rotation = 1.5707964
+
+[node name="Spike143" parent="SpikesTrue2" index="31" unique_id=1090886897 instance=ExtResource("2_ayr50")]
+position = Vector2(-1403, -472)
+rotation = 1.5707964
+
+[node name="Spike144" parent="SpikesTrue2" index="32" unique_id=1540030745 instance=ExtResource("2_ayr50")]
+position = Vector2(-1403, -503)
+rotation = 1.5707964
+
+[node name="Spike139" parent="SpikesTrue2" index="33" unique_id=188001726 instance=ExtResource("2_ayr50")]
+position = Vector2(-1403, -409)
+rotation = 1.5707964
+
+[node name="Spike131" parent="SpikesTrue2" index="34" unique_id=1973344681 instance=ExtResource("2_ayr50")]
+position = Vector2(-1402, -248)
+rotation = 1.5707964
+
+[node name="Spike132" parent="SpikesTrue2" index="35" unique_id=1318580244 instance=ExtResource("2_ayr50")]
+position = Vector2(-1403, -280)
+rotation = 1.5707964
+
+[node name="Spike133" parent="SpikesTrue2" index="36" unique_id=303144628 instance=ExtResource("2_ayr50")]
+position = Vector2(-1403, -312)
+rotation = 1.5707964
+
+[node name="Spike134" parent="SpikesTrue2" index="37" unique_id=749686478 instance=ExtResource("2_ayr50")]
+position = Vector2(-1403, -344)
+rotation = 1.5707964
+
+[node name="Spike135" parent="SpikesTrue2" index="38" unique_id=1230347106 instance=ExtResource("2_ayr50")]
+position = Vector2(-1403, -344)
+rotation = 1.5707964
+
+[node name="Spike123" parent="SpikesTrue2" index="39" unique_id=244222686 instance=ExtResource("2_ayr50")]
 position = Vector2(-1307, -248)
 rotation = 1.5707964
 
-[node name="Spike124" parent="SpikesTrue2" index="17" unique_id=489770003 instance=ExtResource("2_ayr50")]
+[node name="Spike124" parent="SpikesTrue2" index="40" unique_id=489770003 instance=ExtResource("2_ayr50")]
 position = Vector2(-1307, -279)
 rotation = 1.5707964
 
-[node name="Spike125" parent="SpikesTrue2" index="18" unique_id=109995209 instance=ExtResource("2_ayr50")]
+[node name="Spike125" parent="SpikesTrue2" index="41" unique_id=109995209 instance=ExtResource("2_ayr50")]
 position = Vector2(-1307, -312)
 rotation = 1.5707964
 
-[node name="Spike117" parent="SpikesTrue2" index="19" unique_id=1954853859 instance=ExtResource("2_ayr50")]
+[node name="Spike117" parent="SpikesTrue2" index="42" unique_id=1954853859 instance=ExtResource("2_ayr50")]
 position = Vector2(-1226, -248)
 rotation = 1.5707964
 
-[node name="Spike118" parent="SpikesTrue2" index="20" unique_id=1806420046 instance=ExtResource("2_ayr50")]
+[node name="Spike118" parent="SpikesTrue2" index="43" unique_id=1806420046 instance=ExtResource("2_ayr50")]
 position = Vector2(-1227, -280)
 rotation = 1.5707964
 
-[node name="Spike111" parent="SpikesTrue2" index="21" unique_id=1972703481 instance=ExtResource("2_ayr50")]
+[node name="Spike111" parent="SpikesTrue2" index="44" unique_id=1972703481 instance=ExtResource("2_ayr50")]
 position = Vector2(-1099, -312)
 rotation = 1.5707964
 
-[node name="Spike110" parent="SpikesTrue2" index="22" unique_id=353767425 instance=ExtResource("2_ayr50")]
+[node name="Spike110" parent="SpikesTrue2" index="45" unique_id=353767425 instance=ExtResource("2_ayr50")]
 position = Vector2(-1099, -281)
 rotation = 1.5707964
 
-[node name="Spike94" parent="SpikesTrue2" index="23" unique_id=2123804154 instance=ExtResource("2_ayr50")]
+[node name="Spike94" parent="SpikesTrue2" index="46" unique_id=2123804154 instance=ExtResource("2_ayr50")]
 position = Vector2(-1000, -379)
 rotation = 3.1415927
 
-[node name="Spike102" parent="SpikesTrue2" index="24" unique_id=1096441737 instance=ExtResource("2_ayr50")]
+[node name="Spike102" parent="SpikesTrue2" index="47" unique_id=1096441737 instance=ExtResource("2_ayr50")]
 position = Vector2(-920, -275)
 rotation = 3.1415927
 
-[node name="Spike95" parent="SpikesTrue2" index="25" unique_id=290394953 instance=ExtResource("2_ayr50")]
+[node name="Spike95" parent="SpikesTrue2" index="48" unique_id=290394953 instance=ExtResource("2_ayr50")]
 position = Vector2(-1032, -379)
 rotation = 3.1415927
 
-[node name="Spike96" parent="SpikesTrue2" index="26" unique_id=841317768 instance=ExtResource("2_ayr50")]
+[node name="Spike156" parent="SpikesTrue2" index="49" unique_id=1768636433 instance=ExtResource("2_ayr50")]
+position = Vector2(-1193, -506)
+rotation = 3.1415927
+
+[node name="Spike153" parent="SpikesTrue2" index="50" unique_id=2141349497 instance=ExtResource("2_ayr50")]
+position = Vector2(-1225, -443)
+rotation = 3.1415927
+
+[node name="Spike145" parent="SpikesTrue2" index="51" unique_id=285639425 instance=ExtResource("2_ayr50")]
+position = Vector2(-1384, -507)
+rotation = 3.1415927
+
+[node name="Spike146" parent="SpikesTrue2" index="52" unique_id=80752608 instance=ExtResource("2_ayr50")]
+position = Vector2(-1352, -507)
+rotation = 3.1415927
+
+[node name="Spike147" parent="SpikesTrue2" index="53" unique_id=496414095 instance=ExtResource("2_ayr50")]
+position = Vector2(-1320, -507)
+rotation = 3.1415927
+
+[node name="Spike148" parent="SpikesTrue2" index="54" unique_id=1778229410 instance=ExtResource("2_ayr50")]
+position = Vector2(-1288, -507)
+rotation = 3.1415927
+
+[node name="Spike149" parent="SpikesTrue2" index="55" unique_id=1932108622 instance=ExtResource("2_ayr50")]
+position = Vector2(-1256, -506)
+rotation = 3.1415927
+
+[node name="Spike137" parent="SpikesTrue2" index="56" unique_id=74651927 instance=ExtResource("2_ayr50")]
+position = Vector2(-1400, -363)
+rotation = 3.1415927
+
+[node name="Spike140" parent="SpikesTrue2" index="57" unique_id=518731443 instance=ExtResource("2_ayr50")]
+position = Vector2(-1400, -427)
+rotation = 3.1415927
+
+[node name="Spike141" parent="SpikesTrue2" index="58" unique_id=954099197 instance=ExtResource("2_ayr50")]
+position = Vector2(-1369, -427)
+rotation = 3.1415927
+
+[node name="Spike160" parent="SpikesTrue2" index="59" unique_id=1910235108 instance=ExtResource("2_ayr50")]
+position = Vector2(-1272, -379)
+rotation = 3.1415927
+
+[node name="Spike183" parent="SpikesTrue2" index="60" unique_id=1527726428 instance=ExtResource("2_ayr50")]
+position = Vector2(-1033, -474)
+rotation = 3.1415927
+
+[node name="Spike184" parent="SpikesTrue2" index="61" unique_id=1214672171 instance=ExtResource("2_ayr50")]
+position = Vector2(-1016, -459)
+rotation = 3.1415927
+
+[node name="Spike185" parent="SpikesTrue2" index="62" unique_id=366153126 instance=ExtResource("2_ayr50")]
+position = Vector2(-999, -443)
+rotation = 3.1415927
+
+[node name="Spike161" parent="SpikesTrue2" index="63" unique_id=1302884218 instance=ExtResource("2_ayr50")]
+position = Vector2(-1240, -379)
+rotation = 3.1415927
+
+[node name="Spike188" parent="SpikesTrue2" index="64" unique_id=1162236439 instance=ExtResource("2_ayr50")]
+position = Vector2(-936, -411)
+rotation = 3.1415927
+
+[node name="Spike180" parent="SpikesTrue2" index="65" unique_id=498741531 instance=ExtResource("2_ayr50")]
+position = Vector2(-1066, -505)
+rotation = 3.1415927
+
+[node name="Spike175" parent="SpikesTrue2" index="66" unique_id=487014479 instance=ExtResource("2_ayr50")]
+position = Vector2(-1096, -379)
+rotation = 3.1415927
+
+[node name="Spike169" parent="SpikesTrue2" index="67" unique_id=820507119 instance=ExtResource("2_ayr50")]
+position = Vector2(-1130, -506)
+rotation = 3.1415927
+
+[node name="Spike165" parent="SpikesTrue2" index="68" unique_id=288094971 instance=ExtResource("2_ayr50")]
+position = Vector2(-1160, -410)
+rotation = 3.1415927
+
+[node name="Spike142" parent="SpikesTrue2" index="69" unique_id=578269959 instance=ExtResource("2_ayr50")]
+position = Vector2(-1336, -427)
+rotation = 3.1415927
+
+[node name="Spike96" parent="SpikesTrue2" index="70" unique_id=841317768 instance=ExtResource("2_ayr50")]
 position = Vector2(-1061, -392)
 rotation = 4.712389
 
-[node name="Spike120" parent="SpikesTrue2" index="27" unique_id=320674572 instance=ExtResource("2_ayr50")]
+[node name="Spike150" parent="SpikesTrue2" index="71" unique_id=1845875195 instance=ExtResource("2_ayr50")]
+position = Vector2(-1061, -392)
+rotation = 4.712389
+
+[node name="Spike181" parent="SpikesTrue2" index="72" unique_id=287909127 instance=ExtResource("2_ayr50")]
+position = Vector2(-1061, -392)
+rotation = 4.712389
+
+[node name="Spike186" parent="SpikesTrue2" index="73" unique_id=1506837691 instance=ExtResource("2_ayr50")]
+position = Vector2(-980, -440)
+rotation = 4.712389
+
+[node name="Spike187" parent="SpikesTrue2" index="74" unique_id=205186503 instance=ExtResource("2_ayr50")]
+position = Vector2(-965, -424)
+rotation = 4.712389
+
+[node name="Spike182" parent="SpikesTrue2" index="75" unique_id=337576850 instance=ExtResource("2_ayr50")]
+position = Vector2(-1061, -488)
+rotation = 4.712389
+
+[node name="Spike170" parent="SpikesTrue2" index="76" unique_id=951322387 instance=ExtResource("2_ayr50")]
+position = Vector2(-1125, -489)
+rotation = 4.712389
+
+[node name="Spike171" parent="SpikesTrue2" index="77" unique_id=2088889807 instance=ExtResource("2_ayr50")]
+position = Vector2(-1125, -489)
+rotation = 4.712389
+
+[node name="Spike172" parent="SpikesTrue2" index="78" unique_id=1948271068 instance=ExtResource("2_ayr50")]
+position = Vector2(-1125, -458)
+rotation = 4.712389
+
+[node name="Spike173" parent="SpikesTrue2" index="79" unique_id=2075322844 instance=ExtResource("2_ayr50")]
+position = Vector2(-1126, -425)
+rotation = 4.712389
+
+[node name="Spike174" parent="SpikesTrue2" index="80" unique_id=1477308866 instance=ExtResource("2_ayr50")]
+position = Vector2(-1125, -395)
+rotation = 4.712389
+
+[node name="Spike164" parent="SpikesTrue2" index="81" unique_id=601591662 instance=ExtResource("2_ayr50")]
+position = Vector2(-1301, -392)
+rotation = 4.712389
+
+[node name="Spike157" parent="SpikesTrue2" index="82" unique_id=793579828 instance=ExtResource("2_ayr50")]
+position = Vector2(-1189, -489)
+rotation = 4.712389
+
+[node name="Spike158" parent="SpikesTrue2" index="83" unique_id=274217553 instance=ExtResource("2_ayr50")]
+position = Vector2(-1189, -457)
+rotation = 4.712389
+
+[node name="Spike159" parent="SpikesTrue2" index="84" unique_id=679230514 instance=ExtResource("2_ayr50")]
+position = Vector2(-1189, -424)
+rotation = 4.712389
+
+[node name="Spike151" parent="SpikesTrue2" index="85" unique_id=885876353 instance=ExtResource("2_ayr50")]
+position = Vector2(-1253, -490)
+rotation = 4.712389
+
+[node name="Spike152" parent="SpikesTrue2" index="86" unique_id=1726617011 instance=ExtResource("2_ayr50")]
+position = Vector2(-1254, -458)
+rotation = 4.712389
+
+[node name="Spike128" parent="SpikesTrue2" index="87" unique_id=725650349 instance=ExtResource("2_ayr50")]
+position = Vector2(-1381, -311)
+rotation = 4.712389
+
+[node name="Spike129" parent="SpikesTrue2" index="88" unique_id=841707033 instance=ExtResource("2_ayr50")]
+position = Vector2(-1381, -311)
+rotation = 4.712389
+
+[node name="Spike120" parent="SpikesTrue2" index="89" unique_id=320674572 instance=ExtResource("2_ayr50")]
 position = Vector2(-1285, -281)
 rotation = 4.712389
 
-[node name="Spike121" parent="SpikesTrue2" index="28" unique_id=1219086781 instance=ExtResource("2_ayr50")]
+[node name="Spike121" parent="SpikesTrue2" index="90" unique_id=1219086781 instance=ExtResource("2_ayr50")]
 position = Vector2(-1285, -248)
 rotation = 4.712389
 
-[node name="Spike114" parent="SpikesTrue2" index="29" unique_id=1605695595 instance=ExtResource("2_ayr50")]
+[node name="Spike114" parent="SpikesTrue2" index="91" unique_id=1605695595 instance=ExtResource("2_ayr50")]
 position = Vector2(-1189, -311)
 rotation = 4.712389
 
-[node name="Spike115" parent="SpikesTrue2" index="30" unique_id=1306309538 instance=ExtResource("2_ayr50")]
+[node name="Spike115" parent="SpikesTrue2" index="92" unique_id=1306309538 instance=ExtResource("2_ayr50")]
 position = Vector2(-1189, -281)
 rotation = 4.712389
 
-[node name="Spike103" parent="SpikesTrue2" index="31" unique_id=1122267642 instance=ExtResource("2_ayr50")]
+[node name="Spike103" parent="SpikesTrue2" index="93" unique_id=1122267642 instance=ExtResource("2_ayr50")]
 position = Vector2(-917, -248)
 rotation = 4.712389
 
-[node name="Spike97" parent="SpikesTrue2" index="32" unique_id=1137860411 instance=ExtResource("2_ayr50")]
+[node name="Spike97" parent="SpikesTrue2" index="94" unique_id=1137860411 instance=ExtResource("2_ayr50")]
 position = Vector2(-917, -408)
 rotation = 4.712389
 
-[node name="Spike98" parent="SpikesTrue2" index="33" unique_id=1868093852 instance=ExtResource("2_ayr50")]
+[node name="Spike98" parent="SpikesTrue2" index="95" unique_id=1868093852 instance=ExtResource("2_ayr50")]
 position = Vector2(-917, -377)
 rotation = 4.712389
 
-[node name="Spike99" parent="SpikesTrue2" index="34" unique_id=584109373 instance=ExtResource("2_ayr50")]
+[node name="Spike99" parent="SpikesTrue2" index="96" unique_id=584109373 instance=ExtResource("2_ayr50")]
 position = Vector2(-917, -377)
 rotation = 4.712389
 
-[node name="Spike100" parent="SpikesTrue2" index="35" unique_id=83546097 instance=ExtResource("2_ayr50")]
+[node name="Spike100" parent="SpikesTrue2" index="97" unique_id=83546097 instance=ExtResource("2_ayr50")]
 position = Vector2(-917, -345)
 rotation = 4.712389
