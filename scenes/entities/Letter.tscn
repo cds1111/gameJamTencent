@@ -5,7 +5,5 @@
 [node name="Letter" instance=ExtResource("1_template")]
 character = "A"
 start_uppercase = true
-uppercase_collision_size = Vector2(32, 32)
-lowercase_collision_size = Vector2(16, 16)
 uppercase_visual_scale = Vector2(1, 1)
 lowercase_visual_scale = Vector2(0.55, 0.55)

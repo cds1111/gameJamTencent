@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://52jpflyc03w8" path="res://scenes/levels/BaseLevel.tscn" id="1_errlg"]
 [ext_resource type="PackedScene" uid="uid://1qtoe4ly4i8t" path="res://scenes/entities/PatrolMonster.tscn" id="2_monster"]
 [ext_resource type="Script" uid="uid://jpp45hhjv0eu" path="res://scripts/ui/TestScenePanel.gd" id="3_testui"]
-[ext_resource type="PackedScene" uid="uid://sf8nele78i0o" path="res://scenes/entities/Letter.tscn" id="4_74lek"]
 
 [node name="BaseLevel" unique_id=1411277766 instance=ExtResource("1_errlg")]
 
@@ -159,6 +158,3 @@ position = Vector2(-1548, -179)
 
 [node name="Spring" parent="." index="8" unique_id=182497584]
 position = Vector2(-1439, -27)
-
-[node name="Letter" parent="." index="9" unique_id=626360765 instance=ExtResource("4_74lek")]
-position = Vector2(-1343, -319)
