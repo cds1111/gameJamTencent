@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bk6xtdqgu7e80"]
+
+[ext_resource type="PackedScene" uid="uid://52jpflyc03w8" path="res://scenes/levels/BaseLevel.tscn" id="1_base"]
+[ext_resource type="Script" uid="uid://frn78o43q67p" path="res://scripts/abilities/Ability_ViewSwap.gd" id="2_viewswap"]
+
+[node name="Level_05_ViewSwap" unique_id=587214399 instance=ExtResource("1_base")]
+
+[node name="Player" parent="Entities" parent_id_path=PackedInt32Array(70306312) index="3" unique_id=1129096103]
+position = Vector2(-1347, -462)
+
+[node name="LevelController" parent="." index="3" unique_id=893548158]
+starting_ability = ExtResource("2_viewswap")
+next_level_id = 6
+level_title_text = "视角转换"
