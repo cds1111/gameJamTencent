@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name Player
 
 const MOVE_SPEED := 125.0
-const JUMP_VELOCITY := -262.0
+const JUMP_VELOCITY := -266.0
 const GRAVITY := 980.0
 const FLOOR_DECELERATION := 24.0
 const LANDING_VELOCITY_THRESHOLD := 60.0

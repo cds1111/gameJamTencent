@@ -161,6 +161,7 @@ func _setup_level_settings_ui() -> void:
 	_settings_button.offset_top = 16.0
 	_settings_button.offset_right = -16.0
 	_settings_button.offset_bottom = 56.0
+	_settings_button.focus_mode = Control.FOCUS_NONE
 	_settings_button.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 	_settings_button.add_theme_font_size_override("font_size", 22)
 	_settings_button.pressed.connect(_on_settings_button_pressed)
