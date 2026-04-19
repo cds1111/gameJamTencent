@@ -12,7 +12,7 @@ modulate = Color(1, 1, 1, 0.3529412)
 position = Vector2(-1201, -487)
 
 [node name="KeyPickup2" parent="Entities/Keys" parent_id_path=PackedInt32Array(1508425173) index="1" unique_id=2054893317]
-position = Vector2(-1138, -425)
+position = Vector2(-1041, -403)
 
 [node name="Player" parent="Entities" parent_id_path=PackedInt32Array(70306312) index="5" unique_id=1129096103]
 jump_enabled = false
