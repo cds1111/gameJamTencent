@@ -128,6 +128,9 @@ modulate = Color(1, 1, 1, 0.3529412)
 tile_map_data = PackedByteArray("AACo/+H/AAAAAAIAAACp/+H/AAADAAIAAAA=")
 tile_set = SubResource("TileSet_ss1a0")
 
+[node name="Danger" parent="Environment" parent_id_path=PackedInt32Array(1237470430) index="5" unique_id=2134643234]
+tile_map_data = PackedByteArray("AAC+/+L/AAAIAAMAAAC//+L/AAAIAAMAAADG/+f/AAAHAAMAAGDG/+j/AAAHAAMAAGDG/+n/AAAHAAMAAGDG/+r/AAAHAAMAAGDD//D/AAAHAAMAAADE//D/AAAHAAMAAACx/+L/AAAIAAMAAFCx/+P/AAAIAAMAAFDF//D/AAAHAAMAAAA=")
+
 [node name="Player" parent="Entities" parent_id_path=PackedInt32Array(70306312) index="5" unique_id=1129096103]
 position = Vector2(-1347, -462)
 
@@ -135,3 +138,6 @@ position = Vector2(-1347, -462)
 starting_ability = ExtResource("2_wind")
 next_level_id = 8
 level_title_text = "风起"
+
+[node name="Spike11" parent="Spikes" parent_id_path=PackedInt32Array(638400332) index="23" unique_id=107640984]
+position = Vector2(-854, -295)
