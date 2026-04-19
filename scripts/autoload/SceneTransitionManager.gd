@@ -16,7 +16,7 @@ const LEVEL_SCENE_MAP := {
 	6: "res://scenes/levels/Level_06_GoalControl.tscn",
 	7: "res://scenes/levels/Level_07_Wind.tscn",
 	8: "res://scenes/levels/Level_08_PhantomBlink.tscn",
-	9: "res://scenes/levels/Level_end_example.tscn",
+	9: "res://scenes/levels/Level_09_TOGETOGE.tscn",
 	10: "res://scenes/the_end.tscn",
 }
 const DEFAULT_COVER_TIME := 0.28
