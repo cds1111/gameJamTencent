@@ -208,6 +208,8 @@ func die(ignore_invulnerability: bool = false) -> void:
 	if shift_handler != null:
 		shift_handler.cancel_active(self )
 	movement_sfx.stop_movement_loops()
+	if movement_sfx != null and movement_sfx.has_method("play_death"):
+		movement_sfx.play_death()
 	_play_animation(ANIM_DIE)
 
 	if not _has_animation(ANIM_DIE):
