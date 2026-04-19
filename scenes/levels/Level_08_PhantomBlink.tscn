@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://b6vssjscvggat"]
+
+[ext_resource type="PackedScene" uid="uid://52jpflyc03w8" path="res://scenes/levels/BaseLevel.tscn" id="1_base"]
+[ext_resource type="Texture2D" uid="uid://ctj7akg2op8tu" path="res://assets/pics/Player.png" id="2_fd3l7"]
+[ext_resource type="Script" uid="uid://bkx2enjd0x50h" path="res://scripts/abilities/Ability_PhantomBlink.gd" id="2_phantom"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4gcmj"]
+atlas = ExtResource("2_fd3l7")
+region = Rect2(6.9391212, 5.4193172, 10.178341, 18.943026)
+
+[node name="Level_08_PhantomBlink" unique_id=1993017732 instance=ExtResource("1_base")]
+
+[node name="space" parent="Environment" parent_id_path=PackedInt32Array(1237470430) index="2" unique_id=1204432495]
+modulate = Color(1, 1, 1, 0.3529412)
+
+[node name="PhantomGhost" type="Node2D" parent="Entities" parent_id_path=PackedInt32Array(70306312) index="3" unique_id=1347800521]
+z_index = 200
+z_as_relative = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Entities/PhantomGhost" index="0" unique_id=1291757078]
+modulate = Color(1, 1, 1, 0.5137255)
+texture = SubResource("AtlasTexture_4gcmj")
+
+[node name="Player" parent="Entities" parent_id_path=PackedInt32Array(70306312) index="6" unique_id=1129096103]
+position = Vector2(-1347, -462)
+jump_enabled = false
+
+[node name="LevelController" parent="." index="3" unique_id=893548158]
+starting_ability = ExtResource("2_phantom")
+next_level_id = 9
+level_title_text = "幻影跃迁"
