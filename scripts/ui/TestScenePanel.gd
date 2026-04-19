@@ -6,6 +6,7 @@ const ABILITY_GRAVITY_FLIP := preload("res://scripts/abilities/Ability_GravityFl
 const ABILITY_SWAP := preload("res://scripts/abilities/Ability_Swap.gd")
 const ABILITY_WIND := preload("res://scripts/abilities/Ability_Wind.gd")
 const ABILITY_GIANT := preload("res://scripts/abilities/Ability_Giant.gd")
+const ABILITY_VIEW_SWAP := preload("res://scripts/abilities/Ability_ViewSwap.gd")
 const ABILITY_CASE_TOGGLE := preload("res://scripts/abilities/Ability_CaseToggle.gd")
 
 @onready var ability_option: OptionButton = $PanelContainer/MarginContainer/VBoxContainer/AbilityOption
@@ -27,7 +28,8 @@ func _setup_options() -> void:
 	ability_option.add_item("SWAP", 2)
 	ability_option.add_item("WIND", 3)
 	ability_option.add_item("GIANT", 4)
-	ability_option.add_item("CASE TOGGLE", 5)
+	ability_option.add_item("VIEW SWAP", 5)
+	ability_option.add_item("CASE TOGGLE", 6)
 	ability_option.select(0)
 
 
@@ -62,6 +64,8 @@ func _build_ability(item_id: int) -> ShiftAbility:
 		4:
 			return ABILITY_GIANT.new()
 		5:
+			return ABILITY_VIEW_SWAP.new()
+		6:
 			return ABILITY_CASE_TOGGLE.new()
 		_:
 			return null

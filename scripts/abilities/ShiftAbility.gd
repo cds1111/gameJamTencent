@@ -5,6 +5,14 @@ class_name ShiftAbility
 @export var hold_to_maintain: bool = true
 
 
+func on_equipped(_player: CharacterBody2D) -> void:
+	pass
+
+
+func on_unequipped(_player: CharacterBody2D) -> void:
+	pass
+
+
 func execute(player: CharacterBody2D) -> void:
 	push_warning("%s.execute() should be overridden." % ability_name)
 

@@ -8,6 +8,7 @@ enum ShiftMode {
 	SWAP,
 	WIND,
 	GIANT,
+	VIEW_SWAP,
 	CUSTOM,
 	CASE_TOGGLE,
 }
@@ -23,6 +24,7 @@ const ABILITY_GRAVITY_FLIP := preload("res://scripts/abilities/Ability_GravityFl
 const ABILITY_SWAP := preload("res://scripts/abilities/Ability_Swap.gd")
 const ABILITY_WIND := preload("res://scripts/abilities/Ability_Wind.gd")
 const ABILITY_GIANT := preload("res://scripts/abilities/Ability_Giant.gd")
+const ABILITY_VIEW_SWAP := preload("res://scripts/abilities/Ability_ViewSwap.gd")
 const ABILITY_CASE_TOGGLE := preload("res://scripts/abilities/Ability_CaseToggle.gd")
 
 @export var shift_mode: ShiftMode = ShiftMode.DISABLED
@@ -36,6 +38,7 @@ var _ability_active := false
 # 初始化当前配置对应的能力实例。
 func _ready() -> void:
 	_current_ability = _build_ability_for_mode()
+	_equip_current_ability(get_parent() as CharacterBody2D)
 
 
 # 根据输入模式驱动当前切换能力。
@@ -108,6 +111,8 @@ func _build_ability_for_mode() -> ShiftAbility:
 			return ABILITY_WIND.new()
 		ShiftMode.GIANT:
 			return ABILITY_GIANT.new()
+		ShiftMode.VIEW_SWAP:
+			return ABILITY_VIEW_SWAP.new()
 		ShiftMode.CUSTOM:
 			return _clone_custom_ability()
 		ShiftMode.CASE_TOGGLE:
@@ -130,5 +135,19 @@ func _clone_custom_ability() -> ShiftAbility:
 # 取消旧能力并按最新配置重建能力实例。
 func _rebuild_ability(player: CharacterBody2D) -> void:
 	cancel_active(player)
+	_unequip_current_ability(player)
 	_current_ability = _build_ability_for_mode()
 	_ability_active = false
+	_equip_current_ability(player)
+
+
+func _equip_current_ability(player: CharacterBody2D) -> void:
+	if _current_ability == null or player == null:
+		return
+	_current_ability.on_equipped(player)
+
+
+func _unequip_current_ability(player: CharacterBody2D) -> void:
+	if _current_ability == null or player == null:
+		return
+	_current_ability.on_unequipped(player)
