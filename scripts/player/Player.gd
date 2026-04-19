@@ -68,7 +68,7 @@ func _physics_process(delta: float) -> void:
 		return
 
 	if shift_handler != null:
-		shift_handler.process_input(self)
+		shift_handler.process_input(self )
 
 	var direction: float = Input.get_axis("move_left", "move_right")
 	if _movement_locked:
@@ -78,7 +78,7 @@ func _physics_process(delta: float) -> void:
 		_sprint_end_deceleration_timer = 0.0
 		movement_sfx.stop_movement_loops()
 		if shift_handler != null:
-			shift_handler.process_active_ability(self, delta)
+			shift_handler.process_active_ability(self , delta)
 		direction = 0.0
 	elif _is_sprinting:
 		_handle_sprint_motion(delta)
@@ -91,6 +91,7 @@ func _physics_process(delta: float) -> void:
 
 	_pre_move_velocity_y = velocity.y
 	move_and_slide()
+	_preserve_jump_velocity_against_wall_slide()
 
 	if _damage_invulnerability_timer > 0.0:
 		_damage_invulnerability_timer = maxf(_damage_invulnerability_timer - delta, 0.0)
@@ -109,13 +110,13 @@ func _physics_process(delta: float) -> void:
 func set_current_ability(ability: ShiftAbility) -> void:
 	if shift_handler == null:
 		return
-	shift_handler.set_current_ability(ability, self)
+	shift_handler.set_current_ability(ability, self )
 
 
 func set_shift_mode(mode: PlayerShiftHandler.ShiftMode) -> void:
 	if shift_handler == null:
 		return
-	shift_handler.set_shift_mode(mode, self)
+	shift_handler.set_shift_mode(mode, self )
 
 
 func set_jump_multiplier(value: float) -> void:
@@ -205,7 +206,7 @@ func die(ignore_invulnerability: bool = false) -> void:
 	_is_jump_landing = false
 	velocity = Vector2.ZERO
 	if shift_handler != null:
-		shift_handler.cancel_active(self)
+		shift_handler.cancel_active(self )
 	movement_sfx.stop_movement_loops()
 	_play_animation(ANIM_DIE)
 
@@ -406,6 +407,28 @@ func _get_allowed_sprint_motion(target_distance: float) -> float:
 		allowed_distance += step
 
 	return allowed_distance
+
+
+func _preserve_jump_velocity_against_wall_slide() -> void:
+	if is_on_floor():
+		return
+	if is_zero_approx(_pre_move_velocity_y):
+		return
+
+	var moving_upward: bool = (_pre_move_velocity_y < 0.0 and not _gravity_flipped) \
+		or (_pre_move_velocity_y > 0.0 and _gravity_flipped)
+	if not moving_upward:
+		return
+
+	for i in range(get_slide_collision_count()):
+		var collision: KinematicCollision2D = get_slide_collision(i)
+		if collision == null:
+			continue
+		var normal: Vector2 = collision.get_normal()
+		# 只在侧向撞墙时恢复起跳向上的速度，避免撞天花板时错误恢复。
+		if absf(normal.x) > 0.5 and absf(normal.y) < 0.5:
+			velocity.y = _pre_move_velocity_y
+			return
 
 
 func _ensure_core_input_actions() -> void:
