@@ -7,6 +7,7 @@ const GRAVITY := 980.0
 const FLOOR_DECELERATION := 24.0
 const LANDING_VELOCITY_THRESHOLD := 60.0
 const SPRINT_SPEED := 640.0
+const SPRINT_END_DECELERATION_TIME := 0.08
 
 const ANIM_DEFAULT := "default"
 const ANIM_WALK := "walk"
@@ -35,6 +36,7 @@ var _last_sprint_velocity_y: float = 0.0
 var _is_sprinting: bool = false
 var _sprint_direction: float = 0.0
 var _sprint_distance_remaining: float = 0.0
+var _sprint_end_deceleration_timer: float = 0.0
 var _was_on_floor: bool = false
 var _is_jump_landing: bool = false
 var _pre_move_velocity_y: float = 0.0
@@ -69,6 +71,8 @@ func _physics_process(delta: float) -> void:
 	var direction: float = Input.get_axis("move_left", "move_right")
 	if _is_sprinting:
 		_handle_sprint_motion(delta)
+	elif _sprint_end_deceleration_timer > 0.0:
+		_handle_sprint_end_deceleration(delta)
 	else:
 		_handle_horizontal_movement(direction)
 		_handle_jump()
@@ -128,6 +132,7 @@ func try_sprint(distance: float) -> bool:
 	_is_sprinting = true
 	_sprint_consumed = true
 	_sprint_reset_timer = 0.0
+	_sprint_end_deceleration_timer = 0.0
 	_last_sprint_velocity_y = velocity.y
 	_is_jump_landing = false
 	_sprint_direction = signf(allowed_motion)
@@ -157,6 +162,7 @@ func launch_from_spring(force: float, horizontal_force: float = 0.0) -> void:
 	velocity.x = horizontal_force
 	_is_sprinting = false
 	_sprint_distance_remaining = 0.0
+	_sprint_end_deceleration_timer = 0.0
 	_is_jump_landing = false
 	_was_on_floor = false
 	_coyote_timer = 0.0
@@ -173,6 +179,7 @@ func die(ignore_invulnerability: bool = false) -> void:
 
 	_is_dead = true
 	_is_sprinting = false
+	_sprint_end_deceleration_timer = 0.0
 	_is_jump_landing = false
 	velocity = Vector2.ZERO
 	if shift_handler != null:
@@ -211,6 +218,15 @@ func _handle_sprint_motion(delta: float) -> void:
 		_finish_sprint()
 
 
+func _handle_sprint_end_deceleration(delta: float) -> void:
+	_sprint_end_deceleration_timer = maxf(_sprint_end_deceleration_timer - delta, 0.0)
+	var progress: float = 1.0 - (_sprint_end_deceleration_timer / SPRINT_END_DECELERATION_TIME)
+	var speed_factor: float = clampf(1.0 - progress, 0.0, 1.0)
+	velocity.x = _sprint_direction * SPRINT_SPEED * speed_factor
+	velocity.y = 0.0
+	_play_animation(ANIM_SPRINT)
+
+
 func _handle_jump() -> void:
 	if not Input.is_action_just_pressed("jump"):
 		return
@@ -237,7 +253,9 @@ func _apply_gravity(delta: float) -> void:
 func _finish_sprint() -> void:
 	_is_sprinting = false
 	_sprint_distance_remaining = 0.0
-	velocity.x = 0.0
+	_sprint_end_deceleration_timer = SPRINT_END_DECELERATION_TIME
+	velocity.x = _sprint_direction * SPRINT_SPEED
+	velocity.y = 0.0
 
 
 func _update_sprint_reset(delta: float) -> void:
@@ -293,7 +311,7 @@ func _update_animation_state(direction: float) -> void:
 		_was_on_floor = is_on_floor()
 		return
 
-	if _is_sprinting:
+	if _is_sprinting or _sprint_end_deceleration_timer > 0.0:
 		movement_sfx.play_run_loop()
 		_play_animation(ANIM_SPRINT)
 	elif not is_on_floor():
