@@ -6,6 +6,8 @@ class_name Spring
 @export var cooldown_seconds: float = 0.12
 @export var require_downward_motion: bool = true
 
+@onready var _animation_player: AnimationPlayer = get_node_or_null("AnimationPlayer") as AnimationPlayer
+
 var _is_on_cooldown := false
 
 
@@ -25,6 +27,7 @@ func _on_body_entered(body: Node2D) -> void:
 		return
 
 	_is_on_cooldown = true
+	_play_bounce_animation()
 	body.launch_from_spring(launch_force, horizontal_force)
 	_start_cooldown()
 
@@ -47,3 +50,11 @@ func _start_cooldown() -> void:
 
 	await get_tree().create_timer(cooldown_seconds).timeout
 	_is_on_cooldown = false
+
+
+func _play_bounce_animation() -> void:
+	if _animation_player == null:
+		return
+
+	_animation_player.stop()
+	_animation_player.play(&"bounce")
