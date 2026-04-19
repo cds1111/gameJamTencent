@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://sf8nele78i0o"]
+[gd_scene format=3 uid="uid://sf8nele78i0o"]
 
 [ext_resource type="PackedScene" path="res://scenes/interactables/LetterTemplate.tscn" id="1_template"]
 

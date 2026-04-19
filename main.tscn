@@ -125,6 +125,46 @@ theme_override_font_sizes/font_size = 16
 text = "tips: There're no tips!"
 horizontal_alignment = 1
 
+[node name="LevelSelectButton" type="Button" parent="." unique_id=1128804102]
+custom_minimum_size = Vector2(160, 44)
+layout_mode = 0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 180.0
+offset_bottom = 64.0
+text = "LEVEL SELECT"
+
+[node name="LevelSelectPanel" type="PanelContainer" parent="." unique_id=1160047264]
+visible = false
+layout_mode = 0
+offset_left = 20.0
+offset_top = 72.0
+offset_right = 280.0
+offset_bottom = 454.0
+
+[node name="LevelSelectMargin" type="MarginContainer" parent="LevelSelectPanel" unique_id=202548367]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="LevelSelectVBox" type="VBoxContainer" parent="LevelSelectPanel/LevelSelectMargin" unique_id=964110059]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="LevelSelectTitle" type="Label" parent="LevelSelectPanel/LevelSelectMargin/LevelSelectVBox" unique_id=1522192967]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.31, 0.16, 0.08, 1)
+theme_override_font_sizes/font_size = 14
+text = "SELECT LEVEL"
+horizontal_alignment = 1
+
+[node name="LevelSelectCloseButton" type="Button" parent="LevelSelectPanel/LevelSelectMargin/LevelSelectVBox" unique_id=1149197415]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "CLOSE"
+
 [node name="SettingsPanel" type="PanelContainer" parent="." unique_id=208315964]
 visible = false
 layout_mode = 0
