@@ -13,6 +13,7 @@ class_name LevelController
 
 var _player: CharacterBody2D
 var _is_restarting: bool = false
+var _is_level_completing: bool = false
 
 
 func _ready() -> void:
@@ -33,6 +34,8 @@ func _apply_level_title() -> void:
 
 
 func _process(_delta: float) -> void:
+	if _is_level_completing:
+		return
 	if Input.is_action_just_pressed("restart_level"):
 		if is_instance_valid(_player) and _player.has_method("die"):
 			_player.die()
@@ -84,8 +87,15 @@ func _configure_goal_detection() -> void:
 func _on_goal_body_entered(body: Node) -> void:
 	if body != null:
 		print("[LevelController] Goal body_entered: ", body.name)
-	if body != _player:
+	if body != _player or _is_level_completing:
 		return
+
+	_is_level_completing = true
+	if is_instance_valid(_goal):
+		_goal.monitoring = false
+	if is_instance_valid(_player) and _player.has_method("set_movement_locked"):
+		_player.set_movement_locked(true)
+
 	var signal_manager := get_node_or_null("/root/SignalManager")
 	if signal_manager != null:
 		print("[LevelController] emit level_completed -> ", next_level_id)
@@ -93,14 +103,14 @@ func _on_goal_body_entered(body: Node) -> void:
 
 
 func _on_player_died() -> void:
-	if _is_restarting:
+	if _is_restarting or _is_level_completing:
 		return
 	print("[LevelController] player_died received -> restart current scene after 0.5s")
 	call_deferred("_restart_level_with_delay")
 
 
 func _restart_level() -> void:
-	if _is_restarting:
+	if _is_restarting or _is_level_completing:
 		return
 	_is_restarting = true
 	print("[LevelController] reload_current_scene")
@@ -112,7 +122,7 @@ func _restart_level() -> void:
 
 
 func _restart_level_with_delay() -> void:
-	if _is_restarting:
+	if _is_restarting or _is_level_completing:
 		return
 	await get_tree().create_timer(0.5).timeout
 	_restart_level()
