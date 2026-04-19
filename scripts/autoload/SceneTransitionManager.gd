@@ -13,6 +13,8 @@ const LEVEL_SCENE_MAP := {
 	3: "res://scenes/levels/Level_03_Swap.tscn",
 	4: "res://scenes/levels/Level_04_GravityFlip.tscn",
 	5: "res://scenes/levels/Level_05_ViewSwap.tscn",
+	6: "res://scenes/levels/Level_06_GoalControl.tscn",
+	7: "res://scenes/levels/Level_end_example.tscn",
 }
 const DEFAULT_COVER_TIME := 0.28
 const DEFAULT_REVEAL_TIME := 0.24
