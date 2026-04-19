@@ -13,15 +13,18 @@ func _init() -> void:
 func on_equipped(player: CharacterBody2D) -> void:
 	_player_only_view = false
 	_restore_saved_visibility(player)
+	_set_player_visibility(player, false)
 
 
 func on_unequipped(player: CharacterBody2D) -> void:
 	_player_only_view = false
 	_restore_saved_visibility(player)
+	_set_player_visibility(player, true)
 
 
 func execute(player: CharacterBody2D) -> void:
 	_player_only_view = true
+	_saved_visibility.clear()
 	_apply_view_state(player)
 	emit_ability_used()
 
@@ -29,6 +32,7 @@ func execute(player: CharacterBody2D) -> void:
 func cancel(player: CharacterBody2D) -> void:
 	_player_only_view = false
 	_restore_saved_visibility(player)
+	_set_player_visibility(player, false)
 	emit_ability_used()
 
 
@@ -101,6 +105,12 @@ func _sync_level_door_visual_state(player: CharacterBody2D) -> void:
 		if collision == null or sprite == null:
 			continue
 		sprite.visible = not collision.disabled
+
+
+func _set_player_visibility(player: CharacterBody2D, visible: bool) -> void:
+	if player == null:
+		return
+	_set_node_visibility(player, visible)
 
 
 func _set_node_visibility(node: Node, visible: bool) -> void:
