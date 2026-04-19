@@ -43,6 +43,7 @@ var _pre_move_velocity_y: float = 0.0
 var _coyote_timer: float = 0.0
 var _damage_invulnerability_timer: float = 0.0
 var _base_sprite_position: Vector2 = Vector2.ZERO
+var _movement_locked: bool = false
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var movement_sfx: Node = $MovementSfx
@@ -69,7 +70,16 @@ func _physics_process(delta: float) -> void:
 		shift_handler.process_input(self)
 
 	var direction: float = Input.get_axis("move_left", "move_right")
-	if _is_sprinting:
+	if _movement_locked:
+		velocity = Vector2.ZERO
+		_is_sprinting = false
+		_sprint_distance_remaining = 0.0
+		_sprint_end_deceleration_timer = 0.0
+		movement_sfx.stop_movement_loops()
+		if shift_handler != null:
+			shift_handler.process_active_ability(self, delta)
+		direction = 0.0
+	elif _is_sprinting:
 		_handle_sprint_motion(delta)
 	elif _sprint_end_deceleration_timer > 0.0:
 		_handle_sprint_end_deceleration(delta)
@@ -113,6 +123,17 @@ func set_jump_multiplier(value: float) -> void:
 
 func set_wind_force(value: float) -> void:
 	_wind_force_x = value
+
+
+func set_movement_locked(value: bool) -> void:
+	_movement_locked = value
+	if _movement_locked:
+		velocity = Vector2.ZERO
+		_is_sprinting = false
+		_sprint_distance_remaining = 0.0
+		_sprint_end_deceleration_timer = 0.0
+		movement_sfx.stop_movement_loops()
+		_play_animation(ANIM_DEFAULT)
 
 
 func try_sprint(distance: float) -> bool:

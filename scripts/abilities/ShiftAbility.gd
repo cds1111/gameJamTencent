@@ -21,6 +21,10 @@ func cancel(player: CharacterBody2D) -> void:
 	push_warning("%s.cancel() should be overridden." % ability_name)
 
 
+func physics_process(_player: CharacterBody2D, _delta: float) -> void:
+	pass
+
+
 func emit_ability_used() -> void:
 	var tree := Engine.get_main_loop() as SceneTree
 	if tree == null:

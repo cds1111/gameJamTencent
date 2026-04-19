@@ -11,6 +11,7 @@ enum ShiftMode {
 	VIEW_SWAP,
 	CUSTOM,
 	CASE_TOGGLE,
+	GOAL_CONTROL,
 }
 
 enum ShiftInputMode {
@@ -26,6 +27,7 @@ const ABILITY_WIND := preload("res://scripts/abilities/Ability_Wind.gd")
 const ABILITY_GIANT := preload("res://scripts/abilities/Ability_Giant.gd")
 const ABILITY_VIEW_SWAP := preload("res://scripts/abilities/Ability_ViewSwap.gd")
 const ABILITY_CASE_TOGGLE := preload("res://scripts/abilities/Ability_CaseToggle.gd")
+const ABILITY_GOAL_CONTROL := preload("res://scripts/abilities/Ability_GoalControl.gd")
 
 @export var shift_mode: ShiftMode = ShiftMode.DISABLED
 @export var input_mode: ShiftInputMode = ShiftInputMode.AUTO
@@ -70,6 +72,12 @@ func process_input(player: CharacterBody2D) -> void:
 
 
 # 切换预设能力模式，并重建对应能力实例。
+func process_active_ability(player: CharacterBody2D, delta: float) -> void:
+	if not _ability_active or _current_ability == null or player == null:
+		return
+	_current_ability.physics_process(player, delta)
+
+
 func set_shift_mode(value: ShiftMode, player: CharacterBody2D = null) -> void:
 	shift_mode = value
 	_rebuild_ability(player)
@@ -117,6 +125,8 @@ func _build_ability_for_mode() -> ShiftAbility:
 			return _clone_custom_ability()
 		ShiftMode.CASE_TOGGLE:
 			return ABILITY_CASE_TOGGLE.new()
+		ShiftMode.GOAL_CONTROL:
+			return ABILITY_GOAL_CONTROL.new()
 		_:
 			return null
 
