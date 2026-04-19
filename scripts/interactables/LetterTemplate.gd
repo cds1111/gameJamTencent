@@ -1,7 +1,10 @@
 extends StaticBody2D
 class_name LetterTemplate
 
-const CASE_TOGGLE_ABILITY := "CaseToggle"
+const LETTER_TOGGLE_ABILITIES := {
+	"LetterToggle": true,
+	"CaseToggle": true,
+}
 
 @export var character: String = "A"
 @export var start_uppercase: bool = true
@@ -14,9 +17,11 @@ const CASE_TOGGLE_ABILITY := "CaseToggle"
 
 var _is_uppercase: bool = true
 
-@onready var glyph_sprite: Sprite2D = $GlyphSprite
-@onready var glyph_label: Label = $GlyphLabel
-@onready var collision_shape: CollisionShape2D = $CollisionShape2D
+@onready var glyph_sprite: Sprite2D = get_node_or_null("GlyphSprite") as Sprite2D
+@onready var glyph_label: Label = get_node_or_null("GlyphLabel") as Label
+@onready var collision_shape: CollisionShape2D = get_node_or_null("CollisionShape2D") as CollisionShape2D
+@onready var uppercase_collision: Node = get_node_or_null("Uppercase")
+@onready var lowercase_collision: Node = get_node_or_null("Lowercase")
 
 
 func _ready() -> void:
@@ -49,7 +54,7 @@ func _connect_signal_manager() -> void:
 
 
 func _on_shift_ability_used(ability_name: String) -> void:
-	if ability_name != CASE_TOGGLE_ABILITY:
+	if not LETTER_TOGGLE_ABILITIES.has(ability_name):
 		return
 	toggle_case()
 
@@ -63,16 +68,41 @@ func _apply_case_state() -> void:
 	var current_scale: Vector2 = uppercase_visual_scale if _is_uppercase else lowercase_visual_scale
 	var collision_size: Vector2 = uppercase_collision_size if _is_uppercase else lowercase_collision_size
 
-	glyph_label.text = display_text
-	glyph_label.visible = current_texture == null
-	glyph_label.scale = current_scale
-	glyph_sprite.texture = current_texture
-	glyph_sprite.visible = current_texture != null
-	glyph_sprite.scale = current_scale
+	if glyph_label != null:
+		glyph_label.text = display_text
+		glyph_label.visible = current_texture == null
+		glyph_label.scale = current_scale
+
+	if glyph_sprite != null:
+		glyph_sprite.texture = current_texture
+		glyph_sprite.visible = current_texture != null
+		glyph_sprite.scale = current_scale
+
+	_apply_single_collision_shape(collision_size)
+	_apply_split_collision_state()
+
+
+func _apply_single_collision_shape(collision_size: Vector2) -> void:
+	if collision_shape == null:
+		return
 
 	var rectangle_shape: RectangleShape2D = collision_shape.shape as RectangleShape2D
 	if rectangle_shape != null:
 		rectangle_shape.size = collision_size
+
+
+func _apply_split_collision_state() -> void:
+	_set_collision_node_disabled(uppercase_collision, not _is_uppercase)
+	_set_collision_node_disabled(lowercase_collision, _is_uppercase)
+
+
+func _set_collision_node_disabled(node: Node, disabled: bool) -> void:
+	if node == null:
+		return
+	if node is CollisionShape2D:
+		(node as CollisionShape2D).disabled = disabled
+	elif node is CollisionPolygon2D:
+		(node as CollisionPolygon2D).disabled = disabled
 
 
 func _get_display_character() -> String:

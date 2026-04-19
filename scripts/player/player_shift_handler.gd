@@ -12,6 +12,7 @@ enum ShiftMode {
 	CUSTOM,
 	CASE_TOGGLE,
 	GOAL_CONTROL,
+	LETTER_TOGGLE,
 }
 
 enum ShiftInputMode {
@@ -28,6 +29,7 @@ const ABILITY_GIANT := preload("res://scripts/abilities/Ability_Giant.gd")
 const ABILITY_VIEW_SWAP := preload("res://scripts/abilities/Ability_ViewSwap.gd")
 const ABILITY_CASE_TOGGLE := preload("res://scripts/abilities/Ability_CaseToggle.gd")
 const ABILITY_GOAL_CONTROL := preload("res://scripts/abilities/Ability_GoalControl.gd")
+const ABILITY_LETTER_TOGGLE := preload("res://scripts/abilities/Ability_LetterToggle.gd")
 
 @export var shift_mode: ShiftMode = ShiftMode.DISABLED
 @export var input_mode: ShiftInputMode = ShiftInputMode.AUTO
@@ -37,13 +39,11 @@ var _current_ability: ShiftAbility
 var _ability_active := false
 
 
-# 初始化当前配置对应的能力实例。
 func _ready() -> void:
 	_current_ability = _build_ability_for_mode()
 	_equip_current_ability(get_parent() as CharacterBody2D)
 
 
-# 根据输入模式驱动当前切换能力。
 func process_input(player: CharacterBody2D) -> void:
 	if player == null or _current_ability == null:
 		_ability_active = false
@@ -71,7 +71,6 @@ func process_input(player: CharacterBody2D) -> void:
 			_ability_active = false
 
 
-# 切换预设能力模式，并重建对应能力实例。
 func process_active_ability(player: CharacterBody2D, delta: float) -> void:
 	if not _ability_active or _current_ability == null or player == null:
 		return
@@ -83,21 +82,18 @@ func set_shift_mode(value: ShiftMode, player: CharacterBody2D = null) -> void:
 	_rebuild_ability(player)
 
 
-# 直接指定当前能力，并切换到自定义模式。
 func set_current_ability(ability: ShiftAbility, player: CharacterBody2D = null) -> void:
 	custom_ability = ability
 	shift_mode = ShiftMode.CUSTOM
 	_rebuild_ability(player)
 
 
-# 取消当前正在生效的能力状态。
 func cancel_active(player: CharacterBody2D) -> void:
 	if _ability_active and _current_ability != null and player != null:
 		_current_ability.cancel(player)
 	_ability_active = false
 
 
-# 解析当前能力应该使用长按还是切换触发。
 func _resolve_input_mode() -> ShiftInputMode:
 	if input_mode != ShiftInputMode.AUTO:
 		return input_mode
@@ -106,7 +102,6 @@ func _resolve_input_mode() -> ShiftInputMode:
 	return ShiftInputMode.TOGGLE
 
 
-# 按配置创建一个新的能力实例。
 func _build_ability_for_mode() -> ShiftAbility:
 	match shift_mode:
 		ShiftMode.SPRINT:
@@ -127,11 +122,12 @@ func _build_ability_for_mode() -> ShiftAbility:
 			return ABILITY_CASE_TOGGLE.new()
 		ShiftMode.GOAL_CONTROL:
 			return ABILITY_GOAL_CONTROL.new()
+		ShiftMode.LETTER_TOGGLE:
+			return ABILITY_LETTER_TOGGLE.new()
 		_:
 			return null
 
 
-# 复制自定义能力资源，避免直接复用同一个实例。
 func _clone_custom_ability() -> ShiftAbility:
 	if custom_ability == null:
 		return null
@@ -142,7 +138,6 @@ func _clone_custom_ability() -> ShiftAbility:
 	return null
 
 
-# 取消旧能力并按最新配置重建能力实例。
 func _rebuild_ability(player: CharacterBody2D) -> void:
 	cancel_active(player)
 	_unequip_current_ability(player)
