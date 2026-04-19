@@ -8,7 +8,6 @@ const HOVER_SOUND: AudioStream = preload("res://assets/music/select_006.ogg")
 const CLICK_SOUND: AudioStream = preload("res://assets/music/confirmation_002.ogg")
 const BACKGROUND_SCROLL_SPEED := 18.0
 const FIRST_LEVEL_SCENE := "res://scenes/levels/Level_01_Sprint.tscn"
-const TEST_SCENE := "res://scenes/test.tscn"
 
 var default_panel_style: StyleBoxFlat = StyleBoxFlat.new()
 var default_button_style: StyleBoxFlat = StyleBoxFlat.new()
@@ -41,10 +40,8 @@ var _dynamic_level_buttons: Array[Button] = []
 @onready var sfx_slider: HSlider = $SettingsPanel/SettingsMargin/SettingsScroll/SettingsVBox/SfxRow/SfxSlider
 @onready var window_mode_option: OptionButton = $SettingsPanel/SettingsMargin/SettingsScroll/SettingsVBox/WindowRow/WindowModeOption
 @onready var transition_mode_option: OptionButton = $SettingsPanel/SettingsMargin/SettingsScroll/SettingsVBox/TransitionRow/TransitionModeOption
-@onready var test_scene_button: Button = $SettingsPanel/SettingsMargin/SettingsScroll/SettingsVBox/TestSceneButton
 @onready var back_button: Button = $SettingsPanel/SettingsMargin/SettingsScroll/SettingsVBox/BackButton
 @onready var settings_title: Label = $SettingsPanel/SettingsMargin/SettingsScroll/SettingsVBox/SettingsTitle
-@onready var settings_hint: Label = $SettingsPanel/SettingsMargin/SettingsScroll/SettingsVBox/SettingsHint
 @onready var music_label: Label = $SettingsPanel/SettingsMargin/SettingsScroll/SettingsVBox/MusicRow/MusicLabel
 @onready var sfx_label: Label = $SettingsPanel/SettingsMargin/SettingsScroll/SettingsVBox/SfxRow/SfxLabel
 @onready var window_label: Label = $SettingsPanel/SettingsMargin/SettingsScroll/SettingsVBox/WindowRow/WindowLabel
@@ -68,7 +65,6 @@ func _ready() -> void:
 	_wire_menu_button(quit_button, "_on_quit_pressed")
 	_wire_menu_button(level_select_button, "_on_level_select_pressed")
 	_wire_menu_button(level_select_close_button, "_on_level_select_close_pressed")
-	_wire_menu_button(test_scene_button, "_on_test_scene_pressed")
 	_wire_menu_button(back_button, "_on_back_pressed")
 	queue_redraw()
 
@@ -91,7 +87,7 @@ func _draw() -> void:
 
 
 func _apply_pixel_font() -> void:
-	for control in [title, subtitle, prompt, hint, level_select_button, level_select_title, level_select_close_button, start_button, option_button, quit_button, settings_title, settings_hint, music_label, sfx_label, window_label, transition_label, test_scene_button, back_button]:
+	for control in [title, subtitle, prompt, hint, level_select_button, level_select_title, level_select_close_button, start_button, option_button, quit_button, settings_title, music_label, sfx_label, window_label, transition_label, back_button]:
 		_apply_font_by_text(control, control.text)
 	for level_button in _dynamic_level_buttons:
 		_apply_font_by_text(level_button, level_button.text)
@@ -101,7 +97,6 @@ func _apply_pixel_font() -> void:
 	prompt.add_theme_font_size_override("font_size", 12)
 	hint.add_theme_font_size_override("font_size", 10)
 	settings_title.add_theme_font_size_override("font_size", 16)
-	settings_hint.add_theme_font_size_override("font_size", 10)
 	music_label.add_theme_font_size_override("font_size", 10)
 	sfx_label.add_theme_font_size_override("font_size", 10)
 	window_label.add_theme_font_size_override("font_size", 10)
@@ -157,7 +152,7 @@ func _configure_styles() -> void:
 
 	level_select_panel.add_theme_stylebox_override("panel", default_panel_style)
 
-	for button in [level_select_button, level_select_close_button, start_button, option_button, quit_button, test_scene_button, back_button]:
+	for button in [level_select_button, level_select_close_button, start_button, option_button, quit_button, back_button]:
 		button.focus_mode = Control.FOCUS_NONE
 		button.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 		button.add_theme_font_size_override("font_size", 18)
@@ -559,11 +554,6 @@ func _on_back_pressed() -> void:
 	_show_main_menu()
 
 
-func _on_test_scene_pressed() -> void:
-	_play_click_sfx()
-	_enter_scene(TEST_SCENE, "Entering test scene...")
-
-
 func _on_quit_pressed() -> void:
 	_play_click_sfx()
 	await get_tree().create_timer(0.12).timeout
@@ -581,19 +571,6 @@ func _get_audio_manager() -> Node:
 func _apply_sfx_volume(value: float) -> void:
 	hover_sfx_player.volume_db = value - 1.0
 	click_sfx_player.volume_db = value + 1.0
-
-
-func _enter_scene(scene_path: String, hint_text: String) -> void:
-	if _is_entering_level:
-		return
-	_is_entering_level = true
-	_set_hint_text(hint_text)
-	await get_tree().create_timer(0.12).timeout
-	var transition_manager = _get_transition_manager()
-	if transition_manager != null:
-		transition_manager.change_scene_to_file(scene_path)
-	else:
-		get_tree().change_scene_to_file(scene_path)
 
 
 func _enter_level_by_id(level_id: int) -> void:

@@ -173,9 +173,9 @@ text = "CLOSE"
 visible = false
 layout_mode = 0
 offset_left = 332.0
-offset_top = 202.0
+offset_top = 228.0
 offset_right = 810.0
-offset_bottom = 654.0
+offset_bottom = 620.0
 
 [node name="SettingsMargin" type="MarginContainer" parent="SettingsPanel" unique_id=167732910]
 layout_mode = 2
@@ -272,18 +272,6 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(220, 44)
 layout_mode = 2
 size_flags_horizontal = 3
-
-[node name="SettingsHint" type="Label" parent="SettingsPanel/SettingsMargin/SettingsScroll/SettingsVBox" unique_id=838228497]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.41, 0.23, 0.11, 0.82)
-theme_override_font_sizes/font_size = 10
-text = "Pick your scene transition style here."
-horizontal_alignment = 1
-
-[node name="TestSceneButton" type="Button" parent="SettingsPanel/SettingsMargin/SettingsScroll/SettingsVBox" unique_id=1361804421]
-custom_minimum_size = Vector2(0, 56)
-layout_mode = 2
-text = "ENTER TEST SCENE"
 
 [node name="BackButton" type="Button" parent="SettingsPanel/SettingsMargin/SettingsScroll/SettingsVBox" unique_id=1614760038]
 custom_minimum_size = Vector2(0, 56)

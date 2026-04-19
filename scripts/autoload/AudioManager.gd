@@ -9,10 +9,19 @@ const DEFAULT_SFX_VOLUME_DB := -7.0
 const MENU_MUSIC: AudioStream = preload("res://assets/music/menu.mp3")
 const GAME_MUSIC: AudioStream = preload("res://assets/music/game.ogg")
 
+enum MusicTrack {
+	NONE,
+	MENU,
+	GAME
+}
+
 var _music_volume_db: float = DEFAULT_MUSIC_VOLUME_DB
 var _sfx_volume_db: float = DEFAULT_SFX_VOLUME_DB
 var _menu_player: AudioStreamPlayer
 var _game_player: AudioStreamPlayer
+var _current_music_track: int = MusicTrack.NONE
+var _menu_stream: AudioStream
+var _game_stream: AudioStream
 
 
 func _ready() -> void:
@@ -23,23 +32,29 @@ func _ready() -> void:
 
 
 func play_menu_music() -> void:
-	if _menu_player == null or MENU_MUSIC == null:
+	if _menu_player == null or _menu_stream == null:
+		return
+	if _current_music_track == MusicTrack.MENU and _menu_player.playing:
 		return
 	if _game_player != null and _game_player.playing:
 		_game_player.stop()
-	_menu_player.stream = MENU_MUSIC
-	if not _menu_player.playing:
-		_menu_player.play()
+	if _menu_player.stream != _menu_stream:
+		_menu_player.stream = _menu_stream
+	_current_music_track = MusicTrack.MENU
+	_menu_player.play()
 
 
 func play_game_music() -> void:
-	if _game_player == null or GAME_MUSIC == null:
+	if _game_player == null or _game_stream == null:
+		return
+	if _current_music_track == MusicTrack.GAME and _game_player.playing:
 		return
 	if _menu_player != null and _menu_player.playing:
 		_menu_player.stop()
-	_game_player.stream = GAME_MUSIC
-	if not _game_player.playing:
-		_game_player.play()
+	if _game_player.stream != _game_stream:
+		_game_player.stream = _game_stream
+	_current_music_track = MusicTrack.GAME
+	_game_player.play()
 
 
 func stop_all_music() -> void:
@@ -47,6 +62,7 @@ func stop_all_music() -> void:
 		_menu_player.stop()
 	if _game_player != null:
 		_game_player.stop()
+	_current_music_track = MusicTrack.NONE
 
 
 func set_music_volume_db(value: float) -> void:
@@ -69,17 +85,34 @@ func get_sfx_volume_db() -> float:
 
 
 func _build_players() -> void:
+	_menu_stream = _create_looping_stream(MENU_MUSIC)
+	_game_stream = _create_looping_stream(GAME_MUSIC)
+
 	_menu_player = AudioStreamPlayer.new()
 	_menu_player.name = "MenuMusicPlayer"
 	_menu_player.bus = &"Master"
+	_menu_player.stream = _menu_stream
 	_menu_player.finished.connect(_on_menu_music_finished)
 	add_child(_menu_player)
 
 	_game_player = AudioStreamPlayer.new()
 	_game_player.name = "GameMusicPlayer"
 	_game_player.bus = &"Master"
+	_game_player.stream = _game_stream
 	_game_player.finished.connect(_on_game_music_finished)
 	add_child(_game_player)
+
+
+func _create_looping_stream(source: AudioStream) -> AudioStream:
+	if source == null:
+		return null
+
+	var looped_stream: AudioStream = source.duplicate(true)
+	if looped_stream is AudioStreamMP3:
+		(looped_stream as AudioStreamMP3).loop = true
+	elif looped_stream is AudioStreamOggVorbis:
+		(looped_stream as AudioStreamOggVorbis).loop = true
+	return looped_stream
 
 
 func _apply_music_volume() -> void:
@@ -108,10 +141,10 @@ func _save_settings() -> void:
 
 
 func _on_menu_music_finished() -> void:
-	if _menu_player != null and _menu_player.stream == MENU_MUSIC:
+	if _menu_player != null and _current_music_track == MusicTrack.MENU and _menu_player.stream == _menu_stream:
 		_menu_player.play()
 
 
 func _on_game_music_finished() -> void:
-	if _game_player != null and _game_player.stream == GAME_MUSIC:
+	if _game_player != null and _current_music_track == MusicTrack.GAME and _game_player.stream == _game_stream:
 		_game_player.play()

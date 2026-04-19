@@ -240,3 +240,7 @@ max_distance = 1800.0
 [node name="LandPlayer" type="AudioStreamPlayer2D" parent="MovementSfx" unique_id=1978847399]
 volume_db = -7.0
 max_distance = 1800.0
+
+[node name="DeathPlayer" type="AudioStreamPlayer2D" parent="MovementSfx" unique_id=141000274]
+volume_db = -5.5
+max_distance = 1800.0
