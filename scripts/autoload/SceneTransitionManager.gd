@@ -292,6 +292,9 @@ func _run_scene_change(scene_path: String) -> void:
 
 
 func _get_level_scene_path(level_id: int) -> String:
+	if level_id <= 0:
+		return MAIN_MENU_SCENE
+
 	var scene_path: String = str(LEVEL_SCENE_MAP.get(level_id, ""))
 	if scene_path.is_empty():
 		scene_path = FALLBACK_LEVEL_SCENE

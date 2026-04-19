@@ -149,18 +149,23 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="LevelSelectVBox" type="VBoxContainer" parent="LevelSelectPanel/LevelSelectMargin" unique_id=964110059]
+[node name="LevelSelectScroll" type="ScrollContainer" parent="LevelSelectPanel/LevelSelectMargin" unique_id=733004251]
+layout_mode = 2
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+
+[node name="LevelSelectVBox" type="VBoxContainer" parent="LevelSelectPanel/LevelSelectMargin/LevelSelectScroll" unique_id=964110059]
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="LevelSelectTitle" type="Label" parent="LevelSelectPanel/LevelSelectMargin/LevelSelectVBox" unique_id=1522192967]
+[node name="LevelSelectTitle" type="Label" parent="LevelSelectPanel/LevelSelectMargin/LevelSelectScroll/LevelSelectVBox" unique_id=1522192967]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.31, 0.16, 0.08, 1)
 theme_override_font_sizes/font_size = 14
 text = "SELECT LEVEL"
 horizontal_alignment = 1
 
-[node name="LevelSelectCloseButton" type="Button" parent="LevelSelectPanel/LevelSelectMargin/LevelSelectVBox" unique_id=1149197415]
+[node name="LevelSelectCloseButton" type="Button" parent="LevelSelectPanel/LevelSelectMargin/LevelSelectScroll/LevelSelectVBox" unique_id=1149197415]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 text = "CLOSE"

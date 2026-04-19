@@ -3,16 +3,23 @@ extends Node
 const ENGLISH_FONT: FontFile = preload("res://assets/fonts/press_start_2p/PressStart2P-Regular.ttf")
 const LATIN_FONT: FontFile = preload("res://assets/fonts/fusion_pixel_font/fusion-pixel-12px-proportional-latin.otf")
 const CHINESE_FONT: FontFile = preload("res://assets/fonts/fusion_pixel_font/fusion-pixel-12px-proportional-zh_hans.otf")
-const JAPANESE_FONT: FontFile = preload("res://assets/fonts/fusion_pixel_font/fusion-pixel-12px-proportional-ja.otf")
-const KOREAN_FONT: FontFile = preload("res://assets/fonts/fusion_pixel_font/fusion-pixel-12px-proportional-ko.otf")
+
+const SFX_RETRO_NOTIFICATION: AudioStream = preload("res://assets/music/celebration/mixkit_retro_game_notification_212.mp3")
+const SFX_UNLOCK_NOTIFICATION: AudioStream = preload("res://assets/music/celebration/mixkit_unlock_game_notification_253.mp3")
+const SFX_QUICK_WIN: AudioStream = preload("res://assets/music/celebration/mixkit_quick_win_video_game_notification_269.mp3")
+const SFX_ARCADE_COIN: AudioStream = preload("res://assets/music/celebration/mixkit_arcade_game_jump_coin_216.mp3")
+const SFX_ARCADE_BONUS: AudioStream = preload("res://assets/music/celebration/mixkit_arcade_bonus_alert_767.mp3")
+const SFX_QUICK_POSITIVE: AudioStream = preload("res://assets/music/celebration/mixkit_quick_positive_video_game_notification_interface_265.mp3")
+const SFX_ARCADE_WIN: AudioStream = preload("res://assets/music/celebration/mixkit_arcade_video_game_win_212.wav")
 
 const CELEBRATION_SOUNDS: Array[AudioStream] = [
-	preload("res://assets/music/celebration/mixkit_retro_game_notification_212.mp3"),
-	preload("res://assets/music/celebration/mixkit_unlock_game_notification_253.mp3"),
-	preload("res://assets/music/celebration/mixkit_quick_win_video_game_notification_269.mp3"),
-	preload("res://assets/music/celebration/mixkit_arcade_game_jump_coin_216.mp3"),
-	preload("res://assets/music/celebration/mixkit_arcade_bonus_alert_767.mp3"),
-	preload("res://assets/music/celebration/mixkit_quick_positive_video_game_notification_interface_265.mp3"),
+	SFX_RETRO_NOTIFICATION,
+	SFX_UNLOCK_NOTIFICATION,
+	SFX_QUICK_WIN,
+	SFX_ARCADE_COIN,
+	SFX_ARCADE_BONUS,
+	SFX_QUICK_POSITIVE,
+	SFX_ARCADE_WIN,
 ]
 
 const TEXT_VARIANTS: Array[Dictionary] = [
@@ -44,6 +51,24 @@ const TEXT_VARIANTS: Array[Dictionary] = [
 		"accent": Color(0.42, 1.0, 0.5, 1.0),
 	},
 	{
+		"text": "LEGENDARY!",
+		"font_key": "english",
+		"font_size": 50,
+		"color": Color(1.0, 0.82, 0.56, 1.0),
+		"outline": Color(0.35, 0.12, 0.01, 1.0),
+		"shadow": Color(0.24, 0.08, 0.04, 0.84),
+		"accent": Color(1.0, 0.4, 0.16, 1.0),
+	},
+	{
+		"text": "AMAZING!",
+		"font_key": "latin",
+		"font_size": 56,
+		"color": Color(0.7, 0.95, 1.0, 1.0),
+		"outline": Color(0.06, 0.24, 0.34, 1.0),
+		"shadow": Color(0.02, 0.08, 0.14, 0.84),
+		"accent": Color(0.22, 0.76, 1.0, 1.0),
+	},
+	{
 		"text": "\u606d\u559c\u901a\u5173\uff01",
 		"font_key": "zh",
 		"font_size": 62,
@@ -53,22 +78,22 @@ const TEXT_VARIANTS: Array[Dictionary] = [
 		"accent": Color(1.0, 0.43, 0.24, 1.0),
 	},
 	{
-		"text": "\u304a\u3081\u3067\u3068\u3046!",
-		"font_key": "ja",
-		"font_size": 62,
-		"color": Color(1.0, 0.72, 0.9, 1.0),
-		"outline": Color(0.34, 0.08, 0.26, 1.0),
-		"shadow": Color(0.17, 0.02, 0.15, 0.84),
-		"accent": Color(1.0, 0.34, 0.7, 1.0),
+		"text": "\u592a\u5389\u5bb3\u4e86\uff01",
+		"font_key": "zh",
+		"font_size": 60,
+		"color": Color(1.0, 0.76, 0.54, 1.0),
+		"outline": Color(0.41, 0.16, 0.05, 1.0),
+		"shadow": Color(0.21, 0.08, 0.03, 0.84),
+		"accent": Color(1.0, 0.52, 0.2, 1.0),
 	},
 	{
-		"text": "\ucd95\ud558\ud569\ub2c8\ub2e4!",
-		"font_key": "ko",
+		"text": "\u6f02\u4eae\uff01",
+		"font_key": "zh",
 		"font_size": 60,
-		"color": Color(0.72, 0.86, 1.0, 1.0),
-		"outline": Color(0.08, 0.18, 0.38, 1.0),
-		"shadow": Color(0.03, 0.06, 0.18, 0.84),
-		"accent": Color(0.28, 0.58, 1.0, 1.0),
+		"color": Color(0.8, 0.92, 1.0, 1.0),
+		"outline": Color(0.08, 0.16, 0.33, 1.0),
+		"shadow": Color(0.04, 0.07, 0.16, 0.84),
+		"accent": Color(0.34, 0.58, 1.0, 1.0),
 	},
 ]
 
@@ -77,6 +102,14 @@ const ANIMATION_STYLES: Array[StringName] = [
 	&"spin",
 	&"sweep",
 	&"echo",
+]
+
+const EFFECT_STYLES: Array[StringName] = [
+	&"sparkle_storm",
+	&"pixel_blast",
+	&"fireworks",
+	&"jackpot",
+	&"party_rain",
 ]
 
 const CELEBRATION_COLORS: Array[Color] = [
@@ -99,6 +132,7 @@ var _audio_players: Array[AudioStreamPlayer] = []
 var _next_audio_player: int = 0
 var _last_trigger_time: float = -10.0
 var _confetti_texture: Texture2D
+var _pixel_burst_texture: Texture2D
 var _sparkle_texture: Texture2D
 var _streamer_texture: Texture2D
 var _ring_texture: Texture2D
@@ -123,16 +157,14 @@ func trigger_random_celebration(world_position: Vector2 = Vector2.ZERO) -> void:
 
 	var variant: Dictionary = TEXT_VARIANTS[_rng.randi_range(0, TEXT_VARIANTS.size() - 1)]
 	var accent: Color = variant.get("accent", Color.WHITE)
-	var screen_position := _world_to_screen(world_position)
+	var screen_position := _random_text_anchor()
 	var animation_style: StringName = ANIMATION_STYLES[_rng.randi_range(0, ANIMATION_STYLES.size() - 1)]
+	var effect_style: StringName = EFFECT_STYLES[_rng.randi_range(0, EFFECT_STYLES.size() - 1)]
 
-	_play_random_sound()
+	_play_effect_sound(effect_style)
 	_pulse_shift_prompt(accent)
 	_play_screen_flash(accent)
-	_spawn_burst_ring(screen_position, accent)
-	_spawn_confetti(screen_position, accent)
-	_spawn_sparkles(screen_position, accent)
-	_spawn_streamers(screen_position, accent)
+	_spawn_local_celebration_effect(screen_position, accent, effect_style)
 
 	match animation_style:
 		&"spin":
@@ -147,6 +179,7 @@ func trigger_random_celebration(world_position: Vector2 = Vector2.ZERO) -> void:
 
 func _build_overlay() -> void:
 	_confetti_texture = _create_confetti_texture()
+	_pixel_burst_texture = _create_pixel_burst_texture()
 	_sparkle_texture = _create_sparkle_texture()
 	_streamer_texture = _create_streamer_texture()
 	_ring_texture = _create_ring_texture()
@@ -214,6 +247,55 @@ func _play_random_sound() -> void:
 	player.play()
 
 
+func _play_effect_sound(effect_style: StringName) -> void:
+	match effect_style:
+		&"sparkle_storm":
+			_play_sound_from_pool([SFX_RETRO_NOTIFICATION, SFX_QUICK_POSITIVE, SFX_QUICK_WIN], 2.3, 0.98, 1.08)
+			_schedule_sound_from_pool([SFX_ARCADE_COIN, SFX_UNLOCK_NOTIFICATION], 0.08, 0.9, 1.06, 1.4)
+		&"pixel_blast":
+			_play_sound_from_pool([SFX_ARCADE_BONUS, SFX_ARCADE_WIN, SFX_QUICK_WIN], 3.0, 0.94, 1.03)
+		&"fireworks":
+			_play_sound_from_pool([SFX_ARCADE_BONUS, SFX_QUICK_POSITIVE, SFX_ARCADE_WIN], 3.1, 0.95, 1.04)
+			_schedule_sound_from_pool([SFX_QUICK_WIN, SFX_ARCADE_COIN], 0.06, 0.94, 1.08, 1.6)
+		&"party_rain":
+			_play_sound_from_pool([SFX_UNLOCK_NOTIFICATION, SFX_QUICK_POSITIVE, SFX_RETRO_NOTIFICATION], 2.2, 0.99, 1.08)
+			_schedule_sound_from_pool([SFX_ARCADE_COIN, SFX_QUICK_WIN], 0.11, 0.94, 1.1, 1.2)
+		_:
+			_play_sound_from_pool([SFX_ARCADE_WIN, SFX_ARCADE_BONUS, SFX_QUICK_POSITIVE], 3.2, 0.94, 1.04)
+			_schedule_sound_from_pool([SFX_ARCADE_COIN, SFX_UNLOCK_NOTIFICATION, SFX_QUICK_WIN], 0.08, 0.92, 1.08, 1.7)
+
+
+func _play_sound_from_pool(pool: Array, volume_offset: float, pitch_min: float, pitch_max: float) -> void:
+	if pool.is_empty():
+		_play_random_sound()
+		return
+
+	var audio_manager := get_node_or_null("/root/AudioManager")
+	var sfx_volume_db := -7.0
+	if audio_manager != null and audio_manager.has_method("get_sfx_volume_db"):
+		sfx_volume_db = float(audio_manager.get_sfx_volume_db())
+
+	var player := _audio_players[_next_audio_player % _audio_players.size()]
+	_next_audio_player += 1
+	player.stop()
+	player.volume_db = sfx_volume_db + volume_offset
+	player.pitch_scale = _rng.randf_range(pitch_min, pitch_max)
+	player.stream = pool[_rng.randi_range(0, pool.size() - 1)] as AudioStream
+	player.play()
+
+
+func _schedule_sound_from_pool(pool: Array, delay: float, pitch_min: float, pitch_max: float, volume_offset: float) -> void:
+	if pool.is_empty():
+		return
+
+	var tween := create_tween()
+	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	tween.tween_interval(delay)
+	tween.tween_callback(func() -> void:
+		_play_sound_from_pool(pool, volume_offset, pitch_min, pitch_max)
+	)
+
+
 func _play_screen_flash(accent: Color) -> void:
 	var flash_color := accent.lerp(Color.WHITE, 0.35)
 	flash_color.a = 1.0
@@ -245,6 +327,152 @@ func _spawn_burst_ring(center: Vector2, accent: Color) -> void:
 		tween.tween_callback(ring.queue_free)
 
 
+func _spawn_pixel_explosion(center: Vector2, accent: Color) -> void:
+	var particles := CPUParticles2D.new()
+	particles.one_shot = true
+	particles.explosiveness = 1.0
+	particles.amount = 72
+	particles.lifetime = 0.82
+	particles.randomness = 0.4
+	particles.texture = _pixel_burst_texture
+	particles.direction = Vector2.UP
+	particles.spread = 180.0
+	particles.gravity = Vector2(0.0, 420.0)
+	particles.initial_velocity_min = 180.0
+	particles.initial_velocity_max = 340.0
+	particles.angular_velocity_min = -920.0
+	particles.angular_velocity_max = 920.0
+	particles.scale_amount_min = 1.0
+	particles.scale_amount_max = 2.2
+	particles.color = accent.lerp(_random_palette_color(), 0.38)
+	particles.position = center
+	particles.emitting = false
+	_particle_root.add_child(particles)
+	_play_one_shot_particles(particles, 1.0)
+
+
+func _spawn_star_flash(center: Vector2, accent: Color) -> void:
+	var star := Sprite2D.new()
+	star.texture = _sparkle_texture
+	star.centered = true
+	star.position = center
+	star.scale = Vector2(0.15, 0.15)
+	star.modulate = accent.lerp(Color.WHITE, 0.45)
+	_particle_root.add_child(star)
+
+	var tween := create_tween()
+	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	tween.set_parallel(true)
+	tween.tween_property(star, "scale", Vector2(2.8, 2.8), 0.18).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	tween.tween_property(star, "rotation", _rng.randf_range(-0.7, 0.7), 0.18)
+	tween.tween_property(star, "modulate", Color(star.modulate.r, star.modulate.g, star.modulate.b, 0.0), 0.24)
+	tween.set_parallel(false)
+	tween.tween_callback(star.queue_free)
+
+
+func _spawn_local_celebration_effect(center: Vector2, accent: Color, effect_style: StringName) -> void:
+	_spawn_burst_ring(center, accent)
+	match effect_style:
+		&"sparkle_storm":
+			_spawn_sparkle_halo(center, accent)
+			_spawn_star_fountain(center, accent)
+		&"pixel_blast":
+			_spawn_pixel_bloom(center, accent)
+			_spawn_orbit_flashes(center, accent)
+		&"fireworks":
+			_spawn_firework_cluster(center, accent)
+			_spawn_orbit_flashes(center, accent)
+		&"party_rain":
+			_spawn_ribbon_swirl(center, accent)
+			_spawn_streamer_fan(center, accent)
+		_:
+			_spawn_jackpot_burst(center, accent)
+			_spawn_sparkle_halo(center, accent)
+
+
+func _spawn_sparkle_halo(center: Vector2, accent: Color) -> void:
+	for offset in [
+		Vector2(0.0, -72.0),
+		Vector2(-92.0, -18.0),
+		Vector2(92.0, -18.0),
+		Vector2(-54.0, 46.0),
+		Vector2(54.0, 46.0),
+	]:
+		var color := _random_accent_variant(accent)
+		_spawn_star_flash(center + offset, color)
+		_spawn_sparkles(center + offset * 0.65, color)
+
+
+func _spawn_pixel_bloom(center: Vector2, accent: Color) -> void:
+	_spawn_pixel_explosion(center, accent)
+	for offset in [
+		Vector2(-86.0, -34.0),
+		Vector2(88.0, -28.0),
+		Vector2(-54.0, 58.0),
+		Vector2(58.0, 62.0),
+	]:
+		_spawn_pixel_explosion(center + offset, _random_accent_variant(accent))
+
+
+func _spawn_firework_cluster(center: Vector2, accent: Color) -> void:
+	for offset in [
+		Vector2(0.0, -92.0),
+		Vector2(-110.0, 8.0),
+		Vector2(110.0, 6.0),
+	]:
+		var color := _random_accent_variant(accent)
+		_spawn_confetti(center + offset, color)
+		_spawn_burst_ring(center + offset, color)
+		_spawn_star_flash(center + offset, color)
+
+
+func _spawn_streamer_fan(center: Vector2, accent: Color) -> void:
+	_spawn_streamers(center, accent)
+	_spawn_streamers(center + Vector2(-82.0, -24.0), _random_accent_variant(accent))
+	_spawn_streamers(center + Vector2(82.0, -24.0), _random_accent_variant(accent))
+
+
+func _spawn_ribbon_swirl(center: Vector2, accent: Color) -> void:
+	for offset in [
+		Vector2(-118.0, -42.0),
+		Vector2(118.0, -42.0),
+		Vector2(-68.0, 56.0),
+		Vector2(68.0, 56.0),
+	]:
+		var color := _random_accent_variant(accent)
+		_spawn_streamers(center + offset, color)
+		if _rng.randf() < 0.8:
+			_spawn_star_flash(center + offset * 0.7, color)
+
+
+func _spawn_star_fountain(center: Vector2, accent: Color) -> void:
+	for offset in [
+		Vector2(-32.0, 42.0),
+		Vector2(0.0, 28.0),
+		Vector2(32.0, 42.0),
+	]:
+		_spawn_sparkles(center + offset, _random_accent_variant(accent))
+	_spawn_star_flash(center + Vector2(0.0, -88.0), accent)
+
+
+func _spawn_orbit_flashes(center: Vector2, accent: Color) -> void:
+	for offset in [
+		Vector2(-128.0, -12.0),
+		Vector2(-74.0, -86.0),
+		Vector2(74.0, -86.0),
+		Vector2(128.0, -12.0),
+		Vector2(0.0, 84.0),
+	]:
+		_spawn_star_flash(center + offset, _random_accent_variant(accent))
+
+
+func _spawn_jackpot_burst(center: Vector2, accent: Color) -> void:
+	_spawn_firework_cluster(center, accent)
+	_spawn_pixel_bloom(center, accent)
+	_spawn_streamer_fan(center + Vector2(0.0, 22.0), accent)
+	_spawn_star_fountain(center, accent)
+
+
 func _spawn_confetti(center: Vector2, accent: Color) -> void:
 	var offsets := [
 		Vector2(0.0, 12.0),
@@ -269,7 +497,7 @@ func _spawn_confetti(center: Vector2, accent: Color) -> void:
 		particles.angular_velocity_max = 720.0
 		particles.scale_amount_min = 0.9
 		particles.scale_amount_max = 1.65
-		particles.color = CELEBRATION_COLORS[index % CELEBRATION_COLORS.size()].lerp(accent, 0.24)
+		particles.color = _random_accent_variant(accent).lerp(CELEBRATION_COLORS[index % CELEBRATION_COLORS.size()], 0.35)
 		particles.emission_shape = CPUParticles2D.EMISSION_SHAPE_RECTANGLE
 		particles.emission_rect_extents = Vector2(84.0, 14.0)
 		particles.position = center + offsets[index]
@@ -294,7 +522,7 @@ func _spawn_sparkles(center: Vector2, accent: Color) -> void:
 		particles.initial_velocity_max = 220.0
 		particles.scale_amount_min = 0.7
 		particles.scale_amount_max = 1.45
-		particles.color = accent.lerp(Color.WHITE, 0.55)
+		particles.color = _random_accent_variant(accent).lerp(Color.WHITE, 0.55)
 		particles.position = center + offset
 		particles.emitting = false
 		_particle_root.add_child(particles)
@@ -319,7 +547,7 @@ func _spawn_streamers(center: Vector2, accent: Color) -> void:
 		particles.angular_velocity_max = 360.0
 		particles.scale_amount_min = 1.6
 		particles.scale_amount_max = 2.5
-		particles.color = accent.lerp(Color.WHITE, 0.18)
+		particles.color = _random_accent_variant(accent).lerp(Color.WHITE, 0.22)
 		particles.position = center + offset
 		particles.emitting = false
 		_particle_root.add_child(particles)
@@ -486,10 +714,6 @@ func _font_for_key(font_key: String) -> FontFile:
 			return LATIN_FONT
 		"zh":
 			return CHINESE_FONT
-		"ja":
-			return JAPANESE_FONT
-		"ko":
-			return KOREAN_FONT
 		_:
 			return ENGLISH_FONT
 
@@ -545,9 +769,35 @@ func _world_to_screen(world_position: Vector2) -> Vector2:
 	)
 
 
+func _random_text_anchor() -> Vector2:
+	var viewport_size: Vector2 = get_viewport().get_visible_rect().size
+	return Vector2(
+		_rng.randf_range(220.0, maxf(220.0, viewport_size.x - 220.0)),
+		_rng.randf_range(120.0, maxf(120.0, viewport_size.y - 140.0))
+	)
+
+
+func _random_palette_color() -> Color:
+	return CELEBRATION_COLORS[_rng.randi_range(0, CELEBRATION_COLORS.size() - 1)]
+
+
+func _random_accent_variant(accent: Color) -> Color:
+	return accent.lerp(_random_palette_color(), _rng.randf_range(0.25, 0.58))
+
+
 func _create_confetti_texture() -> Texture2D:
 	var image := Image.create(4, 8, false, Image.FORMAT_RGBA8)
 	image.fill(Color.WHITE)
+	return ImageTexture.create_from_image(image)
+
+
+func _create_pixel_burst_texture() -> Texture2D:
+	var image := Image.create(6, 6, false, Image.FORMAT_RGBA8)
+	image.fill(Color(0.0, 0.0, 0.0, 0.0))
+	for x in range(image.get_width()):
+		for y in range(image.get_height()):
+			if x >= 1 and x <= 4 and y >= 1 and y <= 4:
+				image.set_pixel(x, y, Color.WHITE)
 	return ImageTexture.create_from_image(image)
 
 
