@@ -1,7 +1,7 @@
 extends "res://scripts/abilities/ShiftAbility.gd"
 class_name AbilitySprint
 
-@export var dash_distance: float = 64.0
+@export var dash_distance: float = 45.0
 
 
 func _init() -> void:
