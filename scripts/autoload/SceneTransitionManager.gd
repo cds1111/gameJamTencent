@@ -15,7 +15,8 @@ const LEVEL_SCENE_MAP := {
 	5: "res://scenes/levels/Level_05_ViewSwap.tscn",
 	6: "res://scenes/levels/Level_06_GoalControl.tscn",
 	7: "res://scenes/levels/Level_07_Wind.tscn",
-	8: "res://scenes/levels/Level_end_example.tscn",
+	8: "res://scenes/levels/Level_08_PhantomBlink.tscn",
+	9: "res://scenes/levels/Level_end_example.tscn",
 }
 const DEFAULT_COVER_TIME := 0.28
 const DEFAULT_REVEAL_TIME := 0.24
