@@ -130,7 +130,6 @@ tile_set = SubResource("TileSet_ss1a0")
 
 [node name="Player" parent="Entities" parent_id_path=PackedInt32Array(70306312) index="5" unique_id=1129096103]
 position = Vector2(-1347, -462)
-base_speed = 0.0
 
 [node name="LevelController" parent="." index="3" unique_id=893548158]
 starting_ability = ExtResource("2_wind")

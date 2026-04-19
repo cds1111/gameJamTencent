@@ -1,7 +1,7 @@
 extends "res://scripts/abilities/ShiftAbility.gd"
 class_name AbilityWind
 
-@export var wind_force_x: float = 90.0
+@export var wind_force_x: float = 60.0
 
 var _wind_points_right: bool = false
 
