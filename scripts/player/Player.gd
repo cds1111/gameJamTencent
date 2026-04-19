@@ -299,6 +299,7 @@ func _check_hazard_collisions() -> void:
 
 
 func _update_animation_state(direction: float) -> void:
+	var has_move_input: bool = absf(direction) > 0.01
 	var landed_this_frame: bool = is_on_floor() \
 		and not _was_on_floor \
 		and absf(_pre_move_velocity_y) >= LANDING_VELOCITY_THRESHOLD
@@ -320,10 +321,7 @@ func _update_animation_state(direction: float) -> void:
 			_play_animation(ANIM_JUMP_UP)
 		else:
 			_play_animation(ANIM_JUMP_DOWN)
-	elif absf(velocity.x) > base_speed * 1.2:
-		movement_sfx.play_run_loop()
-		_play_animation(ANIM_RUN)
-	elif absf(direction) > 0.01:
+	elif has_move_input:
 		movement_sfx.play_walk_loop()
 		_play_animation(ANIM_WALK)
 	else:
