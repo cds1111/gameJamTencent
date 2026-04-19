@@ -4,6 +4,8 @@ class_name AbilityPhantomBlink
 @export var phantom_distance: float = 64.0
 @export var switch_interval: float = 0.5
 @export var follow_interval: float = 0.016
+@export var level_top_left: Vector2 = Vector2(-1406.0, -509.0)
+@export var level_bottom_right: Vector2 = Vector2(-914.0, -242.0)
 
 var _phantom_node: Node2D
 var _phantom_icon: CanvasItem
@@ -161,7 +163,16 @@ func _roll_next_direction(allow_same: bool) -> void:
 func _update_phantom_position(player: CharacterBody2D) -> void:
 	if _phantom_node == null or player == null:
 		return
-	_phantom_node.global_position = player.global_position + _current_direction * phantom_distance
+	var candidate := player.global_position + _current_direction * phantom_distance
+	_phantom_node.global_position = _clamp_to_level_bounds(candidate)
+
+
+func _clamp_to_level_bounds(point: Vector2) -> Vector2:
+	var min_x := minf(level_top_left.x, level_bottom_right.x)
+	var max_x := maxf(level_top_left.x, level_bottom_right.x)
+	var min_y := minf(level_top_left.y, level_bottom_right.y)
+	var max_y := maxf(level_top_left.y, level_bottom_right.y)
+	return Vector2(clampf(point.x, min_x, max_x), clampf(point.y, min_y, max_y))
 
 
 func _set_visual_enabled(enabled: bool) -> void:
